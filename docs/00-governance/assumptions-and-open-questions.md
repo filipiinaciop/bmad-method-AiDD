@@ -17,6 +17,10 @@ Este é o registro oficial de informações que ainda não são decisões confir
 ## Regras
 
 - `ativa`/`aberta`: pode influenciar o planejamento e deve aparecer nos artefatos afetados.
-- `resolvida`: registre a decisão, a data e atualize os artefatos afetados.
+- Uma premissa (`ASM-*`) é hipótese de trabalho, não requisito confirmado; ela não pode ser a única base para marcar uma story como `ready`.
+- Uma pergunta (`Q-*`) continua sendo `unknown` até o responsável responder e a decisão ser registrada.
+- `resolvida`: registre a decisão, a data, a fonte/evidência e atualize os artefatos afetados.
 - `rejeitada`: registre o motivo; não remova o histórico.
+- Conflitos entre fontes devem virar uma decisão `DEC-*`; não escolha uma versão silenciosamente.
 - Pergunta que bloqueia uma task deve aparecer também em `dependencies.md`.
+- Quando a resposta não puder ser verificada por uma fonte, decisão ou validação, mantenha o item `draft` ou `blocked`.

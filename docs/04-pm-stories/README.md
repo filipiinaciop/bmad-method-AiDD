@@ -4,6 +4,8 @@
 
 Transformar Product Brief, PRD, UX e Arquitetura em trabalho pequeno, ordenado, rastreável e executável por uma IA sem exigir que ela adivinhe contexto ou decisões.
 
+O planejamento deve controlar a incerteza, não escondê-la. Cada item precisa deixar claro o que é fato confirmado, o que é decomposição derivada e o que ainda é desconhecido.
+
 ## Artefatos
 
 | Artefato | Finalidade |
@@ -16,17 +18,21 @@ Transformar Product Brief, PRD, UX e Arquitetura em trabalho pequeno, ordenado, 
 | `definition-of-done.md` | Definir quando uma entrega está concluída. |
 | `traceability-matrix.md` | Ligar fonte, entrega, task, aceite e teste. |
 | `ai-execution-guide.md` | Definir como preparar e executar uma task com IA. |
+| `../00-governance/evidence-protocol.md` | Definir evidências, classificação e condições de bloqueio. |
 
 ## IDs e status
 
 ### IDs
 
 - Fontes: `PB-001`, `PRD-001`, `UX-001`, `ARCH-001`.
+- Decisões: `DEC-001`, `DEC-002`...
 - Entregas: `E01`, `E02`...
 - Stories: `S01`, `S02`...
 - Tasks: `T001`, `T002`...
 - Critérios de aceitação: `AC-S01-01`, `AC-S01-02`...
 - Testes: `TEST-S01-01` ou ID equivalente definido pelo QA.
+- Dependências: `DEP-001`, `DEP-002`...
+- Perguntas: `Q-001`, `Q-002`...
 
 IDs não mudam quando o título, a prioridade ou a ordem mudar.
 
@@ -37,33 +43,49 @@ IDs não mudam quando o título, a prioridade ou a ordem mudar.
 Estados alternativos: `blocked`, `cancelled`.
 
 - `draft`: ainda falta contexto, decisão, detalhamento ou revisão.
-- `ready`: pode ser executado sem adivinhação relevante.
+- `ready`: evidências, escopo, critérios, dependências e validação são suficientes para execução sem adivinhação relevante.
 - `in-progress`: execução iniciada.
-- `blocked`: não pode avançar; a causa deve estar em `dependencies.md`.
-- `done`: critérios e DoD foram verificados.
+- `blocked`: não pode avançar; a causa deve estar em `dependencies.md` e, quando aplicável, no registro de perguntas abertas.
+- `done`: critérios, evidências e DoD foram verificados.
 - `cancelled`: não será implementado; registre o motivo e a decisão.
 
 ## Critérios para uma story `ready`
 
-- possui epic pai e fontes rastreáveis;
+- possui epic pai e fontes rastreáveis por ID, caminho e seção;
+- cada comportamento importante está classificado como confirmado, derivado, desconhecido ou conflito;
 - expressa uma capacidade de uma persona e um valor observável;
 - cabe em uma entrega vertical demonstrável;
 - critérios de aceitação são testáveis e cobrem o caminho principal e casos relevantes;
 - regras de negócio, permissões, estados de interface e contratos aplicáveis estão descritos;
 - dependências e decisões em aberto estão registradas;
-- tasks filhas têm resultado verificável e ordem suficiente;
+- nenhuma pergunta ou conflito bloqueador foi transformado em decisão silenciosa;
+- tasks filhas têm resultado verificável, escopo limitado e ordem suficiente;
+- cada task possui condições explícitas para bloquear a execução;
 - DoD específico está definido;
 - a matriz de rastreabilidade foi atualizada.
+
+## Regras anti-alucinação
+
+- **Sem fonte, não existe story:** toda story deve apontar para uma fonte ou decisão registrada.
+- **Caminho não é evidência:** `docs/arquivo.md` precisa ser acompanhado por ID, seção e afirmação sustentada.
+- **Desconhecido não é decisão:** lacunas ficam em `Q-*` ou `ASM-*`; não devem ser preenchidas por uma suposição escondida.
+- **Conflito bloqueia:** fontes incompatíveis exigem `DEC-*` antes de a implementação ficar `ready`.
+- **Sem critério, não existe task:** trabalho sem comportamento observável permanece `draft`.
+- **Sem validação, não está concluído:** `done` exige comando, cenário, teste ou outra evidência verificável.
+
+O protocolo completo está em [`docs/00-governance/evidence-protocol.md`](../00-governance/evidence-protocol.md).
 
 ## Processo do Integrante 4
 
 1. **Receber:** catalogar fontes em `docs/01-inputs/` e conferir IDs.
 2. **Extrair:** identificar outcomes, requisitos, regras, fluxos, restrições e decisões.
-3. **Agrupar:** criar epics sem misturar resultados não relacionados.
-4. **Decompor:** criar stories verticais, pequenas e demonstráveis.
-5. **Detalhar:** criar tasks com instruções, arquivos/componentes esperados e verificação.
-6. **Ordenar:** explicitar predecessoras, dependências e fatias de entrega.
-7. **Rastrear:** atualizar a matriz em ambos os sentidos — fonte para entrega e entrega para fonte.
-8. **Revisar:** aplicar a checklist de `definition-of-done.md` e encaminhar ao Integrante 5.
+3. **Ancorar:** registrar cada afirmação usada com ID, caminho, seção e classificação da evidência.
+4. **Separar:** listar fatos confirmados, decomposições derivadas, desconhecidos e conflitos.
+5. **Agrupar:** criar epics sem misturar resultados não relacionados.
+6. **Decompor:** criar stories verticais, pequenas e demonstráveis.
+7. **Detalhar:** criar tasks com instruções, arquivos/componentes esperados, condições de bloqueio e verificação.
+8. **Ordenar:** explicitar predecessoras, dependências e fatias de entrega.
+9. **Rastrear:** atualizar a matriz em ambos os sentidos — fonte para entrega e entrega para fonte.
+10. **Revisar:** aplicar o preflight do protocolo e a checklist de `definition-of-done.md` antes de encaminhar ao Integrante 5.
 
-Nunca converta uma dúvida em uma decisão silenciosa. Se uma story não puder ser descrita com precisão, mantenha-a `draft` ou `blocked`.
+Nunca converta uma dúvida em uma decisão silenciosa. Se uma story não puder ser descrita com precisão ou evidência suficiente, mantenha-a `draft` ou `blocked`.
