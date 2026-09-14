@@ -18,7 +18,7 @@ Descreva a capacidade vertical e demonstrável que será entregue.
 
 ## Narrativa
 
-**Como** `<persona>`, **quero** `<capacidade>`, **para** `<valor>`. 
+**Como** `<persona>`, **quero** `<capacidade>`, **para** `<valor>`.
 
 ## Contexto
 

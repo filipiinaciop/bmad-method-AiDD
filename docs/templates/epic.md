@@ -23,11 +23,11 @@ Qual resultado de negócio ou capacidade ampla será alcançado? Evite descrever
 
 ### Incluído
 
-- 
+- A preencher
 
 ### Fora do escopo
 
-- 
+- A preencher
 
 ## Critérios de sucesso do epic
 

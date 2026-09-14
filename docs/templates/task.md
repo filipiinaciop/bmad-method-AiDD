@@ -33,11 +33,11 @@ Inclua apenas o contexto necessário para a IA agir sem adivinhação.
 
 ### Fazer
 
-1. 
+1. A preencher
 
 ### Não fazer
 
-- 
+- A preencher
 
 ## Arquivos, componentes ou contratos esperados
 
