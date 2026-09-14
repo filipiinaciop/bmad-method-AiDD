@@ -34,6 +34,7 @@ docs/
 │   └── evidence-protocol.md       # Classificação, preflight e condições de bloqueio
 ├── 01-inputs/                     # Entradas dos Integrantes 1, 2 e 3
 ├── 04-pm-stories/                 # Artefatos produzidos pelo Integrante 4
+│   ├── intake-menu.md             # Perguntas e confirmação antes de criar artefatos
 │   ├── epics/
 │   ├── stories/
 │   ├── tasks/
@@ -77,9 +78,10 @@ docs/
 
 1. Preencha `docs/01-inputs/README.md` e adicione os documentos de entrada.
 2. Leia `docs/00-governance/evidence-protocol.md`.
-3. Leia `docs/04-pm-stories/README.md` e `docs/04-pm-stories/ai-execution-guide.md`.
-4. Copie os modelos de `docs/templates/` para criar novos epics, stories e tasks.
-5. Atualize `traceability-matrix.md`, `dependencies.md` e `implementation-order.md` a cada refinamento.
-6. Execute o preflight de evidências e a checklist de prontidão antes de entregar o pacote ao Integrante 5.
+3. Use `docs/04-pm-stories/intake-menu.md` antes de criar ou alterar qualquer Epic, Feature, Story, Spec, Task, Decision ou Dependency.
+4. Leia `docs/04-pm-stories/README.md` e `docs/04-pm-stories/ai-execution-guide.md`.
+5. Copie os modelos de `docs/templates/` para criar novos epics, stories e tasks.
+6. Atualize `traceability-matrix.md`, `dependencies.md` e `implementation-order.md` a cada refinamento.
+7. Execute o preflight de evidências e a checklist de prontidão antes de entregar o pacote ao Integrante 5.
 
 Este repositório contém apenas a estrutura de planejamento neste momento. Nenhum requisito de produto é inventado até que os documentos dos Integrantes 1–3 sejam adicionados.

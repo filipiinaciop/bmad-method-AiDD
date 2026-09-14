@@ -39,9 +39,15 @@ Exemplo:
 
 Se a fonte não tiver uma âncora ou ID localizável, ela ainda precisa indicar o arquivo e o título exato da seção. O Integrante 4 deve solicitar a correção da fonte quando a localização não for reproduzível.
 
-## Preflight de evidências
+## Gate de intake
 
-Antes de uma story ou task ser marcada como `ready`, responda:
+Antes de criar ou alterar qualquer Epic, Feature, Story, Spec, Task, Decision ou Dependency, use [`docs/04-pm-stories/intake-menu.md`](../04-pm-stories/intake-menu.md).
+
+O intake é obrigatório porque uma intenção curta não contém necessariamente escopo, fontes, dependências, critérios ou validação suficientes. A IA deve coletar as respostas, apresentar o resumo e aguardar confirmação explícita antes de criar/alterar arquivos.
+
+Se houver `unknown`, `conflict`, fonte ausente, contrato indefinido ou validação impossível, o resultado deve ser `draft` ou `blocked`, nunca uma decisão inventada.
+
+## Preflight de evidências
 
 | Verificação | Evidência esperada | Se falhar |
 |---|---|---|

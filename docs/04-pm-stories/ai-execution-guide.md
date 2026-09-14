@@ -8,6 +8,21 @@ A IA executa somente tasks com status `ready` ou `in-progress`. Ela não deve in
 
 Se encontrar ambiguidade, fonte ausente, conflito ou comportamento não especificado, deve parar, registrar a dúvida e marcar a task como `blocked`. Uma resposta plausível não substitui uma decisão do projeto.
 
+## Gate de criação de artefatos
+
+Antes de criar ou alterar Epic, Feature, Story, Spec, Task, Decision ou Dependency, a IA deve abrir o [`intake-menu.md`](intake-menu.md).
+
+O menu deve:
+
+1. identificar a operação e o tipo de artefato;
+2. coletar perguntas comuns e específicas do tipo escolhido;
+3. exigir fontes com ID, caminho e seção;
+4. separar `confirmed`, `derived`, `unknown` e `conflict`;
+5. mostrar escopo, dependências e validação proposta;
+6. pedir confirmação explícita antes de criar ou alterar arquivos.
+
+Se faltarem informações, a IA deve oferecer `draft`, `blocked` ou cancelamento. Ela não deve transformar uma intenção curta em requisitos ou decisões silenciosas.
+
 ## Contrato de uma task executável
 
 Uma task só está `ready` quando responde claramente:

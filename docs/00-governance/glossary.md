@@ -5,6 +5,9 @@ Use este arquivo para impedir que termos importantes tenham significados diferen
 | Termo | Definição aprovada | Sinônimos proibidos ou observações | Fonte |
 |---|---|---|---|
 | `Epic` | Resultado ou capacidade ampla que será decomposta em stories relacionadas. | Não é uma lista de tasks. | A preencher |
+| `Feature` | Capacidade de produto percebida pelo usuário ou negócio, ligada a um Epic e decomposta em Stories quando essa camada existir. | Não crie uma hierarquia Feature sem confirmação do projeto. | `docs/04-pm-stories/intake-menu.md` |
+| `Spec` | Especificação formal de Product, UX, Architecture, Implementation ou QA, ligada às fontes e decisões que detalha. | Não substitui automaticamente PRD, UX ou Arquitetura. | `docs/04-pm-stories/intake-menu.md` |
+| `Intake` | Etapa de coleta, classificação e confirmação das informações antes de criar ou alterar um artefato. | Sem confirmação explícita, não há publicação. | `docs/04-pm-stories/intake-menu.md` |
 | `Story` | Unidade vertical de valor para uma persona, com comportamento observável e critérios de aceitação. | Não é uma tarefa técnica isolada. | A preencher |
 | `Task` | Unidade de trabalho executável, com resultado verificável e dependências explícitas. | Deve caber em uma sessão de execução razoável. | A preencher |
 | `Evidência` | Informação verificável ligada a uma fonte, observação do repositório ou resultado de validação. | Um caminho de arquivo isolado não é evidência. | `docs/00-governance/evidence-protocol.md` |

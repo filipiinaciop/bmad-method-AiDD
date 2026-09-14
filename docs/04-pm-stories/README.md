@@ -18,6 +18,7 @@ O planejamento deve controlar a incerteza, não escondê-la. Cada item precisa d
 | `definition-of-done.md` | Definir quando uma entrega está concluída. |
 | `traceability-matrix.md` | Ligar fonte, entrega, task, aceite e teste. |
 | `ai-execution-guide.md` | Definir como preparar e executar uma task com IA. |
+| `intake-menu.md` | Coletar e confirmar informações antes de criar ou alterar qualquer artefato. |
 | `../00-governance/evidence-protocol.md` | Definir evidências, classificação e condições de bloqueio. |
 
 ## IDs e status
@@ -77,15 +78,17 @@ O protocolo completo está em [`docs/00-governance/evidence-protocol.md`](../00-
 
 ## Processo do Integrante 4
 
-1. **Receber:** catalogar fontes em `docs/01-inputs/` e conferir IDs.
-2. **Extrair:** identificar outcomes, requisitos, regras, fluxos, restrições e decisões.
-3. **Ancorar:** registrar cada afirmação usada com ID, caminho, seção e classificação da evidência.
-4. **Separar:** listar fatos confirmados, decomposições derivadas, desconhecidos e conflitos.
-5. **Agrupar:** criar epics sem misturar resultados não relacionados.
-6. **Decompor:** criar stories verticais, pequenas e demonstráveis.
-7. **Detalhar:** criar tasks com instruções, arquivos/componentes esperados, condições de bloqueio e verificação.
-8. **Ordenar:** explicitar predecessoras, dependências e fatias de entrega.
-9. **Rastrear:** atualizar a matriz em ambos os sentidos — fonte para entrega e entrega para fonte.
-10. **Revisar:** aplicar o preflight do protocolo e a checklist de `definition-of-done.md` antes de encaminhar ao Integrante 5.
+0. **Abrir o intake:** mostrar [`intake-menu.md`](intake-menu.md), escolher o tipo de artefato e coletar as respostas comuns e específicas.
+1. **Confirmar:** apresentar o resumo do intake, separar fatos, decisões derivadas, desconhecidos e conflitos e aguardar confirmação explícita.
+2. **Receber:** catalogar fontes em `docs/01-inputs/` e conferir IDs.
+3. **Extrair:** identificar outcomes, requisitos, regras, fluxos, restrições e decisões.
+4. **Ancorar:** registrar cada afirmação usada com ID, caminho, seção e classificação da evidência.
+5. **Separar:** listar fatos confirmados, decomposições derivadas, desconhecidos e conflitos.
+6. **Agrupar:** criar epics sem misturar resultados não relacionados.
+7. **Decompor:** criar stories verticais, pequenas e demonstráveis.
+8. **Detalhar:** criar tasks com instruções, arquivos/componentes esperados, condições de bloqueio e verificação.
+9. **Ordenar:** explicitar predecessoras, dependências e fatias de entrega.
+10. **Rastrear:** atualizar a matriz em ambos os sentidos — fonte para entrega e entrega para fonte.
+11. **Revisar:** aplicar o preflight do protocolo e a checklist de `definition-of-done.md` antes de encaminhar ao Integrante 5.
 
 Nunca converta uma dúvida em uma decisão silenciosa. Se uma story não puder ser descrita com precisão ou evidência suficiente, mantenha-a `draft` ou `blocked`.
