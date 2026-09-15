@@ -2,12 +2,23 @@
 
 Esta pasta contém as fontes que o Integrante 4 transforma em trabalho executável. Substitua ou complemente os arquivos indicados abaixo quando os responsáveis entregarem seus artefatos.
 
-| Arquivo | Responsável | IDs esperados |
-|---|---|---|
-| `product-brief.md` | Integrante 1 | `PB-001`, `PB-002`... |
-| `prd.md` | Integrante 1 | `PRD-001`, `PRD-002`... |
-| `ux.md` | Integrante 2 | `UX-001`, `UX-002`... |
-| `architecture.md` | Integrante 3 | `ARCH-001`, `ARCH-002`... |
+O mapa de leitura das pastas BMAD está em [`../00-governance/bmad-reading-map.md`](../00-governance/bmad-reading-map.md). Ele distingue fontes normativas de skills, templates, reviews, memlogs e outputs de apoio.
+
+## Estado atual das fontes
+
+- **Brief:** disponível em `_bmad-output/planning-artifacts/briefs/brief-bmad-method-AiDD-2026-09-14/brief.md`.
+- **PRD:** disponível em `_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md`; `prd.md` nesta pasta é o entrypoint/mapa de IDs.
+- **UX:** `ux.md` ainda não está preenchido.
+- **Arquitetura:** `architecture.md` ainda não está preenchido.
+
+Não trate uma fonte ausente como autorização para completar o conteúdo. Registre a dependência e bloqueie somente os artefatos que dependerem dela.
+
+| Arquivo | Responsável | IDs esperados | Fonte de verdade |
+|---|---|---|---|
+| `product-brief.md` | Integrante 1 | `PB-001`, `PB-002`... | A preencher |
+| `prd.md` | Integrante 1 | `PRD-001`, `PRD-FR-*`, `PRD-UJ-*`, `PRD-NFR-*`, `PRD-OQ-*`, `PRD-ASM-*` | [`_bmad-output/.../prd.md`](../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md) |
+| `ux.md` | Integrante 2 | `UX-001`, `UX-002`... | A preencher |
+| `architecture.md` | Integrante 3 | `ARCH-001`, `ARCH-002`... | A preencher |
 
 ## Regras de recebimento
 

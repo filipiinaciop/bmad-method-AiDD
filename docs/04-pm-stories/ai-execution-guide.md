@@ -2,6 +2,42 @@
 
 Este documento define o pacote mínimo que deve ser entregue a uma IA para executar uma task com segurança e previsibilidade. O protocolo complementar de classificação e bloqueio está em [`docs/00-governance/evidence-protocol.md`](../00-governance/evidence-protocol.md).
 
+O mapa completo de leitura do repositório está em [`docs/00-governance/bmad-reading-map.md`](../00-governance/bmad-reading-map.md). Ele separa método/runtime (`_bmad`, `.agents/skills`, `.claude/skills`), fontes de produto (`_bmad-output/planning-artifacts`, `docs/01-inputs`) e governança/execução (`docs`).
+
+## Pacote de leitura por etapa
+
+Não leia todos os arquivos do `_bmad` sem objetivo. Leia primeiro a camada correspondente e registre as fontes usadas.
+
+| Etapa | Leitura obrigatória | Leitura condicional | Não tratar como requisito |
+|---|---|---|---|
+| Orientação | `README.md`, `bmad-reading-map.md`, `_bmad/config.toml`, `_bmad/_config/bmad-help.csv` | `_bmad/config.user.toml`, `_bmad/custom/` | Configuração e manifestos |
+| Requirements | `docs/01-inputs/prd.md` e o PRD completo em `_bmad-output/planning-artifacts/prds/` | Brief em `_bmad-output/planning-artifacts/briefs/`, `addendum.md`, `reconcile-*.md`, `review-*.md` | Reviews, reconciliações, addenda e memlogs isolados |
+| UX | PRD + `docs/01-inputs/ux.md` ou `DESIGN.md`/`EXPERIENCE.md` existente | Skill UX e referências relacionadas | Mock ou screenshot sem contrato aprovado |
+| Arquitetura | PRD + UX disponível + `docs/01-inputs/architecture.md` ou architecture spine | Skill Architecture, decisões e código existente | Template ou sugestão de stack |
+| PM/Stories | `evidence-protocol.md`, `intake-menu.md`, `docs/04-pm-stories/README.md`, fontes relevantes | Templates, dependências, ordem, DoD e matriz | Intenção curta ou placeholder |
+| Execução | Task → Story → Epic → ACs → fontes/decisões → dependências → código | Testes, project context, skills de build/review/QA | PRD inteiro indiscriminadamente ou review como autorização de escopo |
+
+No estado atual, Brief e PRD estão disponíveis; UX, Arquitetura, Epics, Stories, Tasks e implementation artifacts ainda podem estar ausentes. Ausência de fonte deve ser registrada como `unknown`/`blocked` conforme o impacto, nunca preenchida pela IA.
+
+## Ordem mínima antes de criar um artefato
+
+1. Ler o `evidence-protocol.md` e o `intake-menu.md`.
+2. Ler `docs/01-inputs/prd.md` para localizar IDs.
+3. Ler o Brief e o PRD completo nas fontes de `_bmad-output/planning-artifacts/`.
+4. Ler UX e Arquitetura quando existirem e forem relevantes ao artefato.
+5. Ler o template correspondente apenas para aplicar a forma.
+6. Ler dependências, ordem, DoD e matriz de rastreabilidade.
+7. Apresentar o resumo do intake e aguardar confirmação explícita.
+
+## Fontes normativas e fontes de apoio
+
+- `_bmad`, `.agents/skills` e `.claude/skills` explicam o processo da IA; não definem comportamento do produto.
+- Brief e PRD definem produto e requisitos conforme o assunto de cada documento.
+- UX e Arquitetura definem suas respectivas decisões quando estiverem aprovadas.
+- Templates definem formato; não fornecem conteúdo.
+- `addendum.md`, `.memlog.md`, `reconcile-*.md` e `review-*.md` fornecem contexto, auditoria ou achados. Só podem sustentar implementação quando um requisito/decisão for promovido e rastreado.
+- Conflitos entre fontes devem ser classificados como `conflict` e bloqueiam os itens afetados até `DEC-*` ou atualização aprovada da fonte.
+
 ## Regra principal
 
 A IA executa somente tasks com status `ready` ou `in-progress`. Ela não deve inventar requisito, alterar escopo ou resolver uma pergunta aberta por conta própria.

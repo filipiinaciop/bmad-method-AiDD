@@ -31,7 +31,8 @@ O foco inicial do **Integrante 4 — PM / Stories** é converter as entradas dos
 ```text
 docs/
 ├── 00-governance/                 # Convenções, glossário, evidências e dúvidas
-│   └── evidence-protocol.md       # Classificação, preflight e condições de bloqueio
+│   ├── evidence-protocol.md       # Classificação, preflight e condições de bloqueio
+│   └── bmad-reading-map.md        # Mapa de leitura do _bmad e dos outputs
 ├── 01-inputs/                     # Entradas dos Integrantes 1, 2 e 3
 ├── 04-pm-stories/                 # Artefatos produzidos pelo Integrante 4
 │   ├── intake-menu.md             # Perguntas e confirmação antes de criar artefatos
@@ -46,10 +47,33 @@ docs/
 └── templates/                     # Modelos para novos artefatos
 ```
 
+## Mapa BMAD: o que ler e em que ordem
+
+O projeto possui três camadas que não devem ser confundidas:
+
+| Camada | Caminhos principais | Função |
+|---|---|---|
+| Método/runtime | `_bmad/`, `.agents/skills/`, `.claude/skills/` | Ensinar como a IA trabalha, localizar workflows e resolver configuração. Não define requisitos do produto. |
+| Fontes e outputs de produto | `_bmad-output/planning-artifacts/` e `docs/01-inputs/` | Conter Brief, PRD e, quando disponíveis, UX e Arquitetura. É a base para requisitos e decisões. |
+| Governança e execução | `docs/00-governance/`, `docs/04-pm-stories/`, `docs/templates/` | Controlar evidências, intake, rastreabilidade, dependências e trabalho executável. |
+
+A ordem detalhada está em [`docs/00-governance/bmad-reading-map.md`](docs/00-governance/bmad-reading-map.md). Em resumo, a IA deve ler: governança → entrypoint da fonte → documento completo → fontes condicionais (UX/Arquitetura) → template → dependências/DoD/matriz. Não é necessário ler todos os arquivos do `_bmad`; deve-se ler a skill e o output relacionados à etapa atual.
+
+### Precedência das fontes
+
+- Brief: problema, visão, personas e escopo de alto nível.
+- PRD: requisitos funcionais, regras, NFRs, jornadas, escopo e non-goals.
+- UX: experiência, fluxos, estados e acessibilidade.
+- Arquitetura: contratos técnicos, dados, invariantes e segurança.
+- Epics/Stories/Tasks: decomposição; não adicionam comportamento sem fonte ou decisão.
+- Reviews e QA: validação e achados; não alteram o escopo sozinhos.
+
+`_bmad`, `.agents/skills`, `.claude/skills`, templates, addenda, memlogs, reconciliações e reviews são materiais de processo, contexto ou validação. Só viram fonte normativa quando uma decisão ou requisito for explicitamente promovido e rastreado. Conflitos entre fontes são `conflict` e bloqueiam os itens afetados.
+
 ## Fluxo de trabalho
 
 1. Os Integrantes 1–3 versionam as fontes em `docs/01-inputs/`.
-2. Cada fonte recebe IDs estáveis, como `PB-001`, `PRD-001`, `UX-001` e `ARCH-001`, localizáveis no conteúdo.
+2. Cada fonte recebe IDs estáveis, como `PB-001`, `PRD-001`, `PRD-FR-001`, `UX-001` e `ARCH-001`, localizáveis no conteúdo.
 3. O Integrante 4 registra caminho, seção e afirmação sustentada para cada fonte usada.
 4. Fatos confirmados, decisões derivadas, desconhecidos e conflitos são separados explicitamente.
 5. O Integrante 4 agrupa capacidades em epics (`E01`, `E02`...).
@@ -76,12 +100,13 @@ docs/
 
 ## Começando
 
-1. Preencha `docs/01-inputs/README.md` e adicione os documentos de entrada.
-2. Leia `docs/00-governance/evidence-protocol.md`.
-3. Use `docs/04-pm-stories/intake-menu.md` antes de criar ou alterar qualquer Epic, Feature, Story, Spec, Task, Decision ou Dependency.
-4. Leia `docs/04-pm-stories/README.md` e `docs/04-pm-stories/ai-execution-guide.md`.
-5. Copie os modelos de `docs/templates/` para criar novos epics, stories e tasks.
-6. Atualize `traceability-matrix.md`, `dependencies.md` e `implementation-order.md` a cada refinamento.
-7. Execute o preflight de evidências e a checklist de prontidão antes de entregar o pacote ao Integrante 5.
+1. Leia [`docs/00-governance/bmad-reading-map.md`](docs/00-governance/bmad-reading-map.md) para identificar a etapa e as pastas necessárias.
+2. Preencha `docs/01-inputs/README.md` e confira as fontes existentes em `_bmad-output/planning-artifacts/`.
+3. Leia `docs/00-governance/evidence-protocol.md`.
+4. Use `docs/04-pm-stories/intake-menu.md` antes de criar ou alterar qualquer Epic, Feature, Story, Spec, Task, Decision ou Dependency.
+5. Leia `docs/04-pm-stories/README.md` e `docs/04-pm-stories/ai-execution-guide.md`.
+6. Copie os modelos de `docs/templates/` para criar novos epics, stories e tasks.
+7. Atualize `traceability-matrix.md`, `dependencies.md` e `implementation-order.md` a cada refinamento.
+8. Execute o preflight de evidências e a checklist de prontidão antes de entregar o pacote ao Integrante 5.
 
-Este repositório contém apenas a estrutura de planejamento neste momento. Nenhum requisito de produto é inventado até que os documentos dos Integrantes 1–3 sejam adicionados.
+O repositório já possui um Product Brief e um PRD finais em `_bmad-output/planning-artifacts/`. Ainda não há artefatos concretos de UX, Arquitetura, Epics, Stories, Tasks ou implementação. A ausência de uma fonte deve ser registrada como dependência; nunca preenchida por suposição.
