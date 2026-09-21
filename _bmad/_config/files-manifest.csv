@@ -1,6 +1,6 @@
 type,name,module,path,hash
 "yaml","manifest","_config","_config/manifest.yaml","7990883e13b02632e39935188f781a95312ce66a0ad48fee2264c383db6d81e5"
-"csv","module-help","bmm","bmm/module-help.csv","c3c1033c8fffef924bb71342e22a0a2a8243911a0b856e2aa7804d8bb49feb5a"
+"csv","module-help","bmm","bmm/module-help.csv","16556b5fe24dd88e258dfd29b7b5d8528d17c0073114d152bc732350358db395"
 "html","validation-report-template","bmm","bmm/plan/bmad-prd/assets/validation-report-template.html","a80becdd8205d2d7c18738855830b096172a496b96b5ca8a0820ec55c9bb8bf9"
 "html","validation-report-template","bmm","bmm/plan/bmad-ux/assets/validation-report-template.html","8656945636fabe96624f8ef8fce931b073b5aecbe42d490584c1d5c7f31e1353"
 "json","bmad-manifest","bmm","bmm/plan/bmad-prfaq/bmad-manifest.json","b67b016cd68535a97bd9164c237fbfe19a5b26bc1a3f0afe203fecfa40aab6ff"
@@ -234,3 +234,4 @@ type,name,module,path,hash
 "py","render_skill","scripts","scripts/render_skill.py","8496d0d8b449d64c21b42a9aab3b13fc8a813a430c0695ffd84ad75bb1da7942"
 "py","resolve_config","scripts","scripts/resolve_config.py","70d7577396ed40ab9462ab75dce51f852bc2e094b2d1a054214f1b30c8789768"
 "py","resolve_customization","scripts","scripts/resolve_customization.py","c95aab9f2dc500d6ab7db77d6a7860028701ce414e03690613a282cc3659d284"
+"md","SKILL","bmm","bmm/ship/git-specialist/SKILL.md","9dcfa47b9a539a4c86a77d814625a305965b984e0128fb20b1d4eb9ea932f503"
