@@ -46,15 +46,21 @@ São as fontes normativas para entender o que o produto deve fazer:
 | `_bmad-output/planning-artifacts/prds/<projeto>/prd.md` | PRD final | Visão operacional, jornadas, glossário, FRs, NFRs, escopo, non-goals, questões e suposições. |
 | `docs/01-inputs/prd.md` | Entrypoint canônico do PRD | Mapa de IDs padrão e link para o PRD completo; não substitui a leitura do PRD. |
 | `docs/01-inputs/ux.md` | UX aprovada, quando existir | Fluxos, telas, estados, acessibilidade e contratos de experiência. |
-| `docs/01-inputs/architecture.md` | Arquitetura aprovada, quando existir | Stack, entidades, APIs, invariantes, segurança e decisões técnicas. |
+| `docs/01-inputs/architecture.md` | Arquitetura proposta/canônica quando promovida | Stack, entidades, APIs, invariantes, segurança e decisões técnicas. |
+| `docs/01-inputs/project-context.md` | Contexto operacional derivado da arquitetura | Resumo para agentes; não substitui `architecture.md`. |
+| `AGENTS.md` | Regras de execução no workspace | Instruções operacionais; não substitui requisitos ou decisões. |
 
 Estado atual deste repositório:
 
 - Product Brief final existe em `_bmad-output/planning-artifacts/briefs/`.
 - PRD final existe em `_bmad-output/planning-artifacts/prds/`.
 - `docs/01-inputs/prd.md` é o entrypoint para esse PRD.
-- UX e Arquitetura ainda não estão presentes como fontes preenchidas em `docs/01-inputs/`.
-- A ausência de UX/Arquitetura bloqueia somente os artefatos que dependem dessas informações; não autoriza a IA a inventar estados, contratos ou decisões técnicas.
+- Arquitetura proposta existe em `docs/01-inputs/architecture.md` e é a única fonte arquitetural canônica.
+- `docs/01-inputs/project-context.md` resume a arquitetura para uso operacional.
+- `AGENTS.md` aplica as regras de workspace e aponta para as fontes canônicas.
+- UX ainda não está presente como fonte preenchida em `docs/01-inputs/`.
+- A arquitetura está `proposed`; perguntas `ARCH-OQ-*` devem ser resolvidas antes de promover a fonte a `approved`.
+- A ausência de UX ou de decisões arquiteturais específicas bloqueia somente os artefatos que dependem dessas informações; não autoriza a IA a inventar estados, contratos ou decisões técnicas.
 
 ### 3. Governança e planejamento
 
@@ -91,7 +97,7 @@ A presença de um arquivo de output não prova que o conteúdo foi aprovado. Use
 | Brief/discovery | Brief completo | Addendum e memlog para contexto/auditoria | Pesquisa e memlog isolados |
 | Requirements/PRD | `docs/01-inputs/prd.md`, depois `prd.md` completo | Reconciliações, reviews e addendum para identificar gaps | Review, reconciliação e `[ASSUMPTION]` sem promoção explícita |
 | UX | PRD + `docs/01-inputs/ux.md` ou output UX | Skill UX, referências e reviews UX | Mock ou screenshot sem contrato aprovado |
-| Arquitetura | PRD + UX disponíveis + `docs/01-inputs/architecture.md` ou spine | Skill Architecture, decisões e código existente | Template, research ou sugestão de stack |
+| Arquitetura | PRD + UX disponíveis + `docs/01-inputs/architecture.md` proposta ou spine | Skill Architecture, decisões, perguntas `ARCH-OQ-*`, `project-context.md`, `AGENTS.md` e código existente | Template, research ou sugestão de stack |
 | PM/Stories | Evidence Protocol, Intake Menu, PRD, UX/Arquitetura disponíveis | Templates, dependências, ordem, DoD e matriz | Intenção curta ou template preenchido |
 | Readiness/Sprint | Epics, Stories, Tasks, dependências, DoD e matriz | Skill de sprint/readiness e QA | Status de template ou arquivo vazio |
 | Build/Review/QA | Task pronta, Story/Epic pai, ACs, fontes e código | Skills de build, code review, QA e walkthrough | Review como autorização para mudar escopo |
