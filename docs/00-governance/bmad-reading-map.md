@@ -29,6 +29,7 @@ Leia quando precisar entender o fluxo BMAD, executar uma skill ou resolver um pr
 | `_bmad/scripts/` | Resolução de configuração, renderização, memlog e utilitários | Ler somente para diagnosticar execução/configuração; não é fonte de produto. |
 | `.agents/skills/` | Skills para o harness de agentes | Ler a skill ativa e seus assets/steps/references. |
 | `.claude/skills/` | Skills para o harness Claude | Ler a skill ativa e seus assets/steps/references. |
+| `git-specialist` | Skill Git espelhada em `_bmad/bmm/ship/git-specialist/`, `.agents/skills/` e `.claude/skills/` | Ler antes de criar branch, commit ou PR; aplicar as confirmações e bloqueios definidos. |
 
 Não existe uma política de precedência registrada entre `.agents/skills/` e `.claude/skills/`. Se o harness ativo não estiver claro, compare a skill correspondente nos dois caminhos e registre qualquer conflito; não escolha silenciosamente uma versão.
 

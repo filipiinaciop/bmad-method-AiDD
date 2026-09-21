@@ -56,8 +56,9 @@ O projeto possui três camadas que não devem ser confundidas:
 | Método/runtime | `_bmad/`, `.agents/skills/`, `.claude/skills/` | Ensinar como a IA trabalha, localizar workflows e resolver configuração. Não define requisitos do produto. |
 | Fontes e outputs de produto | `_bmad-output/planning-artifacts/` e `docs/01-inputs/` | Conter Brief, PRD e, quando disponíveis, UX e Arquitetura. É a base para requisitos e decisões. |
 | Governança e execução | `docs/00-governance/`, `docs/04-pm-stories/`, `docs/templates/` | Controlar evidências, intake, rastreabilidade, dependências e trabalho executável. |
+| Controle de versão | `_bmad/bmm/ship/git-specialist/`, `.agents/skills/git-specialist/`, `.claude/skills/git-specialist/` | Controlar branch por tarefa, commit, PR, validação e operações Git seguras. |
 
-A ordem detalhada está em [`docs/00-governance/bmad-reading-map.md`](docs/00-governance/bmad-reading-map.md). Em resumo, a IA deve ler: governança → entrypoint da fonte → documento completo → fontes condicionais (UX/Arquitetura) → template → dependências/DoD/matriz. Não é necessário ler todos os arquivos do `_bmad`; deve-se ler a skill e o output relacionados à etapa atual.
+A ordem detalhada está em [`docs/00-governance/bmad-reading-map.md`](docs/00-governance/bmad-reading-map.md). Em resumo, a IA deve ler: governança → entrypoint da fonte → documento completo → fontes condicionais (UX/Arquitetura) → template → dependências/DoD/matriz. Para operações Git, deve ler `git-specialist` antes de criar branch, commit ou PR. Não é necessário ler todos os arquivos do `_bmad`; deve-se ler a skill e o output relacionados à etapa atual.
 
 ### Precedência das fontes
 
