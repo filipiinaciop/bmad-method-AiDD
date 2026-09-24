@@ -24,9 +24,21 @@ A arquitetura recebida para análise foi promovida para `docs/01-inputs/architec
 - Não crie Repository ou Service separado sem uma necessidade real do projeto.
 - Não implemente `ARCH-OQ-*` por inferência; registre uma decisão antes.
 - Ao propor uma alteração arquitetural, explique a necessidade, atualize a arquitetura canônica e registre o impacto nos artefatos dependentes.
+- Alunos podem criar eventos, mas eventos criados por alunos iniciam com status `PENDENTE`.
+- Professores podem criar eventos e possuem a permissão `VALIDAR_EVENTO`.
+- `VALIDAR_EVENTO` é uma única permissão; aprovar e negar são decisões possíveis dentro dessa ação.
+- Respeite os estados do evento: `PENDENTE`, `APROVADO`, `NEGADO` e `CANCELADO`.
+- Eventos criados por alunos devem passar pelo fluxo de validação antes de serem considerados aprovados.
+- O professor deve conseguir visualizar as solicitações de eventos que estejam com status `PENDENTE`.
 
 ## Regras contra alucinação
 
 - Uma fonte ausente, conflito ou contrato indefinido deve ser marcado como `unknown`/`conflict` e pode bloquear a Task.
 - Não trate `project-context.md`, templates, comentários ou código existente como autorização para expandir o escopo.
 - Antes de criar ou alterar Epic, Feature, Story, Spec ou Task, use o intake e aguarde confirmação explícita.
+- Não invente requisitos, funcionalidades, entidades, campos, permissões ou tecnologias que não estejam definidos nos artefatos do projeto.
+- Quando uma informação não estiver definida, consulte os artefatos disponíveis antes de tomar uma decisão.
+- Não altere decisões arquiteturais por conta própria.
+- Quando houver uma decisão em aberto, não escolha uma solução por suposição; registre ou consulte a questão aberta correspondente.
+- Diferencie requisitos já definidos de sugestões ou propostas novas.
+- Ao implementar uma funcionalidade, siga as decisões documentadas em `docs/01-inputs/architecture.md` e `project-context.md`.
