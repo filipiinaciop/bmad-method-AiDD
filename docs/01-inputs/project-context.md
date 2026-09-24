@@ -27,12 +27,14 @@ Centralizar os eventos de uma escola específica e permitir que alunos acompanhe
 - visualizar calendário;
 - visualizar próximos eventos;
 - consultar detalhes;
+- criar evento;
 - inscrever-se;
 - cancelar inscrição.
 
 ### Professor
 
 - criar evento;
+- validar evento;
 - editar evento;
 - cancelar/excluir evento;
 - visualizar inscritos.
@@ -70,6 +72,26 @@ O usuário possui uma Role por meio de `role_id`. `ROLE_PERMISSIONS` relaciona R
 A autenticação será feita por e-mail e senha. O sistema utiliza RBAC (Role-Based Access Control), no qual as permissões são determinadas pela Role do usuário.
 
 Detalhes de hash, sessão, transporte e credenciais permanecem em `ARCH-OQ-001`.
+
+## Fluxo de validação de eventos
+
+1. O aluno cria um evento.
+2. O evento é registrado com status `PENDENTE`.
+3. O professor recebe uma solicitação de validação.
+4. O professor executa a ação `VALIDAR_EVENTO`.
+5. O professor pode aprovar ou negar o evento.
+6. Se aprovado, o status passa para `APROVADO`.
+7. Se negado, o status passa para `NEGADO`.
+8. Apenas eventos aprovados ficam disponíveis como eventos válidos para os alunos.
+
+O `EVENTO` possui o campo `status`, utilizado para controlar o processo de validação.
+
+### Status possíveis
+
+- `PENDENTE`
+- `APROVADO`
+- `NEGADO`
+- `CANCELADO`
 
 ## API e integrações
 
