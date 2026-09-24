@@ -106,6 +106,7 @@ A chave primária é composta por `(role_id, permission_id)`.
 | `hora` | `time` | obrigatório |
 | `localizacao` | `varchar` | obrigatório |
 | `descricao` | `text` | obrigatório |
+| `status` | `text` | obrigatório |
 
 ### ARCH-DATA-006 — INSCRICAO
 
@@ -143,14 +144,16 @@ O sistema utiliza RBAC (Role-Based Access Control). As permissões de acesso sã
 
 - visualizar eventos;
 - visualizar calendário;
-- visualizar próximos eventos;
+- visualizar lista de próximos eventos;
 - consultar detalhes;
+- criar evento;
 - inscrever-se;
 - cancelar inscrição.
 
 ### Professor
 
 - criar evento;
+- validar evento;
 - editar evento;
 - cancelar/excluir evento;
 - visualizar inscritos.
@@ -161,9 +164,31 @@ Role prevista no modelo RBAC para permitir diferenciação de permissões admini
 
 `ARCH-OQ-002` registra que as permissões concretas do Admin ainda precisam ser definidas.
 
+## Fluxo de validação de eventos
+
+1. O aluno cria um evento.
+2. O evento é registrado com status `PENDENTE`.
+3. O professor recebe uma solicitação de validação.
+4. O professor executa a ação `VALIDAR_EVENTO`.
+5. O professor pode aprovar ou negar o evento.
+6. Se aprovado, o status passa para `APROVADO`.
+7. Se negado, o status passa para `NEGADO`.
+8. Apenas eventos aprovados ficam disponíveis como eventos válidos para os alunos.
+
+### Solicitação de validação
+
+O professor possui uma área de solicitações onde pode visualizar os eventos que estão com status `PENDENTE` e aguardam sua validação.
+
+### Status possíveis
+
+- `PENDENTE`
+- `APROVADO`
+- `NEGADO`
+- `CANCELADO`
+
 ## ARCH-SEC-008 — API e rotas
 
-Não será desenvolvida uma API REST independente ou pública. Frontend e backend estarão no mesmo projeto Node.js + Express, e as rotas/endpoints necessários serão processados diretamente pelo servidor da aplicação.
+Não será desenvolvida uma API REST independente ou pública. Frontend e backend estarão no mesmo projeto Node.js + Express. As rotas e endpoints necessários serão processados diretamente pelo servidor da aplicação e utilizados pelo frontend do próprio projeto.
 
 `ARCH-OQ-003` registra que caminhos, métodos, payloads, respostas, erros e limites entre View e Controller ainda não estão especificados.
 
@@ -192,7 +217,12 @@ Não haverá integrações com sistemas externos. A aplicação utilizará seus 
 - horário obrigatório;
 - local obrigatório;
 - datas válidas;
-- `dataInicio` igual ou anterior a `dataFim`.
+- `dataInicio` igual ou anterior a `dataFim`;
+- eventos criados por alunos devem iniciar com status `PENDENTE`;
+- apenas um professor autorizado pode validar um evento;
+- a validação pode resultar em `APROVADO` ou `NEGADO`;
+- eventos negados não devem ser disponibilizados como eventos aprovados;
+- eventos cancelados não devem permitir novas inscrições.
 
 ### Inscrição
 
