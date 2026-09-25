@@ -9,9 +9,7 @@ O mapa de leitura das pastas BMAD está em [`../00-governance/bmad-reading-map.m
 - **Brief:** disponível em `_bmad-output/planning-artifacts/briefs/brief-bmad-method-AiDD-2026-09-14/brief.md`.
 - **PRD:** disponível em `_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md`; `prd.md` nesta pasta é o entrypoint/mapa de IDs.
 - **UX:** `ux.md` ainda não está preenchido.
-- **Arquitetura:** canonizada em `docs/01-inputs/architecture.md`, com status `proposed` e perguntas `ARCH-OQ-*` abertas.
-- **Project context:** resumo operacional canonizado em `docs/01-inputs/project-context.md`.
-- **Agentes:** instruções de workspace em `AGENTS.md`.
+- **Arquitetura:** `architecture.md` ainda não está preenchido.
 
 Não trate uma fonte ausente como autorização para completar o conteúdo. Registre a dependência e bloqueie somente os artefatos que dependerem dela.
 
@@ -20,8 +18,7 @@ Não trate uma fonte ausente como autorização para completar o conteúdo. Regi
 | `product-brief.md` | Integrante 1 | `PB-001`, `PB-002`... | A preencher |
 | `prd.md` | Integrante 1 | `PRD-001`, `PRD-FR-*`, `PRD-UJ-*`, `PRD-NFR-*`, `PRD-OQ-*`, `PRD-ASM-*` | [`_bmad-output/.../prd.md`](../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md) |
 | `ux.md` | Integrante 2 | `UX-001`, `UX-002`... | A preencher |
-| `architecture.md` | Integrante 3 | `ARCH-001`, `ARCH-DEC-*`, `ARCH-DATA-*`, `ARCH-RULE-*`, `ARCH-OQ-*` | [`architecture.md`](./architecture.md) |
-| `project-context.md` | Integrante 3 | `ARCH-CONTEXT-001` | [`project-context.md`](./project-context.md), derivado de `architecture.md` |
+| `architecture.md` | Integrante 3 | `ARCH-001`, `ARCH-002`... | A preencher |
 
 ## Regras de recebimento
 

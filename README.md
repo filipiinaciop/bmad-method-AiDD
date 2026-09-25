@@ -34,9 +34,6 @@ docs/
 │   ├── evidence-protocol.md       # Classificação, preflight e condições de bloqueio
 │   └── bmad-reading-map.md        # Mapa de leitura do _bmad e dos outputs
 ├── 01-inputs/                     # Entradas dos Integrantes 1, 2 e 3
-│   ├── architecture.md            # Arquitetura canônica proposta
-│   ├── project-context.md          # Contexto operacional derivado
-│   └── prd.md                      # Entrypoint de Requirements
 ├── 04-pm-stories/                 # Artefatos produzidos pelo Integrante 4
 │   ├── intake-menu.md             # Perguntas e confirmação antes de criar artefatos
 │   ├── epics/
@@ -113,4 +110,4 @@ A ordem detalhada está em [`docs/00-governance/bmad-reading-map.md`](docs/00-go
 7. Atualize `traceability-matrix.md`, `dependencies.md` e `implementation-order.md` a cada refinamento.
 8. Execute o preflight de evidências e a checklist de prontidão antes de entregar o pacote ao Integrante 5.
 
-O repositório já possui um Product Brief e um PRD finais em `_bmad-output/planning-artifacts/`. A arquitetura recebida foi canonizada como `proposed` em `docs/01-inputs/architecture.md`, com perguntas `ARCH-OQ-*` abertas. Ainda não há artefatos concretos de UX, Epics, Stories, Tasks ou implementação. A ausência de uma fonte deve ser registrada como dependência; nunca preenchida por suposição.
+O repositório já possui um Product Brief e um PRD finais em `_bmad-output/planning-artifacts/`. Ainda não há artefatos concretos de UX, Arquitetura, Epics, Stories, Tasks ou implementação. A ausência de uma fonte deve ser registrada como dependência; nunca preenchida por suposição.

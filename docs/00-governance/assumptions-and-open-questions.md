@@ -13,14 +13,6 @@ Este é o registro oficial de informações que ainda não são decisões confir
 | ID | Pergunta | Contexto/fonte | Bloqueia | Responsável | Prazo | Status |
 |---|---|---|---|---|---|---|
 | Q-001 | Qual é o produto e qual problema prioritário será resolvido? | Ainda não há Product Brief. | Todos os epics | Integrante 1 | A definir | aberta |
-| Q-ARCH-001 | Como serão armazenadas as senhas e gerenciadas as sessões, expiração, cookies/tokens, recuperação e proteção de transporte? | `ARCH-OQ-001` em `docs/01-inputs/architecture.md` | Autenticação e segurança | Integrante 3 | A definir | aberta |
-| Q-ARCH-002 | Quais permissões concretas o `ADMIN` terá e como diferem de `PROFESSOR`? | `ARCH-OQ-002` em `docs/01-inputs/architecture.md` | RBAC e telas protegidas | Integrante 3 | A definir | aberta |
-| Q-ARCH-003 | Quais rotas, métodos, payloads, respostas, erros e fronteiras View/Controller existirão? | `ARCH-OQ-003` em `docs/01-inputs/architecture.md` | UX, implementação e testes | Integrante 3 | A definir | aberta |
-| Q-ARCH-004 | Qual tipo de data/hora e timezone serão usados no PostgreSQL? | `ARCH-OQ-004` em `docs/01-inputs/architecture.md` | Datas, inscrições e encerramento | Integrante 3 | A definir | aberta |
-| Q-ARCH-005 | Evento cancelado será marcado por status/flag ou excluído? O que acontece com inscrições e histórico? | `ARCH-OQ-005` em `docs/01-inputs/architecture.md` | Integridade, auditoria e UX | Integrante 3 | A definir | aberta |
-| Q-ARCH-006 | Qual é o tamanho mínimo da senha e quais regras de credenciais serão usadas? | `ARCH-OQ-006` em `docs/01-inputs/architecture.md` | Autenticação e segurança | Integrante 3 | A definir | aberta |
-| Q-ARCH-007 | Quais políticas de FK, nulabilidade e convenção de nomes serão usadas? | `ARCH-OQ-007` em `docs/01-inputs/architecture.md` | Banco e migrações | Integrante 3 | A definir | aberta |
-| Q-ARCH-008 | Quais comandos oficiais validam instalação, execução, migração, seed, lint, testes, build e deploy? | `ARCH-OQ-008` em `docs/01-inputs/architecture.md` | Execução e DoD | Integrante 3 | A definir | aberta |
 
 ## Regras
 
