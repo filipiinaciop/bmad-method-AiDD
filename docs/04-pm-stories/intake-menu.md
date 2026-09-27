@@ -106,7 +106,7 @@ Faça estas perguntas antes das perguntas específicas. Se a resposta não se ap
 Não aceite apenas o nome do arquivo. Peça:
 
 ```text
-[PRD-004](../../01-inputs/prd.md#prd-004)
+[PRD-004](../01-inputs/prd.md#prd-004)
 Seção: Aprovação de sugestões
 Afirmação: o professor pode aprovar ou rejeitar uma sugestão.
 Classificação: confirmed

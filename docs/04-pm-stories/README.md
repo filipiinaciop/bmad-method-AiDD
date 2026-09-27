@@ -11,6 +11,7 @@ O planejamento deve controlar a incerteza, não escondê-la. Cada item precisa d
 | Artefato | Finalidade |
 |---|---|
 | `epics/` | Agrupar resultados/capacidades de negócio relacionadas. |
+| `features/` | Registrar capacidades formais entre Epic e Story, conforme `DEC-002`. |
 | `stories/` | Descrever unidades verticais de valor e aceite. |
 | `tasks/` | Descrever trabalho executável e verificável. |
 | `dependencies.md` | Registrar bloqueios e dependências explícitas. |
@@ -75,6 +76,13 @@ Estados alternativos: `blocked`, `cancelled`.
 - **Sem validação, não está concluído:** `done` exige comando, cenário, teste ou outra evidência verificável.
 
 O protocolo completo está em [`docs/00-governance/evidence-protocol.md`](../00-governance/evidence-protocol.md).
+
+## Decisões confirmadas deste intake
+
+- `DEC-001`: dados mockados e `localStorage` para persistência do MVP; PostgreSQL/Aiven deferido.
+- `DEC-002`: hierarquia formal `Epic → Feature → Story → Task`.
+- Todos os artefatos criados nesta etapa devem permanecer `draft` ou `blocked`; nenhum será `ready`.
+- A fundação visual é rastreada por `UX-001` em `docs/01-inputs/ux.md`, sem inventar fluxos de UX não definidos.
 
 ## Processo do Integrante 4
 

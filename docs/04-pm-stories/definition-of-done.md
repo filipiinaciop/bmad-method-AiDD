@@ -47,3 +47,10 @@ A entrega deve apontar para pelo menos uma evidência adequada ao tipo de mudan�
 - link para revisão ou decisão aprovada.
 
 "Funcionou", "parece correto" ou a simples existência de um arquivo não são evidências suficientes.
+
+## Adendo para o MVP mockado
+
+- [ ] Dados iniciais de demonstração são identificados como mockados.
+- [ ] Persistência usa somente `localStorage`, conforme `DEC-001`; não há dependência de PostgreSQL/Aiven.
+- [ ] O comportamento após recarregar a página foi verificado quando a Story depender de persistência.
+- [ ] Nenhuma Story foi marcada `ready` enquanto houver `DEP-*` decision/hard aberta.

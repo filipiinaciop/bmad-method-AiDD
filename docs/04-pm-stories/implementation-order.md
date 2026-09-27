@@ -1,25 +1,22 @@
 # Ordem de implementação
 
-A ordem deve privilegiar valor cedo, redução de risco e desbloqueio de trabalho posterior. Não ordene apenas pela facilidade técnica.
-
-## Incrementos
+A ordem abaixo é uma sequência planejada. Todos os incrementos estão `blocked` até suas dependências decision/hard serem resolvidas.
 
 | Ordem | Incremento/fatia vertical | Stories | Tasks | Predecessoras | Valor ou risco reduzido | Status |
 |---:|---|---|---|---|---|---|
-| 1 | A definir após recebimento das fontes | `S...` | `T...` | — | A preencher | planejado |
+| 0 | Contratos e decisões bloqueadoras | `S01–S05` como referências de impacto | `T001–T005` após decisões | `DEP-001` a `DEP-008` | Reduz divergência de segurança, estado, dados e UX antes do código | blocked |
+| 1 | Acesso e autorização demonstráveis | `S01–S04` | `T001–T004` | Incremento 0 | Habilita todos os fluxos protegidos | blocked |
+| 2 | Gestão e validação do evento | `S05–S08`, `S19–S21` | `T005–T008`, `T019–T021` | `DEP-004`, `DEP-005`, `DEP-006`, `DEP-010`, `DEP-011` | Entrega o núcleo do produto e reduz risco do ciclo de vida | blocked |
+| 3 | Descoberta | `S09–S11` | `T009–T011` | `DEP-004`, `DEP-007`, `DEP-008` | Torna eventos encontráveis e demonstráveis | blocked |
+| 4 | Inscrições | `S12–S16` | `T012–T016` | `DEP-005`, `DEP-008`, `DEP-009` | Valida o caminho principal Aluno → inscrição → cancelamento | blocked |
+| 5 | Sugestões e análise | `S17–S21` | `T017–T021` | `DEP-004`, `DEP-006`, `DEP-010`, `DEP-011` | Completa o canal de participação e a curadoria | blocked |
 
 ## Critérios de ordenação
 
-1. decisões e fundações que bloqueiam várias entregas;
-2. caminho mínimo de valor demonstrável;
-3. validações de domínio, permissões e erros;
-4. integrações e migrações;
-5. observabilidade, segurança, acessibilidade e performance;
-6. refinamentos e melhorias não bloqueadoras.
+1. Resolver decisões que bloqueiam várias entregas.
+2. Implementar primeiro o caminho mínimo de valor demonstrável.
+3. Validar domínio, permissões, persistência local e erros.
+4. Cobrir responsividade, acessibilidade, privacidade e integridade.
+5. Atualizar a matriz após cada fatia.
 
-## Regras
-
-- Cada item precisa apontar para stories e tasks existentes.
-- Uma task só pode iniciar quando suas predecessoras estiverem `done` ou quando a dependência for explicitamente informativa.
-- Se a ordem mudar, registre o motivo na descrição do incremento ou em uma decisão.
-- A ordem é uma hipótese de execução e pode evoluir; os IDs não devem ser renumerados.
+A ordem não autoriza iniciar uma task bloqueada nem escolher um contrato ausente.
