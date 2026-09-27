@@ -130,3 +130,12 @@ test('T013 concorrência repetida nunca excede a capacidade', () => {
   assert.equal(accepted.length, 1);
   assert.equal(data.enrollments.filter((item) => item.eventoId === event.id && item.status === Domain.ENROLLMENT_STATUS.ACTIVE).length, 1);
 });
+
+test('regras revisadas mantêm capacidades administrativas e transições válidas', () => {
+  const data = fresh();
+  assert.equal(Domain.hasPermission(data.users[1], Domain.PERMISSIONS.VIEW_EVENTS), true);
+  assert.equal(Domain.hasPermission(data.users[2], Domain.PERMISSIONS.VIEW_CALENDAR), true);
+  const adminAccount = Domain.createAccount(data, 2, { nome: 'Novo Admin', email: 'novo.admin@germinare.edu.br', senha: 'senhanova', role: Domain.ROLES.ADMIN });
+  assert.equal(adminAccount.role, Domain.ROLES.ADMIN);
+  throwsCode(() => Domain.cancelEvent(data, 2, 3), 'INVALID_TRANSITION');
+});

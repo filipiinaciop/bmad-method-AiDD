@@ -1,6 +1,6 @@
 # Dependências
 
-Estas dependências foram registradas após o intake confirmado. Todas as dependências abertas que sejam `decision` ou `hard` mantêm os itens afetados como `blocked`.
+Estas dependências foram registradas após o intake confirmado e foram resolvidas pelas decisões `DEC-003`–`DEC-009`. Dependências futuras ou fora do MVP permanecem explicitamente documentadas.
 
 | ID | De | Para | Tipo | Motivo | Condição de desbloqueio | Responsável | Status | Fonte |
 |---|---|---|---|---|---|---|---|---|

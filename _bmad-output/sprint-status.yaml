@@ -1,11 +1,12 @@
 project: Germinare Tech
 group: 3
 method: BMAD-METHOD (AiDD)
-status: blocked-planning
+status: completed
 persistence: mock-data-plus-localStorage
 feature_layer: formal
 ready_items: []
-blocked_items:
+in_progress_items: []
+completed_items:
   - E01
   - E02
   - E03
@@ -59,18 +60,8 @@ blocked_items:
   - T019
   - T020
   - T021
-blocking_dependencies:
-  - DEP-001
-  - DEP-002
-  - DEP-003
-  - DEP-004
-  - DEP-005
-  - DEP-006
-  - DEP-007
-  - DEP-008
-  - DEP-009
-  - DEP-010
-  - DEP-011
-  - DEP-012
-current_phase: pm-stories
-next_gate: resolve dependencies and promote affected sources before readiness
+deferred_items:
+  - PRD-FR-007
+blocking_dependencies: []
+current_phase: implementation-complete
+next_gate: final review and human walkthrough

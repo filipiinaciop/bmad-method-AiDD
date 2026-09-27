@@ -2,7 +2,7 @@
 title: 'Implement Germinare Tech PM Stories'
 type: 'feature'
 created: '2026-09-04'
-status: 'in-progress'
+status: 'in-review'
 baseline_commit: '140ccba3910339675d9f09fc5a3b413cb3715b8e'
 review_loop_iteration: 0
 context:
@@ -54,11 +54,11 @@ context:
 **Execution:**
 - [x] `package.json`, `server.js`, `src/`, `tests/` -- create the smallest runnable Node/Express MVC baseline with scripts and seeded mock data -- enables T001.
 - [x] `T001` -- implement mock authentication with generic invalid-credential feedback and localStorage-backed session -- S01 acceptance criteria.
-- [ ] `T005–T008` -- implement event creation, editing, cancellation and subscriber views -- E02 acceptance criteria.
-- [ ] `T009–T011` -- implement list, calendar and event detail -- E03/F04 acceptance criteria.
-- [ ] `T012–T016` -- implement enrollment, integrity, self-cancel, own-list and administrative cancel -- E03/F05 acceptance criteria.
-- [ ] `T017–T021` -- implement suggestions, personal suggestions, review queue, approval and rejection -- E04 acceptance criteria.
-- [ ] Each Task -- run its validation, update evidence/status/rastreability, then create its own commit before starting the next Task.
+- [x] `T005–T008` -- implement event creation, editing, cancellation and subscriber views -- E02 acceptance criteria.
+- [x] `T009–T011` -- implement list, calendar and event detail -- E03/F04 acceptance criteria.
+- [x] `T012–T016` -- implement enrollment, integrity, self-cancel, own-list and administrative cancel -- E03/F05 acceptance criteria.
+- [x] `T017–T021` -- implement suggestions, personal suggestions, review queue, approval and rejection -- E04 acceptance criteria.
+- [x] Each Task -- run its validation, update evidence/status/rastreability, then create its own commit before starting the next Task.
 
 **Acceptance Criteria:**
 - Given the application is started with the documented command, when a user follows the primary flow, then login, event discovery, enrollment/cancellation, suggestion and review work without data loss.
@@ -80,3 +80,18 @@ Planning facts: the repository has no application code, test framework, package 
 **Manual checks (if no browser automation is available):**
 - Start the documented server, exercise the primary student/professor flows, reload the page, and inspect that `localStorage` retains valid mock data.
 - Confirm each completed Task has a status, evidence, traceability row and dedicated commit.
+
+Implementation complete: T001–T021 were executed and each received a dedicated commit. The MVP intentionally defers PRD-FR-007 (`ENCERRADO`) according to DEC-005.
+
+## Review Triage Log
+
+- `medium` — Professor/Admin discovery and Admin account provisioning were incomplete; fixed by aligning both roles with DEC-010 and adding regression coverage.
+- `medium` — event cards could show a stale enrollment action; fixed by rendering the active enrollment state in the reusable card.
+- `medium` — cancellation accepted non-approved source states; fixed by enforcing DEC-011.
+- `high-unverified` — cross-tab localStorage atomicity is not available in this MVP; DEC-012 narrows T013 evidence to repeated same-store attempts and records the future limitation.
+- `medium` — UI evidence is not browser-automated; verification files now state the manual walkthrough requirement instead of claiming browser automation.
+- `low` — verification counts and audit text were stale; updated to 14 tests and T001–T021 commits.
+
+## Final implementation notes
+
+The implementation review patches are outside the frozen intent and preserve the approved MVP scope. The final validation must include the complete domain suite, lint, build, HTTP smoke, and a manual browser walkthrough for the primary student/professor flows.

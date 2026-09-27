@@ -1,10 +1,10 @@
 # Stories
 
-As Stories são unidades verticais de valor agrupadas por Epic e Feature.
+As 21 Stories foram implementadas e verificadas em suas respectivas Tasks:
 
-- `E01/`: `S01` a `S04`
-- `E02/`: `S05` a `S08`
-- `E03/`: `S09` a `S16`
-- `E04/`: `S17` a `S21`
+- `E01/`: `S01` a `S04` — `done`
+- `E02/`: `S05` a `S08` — `done`
+- `E03/`: `S09` a `S16` — `done`
+- `E04/`: `S17` a `S21` — `done`
 
-Todas as 21 Stories atuais estão `blocked`; nenhuma está pronta para execução. Cada Story usa critérios `Given/When/Then`, fonte, dependências, UX/arquitetura aplicáveis e Task filha.
+Cada Story possui critérios, evidência em `_bmad-output/implementation-artifacts/verification/` e commit dedicado.

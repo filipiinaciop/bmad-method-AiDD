@@ -1,5 +1,7 @@
 # Tasks
 
-Existem 21 Tasks, uma para cada Story, em `T001` a `T021`. Todas estão `blocked` até as dependências de decisão e contrato serem resolvidas.
+As 21 Tasks `T001–T021` foram executadas em sequência e possuem commits dedicados.
 
-Cada Task contém objetivo, escopo, resultado verificável, validação, dependências e condição explícita de parada. A execução só pode iniciar com status `ready` ou `in-progress`, conforme o guia de execução por IA.
+Cada Task contém objetivo, escopo, resultado verificável, validação e evidência. A rastreabilidade final está em `../traceability-matrix.md`.
+
+`PRD-FR-007` foi deferido como decisão explícita de escopo do MVP (`DEC-005`).

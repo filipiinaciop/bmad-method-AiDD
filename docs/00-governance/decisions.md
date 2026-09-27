@@ -23,3 +23,7 @@
 
 - Datas são armazenadas como strings ISO de data/hora e interpretadas no horário local do navegador; não há suporte multi-timezone nesta versão.
 - Dados inválidos ou corrompidos no `localStorage` devem restaurar o seed mockado sem quebrar a aplicação.
+
+| `DEC-010` | 2026-09-04 | Professor/Admin possuem capacidades de descoberta e podem criar contas de qualquer Role prevista no MVP, incluindo ADMIN; a diferenciação futura fica fora do MVP. | Corrige a matriz positiva de RBAC e mantém o perfil administrativo unificado. | Grupo 3 | confirmada |
+| `DEC-011` | 2026-09-04 | Somente eventos `APROVADO` podem ser cancelados; `PENDENTE` e `NEGADO` permanecem fora dessa transição. | Mantém o ciclo de vida explícito e impede transições inválidas. | Grupo 3 | confirmada |
+| `DEC-012` | 2026-09-04 | A garantia de capacidade do MVP cobre chamadas repetidas no mesmo store/página; atomicidade entre abas do navegador não é prometida por `localStorage` e fica como evolução futura. | Evita declarar uma garantia transacional que o mecanismo local não fornece. | Grupo 3 | confirmada |
