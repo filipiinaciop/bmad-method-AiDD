@@ -2,11 +2,11 @@
 id: S05
 parent_epic: E02
 parent_feature: F03
-status: blocked
+status: done
 priority: P1
 order: 5
 owner: "Integrante 4 — PM / Stories"
-sources: [PRD-UJ-001, PRD-FR-004, ARCH-001, DEC-001, UX-001]
+sources: [PRD-UJ-001, PRD-FR-004, ARCH-001, DEC-001, DEC-005, DEC-006, DEC-008, UX-002]
 depends_on: [DEP-004, DEP-005, DEP-006, DEP-007]
 ---
 
@@ -30,8 +30,8 @@ depends_on: [DEP-004, DEP-005, DEP-006, DEP-007]
 
 ## Bloqueios
 
-`CONFLICT-001` impede escolher entre publicação direta pelo Professor/Admin e criação `PENDENTE` pelo Aluno. Campos obrigatórios e capacidade também divergem entre PRD e Arquitetura.
+Resolvidos por `DEC-005`, `DEC-006`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T005` — Implementar criação de evento após resolução do ciclo de vida — `blocked`.
+- `T005` — Implementar criação de evento após resolução do ciclo de vida — `done`.
