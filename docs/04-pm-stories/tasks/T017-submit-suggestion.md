@@ -2,7 +2,7 @@
 id: T017
 parent_story: S17
 parent_epic: E04
-status: blocked
+status: done
 type: frontend | data | test
 priority: P1
 order: 17
