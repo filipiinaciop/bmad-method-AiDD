@@ -2,11 +2,11 @@
 id: S04
 parent_epic: E01
 parent_feature: F01
-status: blocked
+status: done
 priority: P1
 order: 4
 owner: "Integrante 4 — PM / Stories"
-sources: [PRD-FR-023, ARCH-001, DEC-001]
+sources: [PRD-FR-023, ARCH-001, DEC-001, DEC-003, DEC-004, UX-002]
 depends_on: [DEP-001, DEP-003]
 ---
 
@@ -30,8 +30,8 @@ depends_on: [DEP-001, DEP-003]
 
 ## Bloqueios
 
-`Q-ARCH-001` e `Q-ARCH-006` impedem decidir armazenamento e regras de senha.
+Resolvidos por `DEC-003`, `DEC-004`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T004` — Preparar redefinição de senha mockada — `blocked`.
+- `T004` — Preparar redefinição de senha mockada — `done`.

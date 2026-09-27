@@ -2,12 +2,12 @@
 id: T004
 parent_story: S04
 parent_epic: E01
-status: blocked
+status: done
 type: frontend | data | test
 priority: P1
 order: 4
 owner: "A definir"
-sources: [PRD-FR-023, ARCH-001, DEC-001]
+sources: [PRD-FR-023, ARCH-001, DEC-001, DEC-003, DEC-004, UX-002]
 acceptance_criteria: [AC-S04-01, AC-S04-02]
 depends_on: [DEP-001, DEP-003]
 blocks: []
