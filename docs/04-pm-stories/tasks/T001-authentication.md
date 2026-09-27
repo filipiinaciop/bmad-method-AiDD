@@ -2,12 +2,12 @@
 id: T001
 parent_story: S01
 parent_epic: E01
-status: blocked
+status: done
 type: frontend | data | test
 priority: P1
 order: 1
 owner: "A definir"
-sources: [PRD-FR-001, ARCH-001, DEC-001]
+sources: [PRD-FR-001, ARCH-001, DEC-001, DEC-003, UX-002]
 acceptance_criteria: [AC-S01-01, AC-S01-02]
 depends_on: [DEP-001, DEP-003]
 blocks: [S03]
@@ -40,6 +40,13 @@ Implementar o fluxo de login com usuários mockados, persistência local e feedb
 - Validação: cenário manual no navegador + testes definidos após `ARCH-OQ-008`.
 - Evidência: registro do cenário, estado do `localStorage` e saída dos testes.
 
+## Resultado da execução
+
+- Implementado em `src/models/domain.js`, `src/models/store.js`, `src/controllers/app-controller.js` e `src/views/index.html`.
+- Contas seed e sessão mockada usam `localStorage`; usuários exibidos são sanitizados.
+- `AC-S01-01` e `AC-S01-02` verificadas por teste automatizado e smoke HTTP.
+- Validação: `npm test`, `npm run lint`, `npm run build` e `npm start` com HTTP 200.
+
 ## Bloqueio
 
-`Q-ARCH-001`, `Q-ARCH-003` e `Q-ARCH-006` estão abertas. Parar sem alterar código até decisão.
+Resolvido por `DEC-003`, `DEC-004`, `DEC-008` e `DEC-009`.

@@ -441,3 +441,15 @@ Projeto acadêmico avaliado de forma qualitativa/demonstrativa — não há meta
 ---
 
 *PRD elaborado no caminho rápido (fast path) a partir do Product Brief finalizado, revisado por checklist de qualidade, reconciliação com brief/addendum e revisão adversarial, e fechado com o autor em 2026-09-15. Itens `[ASSUMPTION]` (§9) e Questões em Aberto (§8) que restaram são deferimentos conscientes para as próximas etapas (UX, arquitetura, épicos/histórias), não pendências de revisão deste documento.*
+
+
+## 10. Reconciliation decisions for the MVP implementation
+
+The following decisions were confirmed by Group 3 on 2026-09-04 and supersede conflicting assumptions in earlier planning sections for this academic MVP:
+
+- Authentication uses mock accounts and browser `localStorage`; it is not production authentication. Passwords used in the demo have a minimum length of eight characters and sanitized user objects never expose passwords.
+- `ADMIN` has the same capabilities as `PROFESSOR` in v1. `VALIDAR_EVENTO` remains the single permission for approving or denying pending event requests.
+- Student-created events start as `PENDENTE`; Professor/Admin-created events start as `APROVADO`; a Professor/Admin can change a pending event to `APROVADO` or `NEGADO`; cancellation produces terminal `CANCELADO`. `ENCERRADO` is deferred from the MVP.
+- Event capacity is optional. Suggestions are persisted with author, status, review metadata and an optional link to the resulting event.
+- Enrollments have `ATIVA` or `CANCELADA` status, preserve history, allow only one active enrollment per student/event and allow re-enrollment after cancellation.
+- The visual and interaction contract is `UX-001`/`UX-002` in `docs/01-inputs/ux.md`. The application uses the mock-data/localStorage strategy from `DEC-001` and the validation commands from `DEC-009`.

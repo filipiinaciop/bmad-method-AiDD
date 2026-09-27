@@ -52,7 +52,10 @@ Use os IDs padrão desta tabela nas stories, tasks e na matriz de rastreabilidad
 | `PRD-NFR-006` | Plataforma | NFR transversal | [Cross-Cutting NFRs](../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#cross-cutting-nfrs) | `mixed` — inclui `[ASSUMPTION]` |
 | `PRD-NFR-007` | Desempenho | NFR transversal | [Cross-Cutting NFRs](../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#cross-cutting-nfrs) | `confirmed` sem SLA formal |
 
-## Regras para usar o PRD
+## Reconciliation
+
+The full PRD contains an implementation reconciliation section that records the Group 3 decisions resolving MVP conflicts with the proposed architecture. Consult the final section of the source-of-truth PRD before implementing.
+
 
 1. Use o ID padrão nas referências de PM/Stories e o ID nativo ao localizar o texto original.
 2. Uma referência completa deve informar ID, caminho e seção:

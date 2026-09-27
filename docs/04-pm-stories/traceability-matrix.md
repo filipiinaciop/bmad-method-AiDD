@@ -4,7 +4,7 @@ Estado desta matriz: artefatos criados após intake confirmado, mas ainda `block
 
 | Fonte/ID | Link e seção | Classe | Afirmação sustentada | Epic | Feature | Story | Critério | Task | Teste/evidência | Status | Lacuna |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| PRD-FR-001 | [login](../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#fr-1-login-por-credenciais) | confirmed | Login por e-mail/senha | E01 | F01 | S01 | AC-S01-01/02 | T001 | pendente | blocked | DEP-001/003 |
+| PRD-FR-001 | [login](../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#fr-1-login-por-credenciais) | confirmed | Login por e-mail/senha | E01 | F01 | S01 | AC-S01-01/02 | T001 | [_bmad-output/implementation-artifacts/verification/T001.md](../../_bmad-output/implementation-artifacts/verification/T001.md) | done | DEC-003/009 |
 | PRD-FR-002 | [conta](../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#fr-2-criação-manual-de-conta) | confirmed | Professor/Admin cria conta | E01 | F01 | S02 | AC-S02-01/02 | T002 | pendente | blocked | DEP-001/002/003 |
 | PRD-FR-003 | [RBAC](../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#fr-3-controle-de-acesso-por-perfil) | confirmed | Acesso por perfil | E01 | F02 | S03 | AC-S03-01/02 | T003 | pendente | blocked | DEP-002/003/012 |
 | PRD-FR-004 | [criação](../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#fr-4-criação-de-evento) | mixed | Criar Evento | E02 | F03 | S05 | AC-S05-01/02 | T005 | pendente | blocked | DEP-004/006/007 |
@@ -35,5 +35,5 @@ Estado desta matriz: artefatos criados após intake confirmado, mas ainda `block
 
 - Cobertura dos `PRD-FR-001` a `PRD-FR-024`: registrada.
 - Cada Story possui Task correspondente: sim.
-- Critérios de aceitação possuem evidência executada: não; implementação ainda não iniciada.
-- Nenhum artefato foi marcado `ready` ou `done`.
+- Critérios de aceitação possuem evidência executada: T001 validada; T002–T021 pendentes.
+- Nenhum artefato além de T001/S01 foi marcado `done` nesta etapa.
