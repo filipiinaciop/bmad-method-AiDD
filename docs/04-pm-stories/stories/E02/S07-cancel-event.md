@@ -2,11 +2,11 @@
 id: S07
 parent_epic: E02
 parent_feature: F03
-status: blocked
+status: done
 priority: P1
 order: 7
 owner: "Integrante 4 — PM / Stories"
-sources: [PRD-FR-006, ARCH-001, DEC-001]
+sources: [PRD-FR-006, ARCH-001, DEC-001, DEC-005, DEC-007, DEC-008, UX-002]
 depends_on: [DEP-004, DEP-005, DEP-006]
 ---
 
@@ -29,8 +29,8 @@ depends_on: [DEP-004, DEP-005, DEP-006]
 
 ## Bloqueios
 
-`Q-ARCH-005` ainda não define status/flag, exclusão e efeito sobre inscrições. Não implementar escolha implícita.
+Resolvidos por `DEC-005`, `DEC-007`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T007` — Implementar cancelamento com persistência local — `blocked`.
+- `T007` — Implementar cancelamento com persistência local — `done`.
