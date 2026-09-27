@@ -2,11 +2,11 @@
 id: S06
 parent_epic: E02
 parent_feature: F03
-status: blocked
+status: done
 priority: P1
 order: 6
 owner: "Integrante 4 — PM / Stories"
-sources: [PRD-FR-005, ARCH-001, DEC-001, UX-001]
+sources: [PRD-FR-005, ARCH-001, DEC-001, DEC-005, DEC-006, DEC-008, UX-002]
 depends_on: [DEP-004, DEP-005, DEP-006]
 ---
 
@@ -30,8 +30,8 @@ depends_on: [DEP-004, DEP-005, DEP-006]
 
 ## Bloqueios
 
-A política de status terminal, capacidade e permissões depende de `Q-ARCH-002`, `Q-ARCH-005` e do conflito PRD/Arquitetura.
+Resolvidos por `DEC-005`, `DEC-006`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T006` — Preparar edição de evento — `blocked`.
+- `T006` — Preparar edição de evento — `done`.
