@@ -69,9 +69,9 @@ Leia sempre que for criar, alterar ou revisar um artefato:
 - `docs/00-governance/evidence-protocol.md` — evidência, classificação, intake e bloqueios.
 - `docs/00-governance/bmad-reading-map.md` — este mapa de leitura.
 - `docs/00-governance/assumptions-and-open-questions.md` — lacunas, premissas e perguntas.
-- `docs/00-governance/glossary.md` — vocabulário aprovado.
-- `docs/04-pm-stories/intake-menu.md` — perguntas e confirmação antes da criação.
-- `docs/04-pm-stories/README.md` — processo, IDs e status.
+- `docs/00-governance/decisions.md` — decisões confirmadas do planejamento.
+- `docs/01-inputs/ux.md` — fundação visual derivada dos assets fornecidos.
+- `docs/04-pm-stories/features/` — capacidades formais entre Epic e Story.
 - `docs/04-pm-stories/ai-execution-guide.md` — execução segura por IA.
 - `docs/04-pm-stories/dependencies.md` — bloqueios e dependências.
 - `docs/04-pm-stories/implementation-order.md` — sequência de implementação.

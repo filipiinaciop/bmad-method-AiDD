@@ -18,6 +18,7 @@ source: "promoted-from-user-provided-architecture-artifact"
 - **Classificação:** decisões abaixo são `confirmed` no artefato recebido; lacunas estão registradas como `unknown` em `ARCH-OQ-*`.
 - **Regra:** não implementar uma lacuna arquitetural por inferência. Promova uma decisão `ARCH-DEC-*` antes de marcar um item dependente como `ready`.
 - **Escopo:** uma escola específica, frontend e backend no mesmo projeto Node.js + Express, sem API REST pública independente.
+- **Persistência da entrega atual:** dados mockados inicializados no navegador e persistidos em `localStorage`, conforme `DEC-001`/`ARCH-DEC-017`. PostgreSQL/Aiven fica deferido e não será usado no MVP acadêmico.
 
 ## ARCH-SEC-001 — Visão geral
 
@@ -37,12 +38,16 @@ O Gerenciador de Eventos Escolares é um sistema web destinado a uma escola espe
 - Node.js
 - Express
 
-### Banco de dados
+### Persistência do MVP
 
-- PostgreSQL
-- Hospedagem: Aiven
+- Dados mockados inicializados no navegador.
+- `localStorage` como persistência local.
 
-**Decisão:** `ARCH-DEC-001` — manter a stack acima como base da solução proposta.
+### Persistência futura
+
+- PostgreSQL/Aiven permanece apenas como possibilidade futura e não participa do MVP atual.
+
+**Decisão:** `ARCH-DEC-001` define a stack de execução; `ARCH-DEC-017` define a persistência efetivamente usada nesta entrega.
 
 ## ARCH-SEC-003 — Arquitetura MVC
 
@@ -57,6 +62,12 @@ Frontend e backend fazem parte do mesmo projeto Node.js + Express.
 **Decisão:** `ARCH-DEC-002` — manter MVC no mesmo projeto; não adicionar camadas Repository ou Service sem necessidade real documentada.
 
 ## ARCH-SEC-004 — Banco de dados
+
+### ARCH-DATA-000 — Modelo lógico e persistência do MVP
+
+As entidades e relacionamentos abaixo continuam sendo o modelo lógico de domínio. Nesta entrega, os registros são representados por dados mockados e persistidos no `localStorage` do navegador. Nenhuma migração PostgreSQL, conexão Aiven ou política de FK é necessária para o MVP atual. A futura adoção de banco relacional permanece uma decisão posterior.
+
+**Decisão:** `ARCH-DEC-017` — usar dados mockados e `localStorage` para a persistência da entrega acadêmica atual.
 
 ### ARCH-DATA-001 — USER
 
@@ -117,9 +128,9 @@ A chave primária é composta por `(role_id, permission_id)`.
 | `evento_id` | `int` | FK |
 | `data_inscricao` | `datetime` | obrigatório |
 
-A combinação `(aluno_id, evento_id)` deve ser única para impedir inscrições duplicadas.
+A combinação `(aluno_id, evento_id)` representa a restrição lógica de duplicidade. A forma de suportar cancelamento, histórico e re-inscrição permanece aberta em `CONFLICT-002`/`Q-ARCH-005`.
 
-> `ARCH-OQ-004` registra a confirmação necessária sobre o tipo de data/hora e timezone no PostgreSQL. O conteúdo original usa `datetime`; isso não deve ser corrigido silenciosamente.
+> `ARCH-OQ-004` é uma questão de persistência temporal futura; no MVP a referência temporal deverá ser definida para o `localStorage` antes das Stories de calendário e encerramento ficarem prontas.
 
 ## ARCH-SEC-005 — Relacionamentos
 
@@ -194,7 +205,7 @@ Não será desenvolvida uma API REST independente ou pública. Frontend e backen
 
 ## ARCH-SEC-009 — Integrações
 
-Não haverá integrações com sistemas externos. A aplicação utilizará seus próprios componentes e o PostgreSQL hospedado no Aiven.
+Não haverá integrações com sistemas externos. A entrega atual utiliza dados mockados e `localStorage`; PostgreSQL/Aiven fica deferido para uma evolução futura.
 
 **Decisão:** `ARCH-DEC-003` — não incluir integrações externas na v1 proposta.
 
@@ -232,11 +243,11 @@ Não haverá integrações com sistemas externos. A aplicação utilizará seus 
 - não é possível realizar inscrição em evento cancelado;
 - `data_inscricao` registrada automaticamente.
 
-`ARCH-OQ-005` registra que o valor do tamanho mínimo da senha e a política de cancelamento/exclusão/status do evento ainda precisam de decisão detalhada.
+`ARCH-OQ-005` registra que o tamanho mínimo da senha e as políticas de cancelamento/exclusão/status do evento ainda precisam de decisão detalhada. A decisão `DEC-001` não resolve essas regras de produto.
 
 ## ARCH-SEC-011 — Padrões
 
-O principal padrão arquitetural é MVC. Para o acesso ao banco será utilizada uma estrutura simples de conexão, sem criar camadas Repository ou Service apenas para aumentar a complexidade.
+O principal padrão arquitetural é MVC. Para a persistência do MVP será utilizada uma estrutura simples de leitura/escrita em `localStorage`, sem criar camadas Repository ou Service apenas para aumentar a complexidade.
 
 **Decisão:** `ARCH-DEC-004` — não criar Repository ou Service sem necessidade real documentada.
 
@@ -247,13 +258,14 @@ O principal padrão arquitetural é MVC. Para o acesso ao banco será utilizada 
 3. `ARCH-DEC-007`: Node.js será utilizado para execução do backend.
 4. `ARCH-DEC-008`: Express será utilizado para organização do servidor e das rotas.
 5. `ARCH-DEC-009`: MVC será utilizado para separar responsabilidades.
-6. `ARCH-DEC-010`: PostgreSQL será utilizado para os dados estruturados e relacionamentos.
-7. `ARCH-DEC-011`: o PostgreSQL será hospedado no Aiven.
+6. `ARCH-DEC-010`: PostgreSQL permanece como modelo lógico futuro para dados estruturados e relacionamentos, mas não será usado no MVP atual.
+7. `ARCH-DEC-011`: Aiven fica deferido e não participa da entrega acadêmica atual.
 8. `ARCH-DEC-012`: a autenticação será feita por e-mail e senha.
 9. `ARCH-DEC-013`: a autorização será baseada em RBAC.
 10. `ARCH-DEC-014`: não haverá integrações externas.
 11. `ARCH-DEC-015`: frontend e backend permanecerão no mesmo projeto.
 12. `ARCH-DEC-016`: não será criada uma API REST independente ou pública.
+13. `ARCH-DEC-017`: a entrega atual usará dados mockados e `localStorage` para persistência local no navegador, sem conexão com PostgreSQL/Aiven.
 
 ## Perguntas arquiteturais abertas
 
@@ -264,10 +276,10 @@ Estas perguntas foram extraídas do artefato recebido. Elas não devem ser resol
 | `ARCH-OQ-001` | Como senhas serão armazenadas com segurança? Como funcionarão sessão, expiração, cookies/tokens, recuperação e proteção de transporte? | Autenticação e segurança | `open` |
 | `ARCH-OQ-002` | Quais permissões concretas o `ADMIN` terá e como diferem de `PROFESSOR`? | RBAC e telas protegidas | `open` |
 | `ARCH-OQ-003` | Quais rotas, métodos, payloads, respostas, erros e fronteiras View/Controller existirão? | UX, implementação e testes | `open` |
-| `ARCH-OQ-004` | O banco usará `timestamp`, `timestamp with time zone` ou outro tipo? Qual timezone será a referência? | Datas, inscrições e encerramento | `open` |
+| `ARCH-OQ-004` | O banco usará `timestamp`, `timestamp with time zone` ou outro tipo? Qual timezone será a referência? | Datas, inscrições e encerramento no futuro banco relacional | `deferred-mvp` |
 | `ARCH-OQ-005` | Evento cancelado será marcado por status/flag ou excluído? O que acontece com inscrições e histórico? | Integridade, auditoria e UX | `open` |
 | `ARCH-OQ-006` | Qual é o tamanho mínimo da senha e quais são as regras de validação de credenciais? | Autenticação e segurança | `open` |
-| `ARCH-OQ-007` | Quais políticas de FK (`ON DELETE`, nulabilidade e atualização) serão usadas? Qual convenção de nomes será adotada? | Banco e migrações | `open` |
+| `ARCH-OQ-007` | Quais políticas de FK (`ON DELETE`, nulabilidade e atualização) serão usadas? Qual convenção de nomes será adotada? | Banco e migrações futuras | `deferred-mvp` |
 | `ARCH-OQ-008` | Quais comandos de instalação, execução, migração, seed, lint, testes, build e deploy validam a solução? | Execução e DoD | `open` |
 
 ## Critérios para promoção a `approved`

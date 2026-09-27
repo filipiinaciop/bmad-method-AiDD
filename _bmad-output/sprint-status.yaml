@@ -1,0 +1,76 @@
+project: Germinare Tech
+group: 3
+method: BMAD-METHOD (AiDD)
+status: blocked-planning
+persistence: mock-data-plus-localStorage
+feature_layer: formal
+ready_items: []
+blocked_items:
+  - E01
+  - E02
+  - E03
+  - E04
+  - F01
+  - F02
+  - F03
+  - F04
+  - F05
+  - F06
+  - F07
+  - S01
+  - S02
+  - S03
+  - S04
+  - S05
+  - S06
+  - S07
+  - S08
+  - S09
+  - S10
+  - S11
+  - S12
+  - S13
+  - S14
+  - S15
+  - S16
+  - S17
+  - S18
+  - S19
+  - S20
+  - S21
+  - T001
+  - T002
+  - T003
+  - T004
+  - T005
+  - T006
+  - T007
+  - T008
+  - T009
+  - T010
+  - T011
+  - T012
+  - T013
+  - T014
+  - T015
+  - T016
+  - T017
+  - T018
+  - T019
+  - T020
+  - T021
+blocking_dependencies:
+  - DEP-001
+  - DEP-002
+  - DEP-003
+  - DEP-004
+  - DEP-005
+  - DEP-006
+  - DEP-007
+  - DEP-008
+  - DEP-009
+  - DEP-010
+  - DEP-011
+  - DEP-012
+current_phase: pm-stories
+next_gate: resolve dependencies and promote affected sources before readiness

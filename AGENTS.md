@@ -14,8 +14,8 @@ A arquitetura recebida para análise foi promovida para `docs/01-inputs/architec
 ## Regras arquiteturais
 
 - Respeite a arquitetura MVC definida em `ARCH-001`.
-- Respeite a stack: HTML, CSS, JavaScript, Node.js, Express e PostgreSQL.
-- Considere o PostgreSQL hospedado no Aiven como o banco de dados do projeto.
+- Respeite a stack de apresentação e execução: HTML, CSS, JavaScript, Node.js e Express.
+- Para esta entrega acadêmica, use dados mockados e `localStorage` como persistência local no navegador; PostgreSQL/Aiven fica fora do MVP atual.
 - Mantenha frontend e backend no mesmo projeto.
 - Não crie uma API REST independente ou pública.
 - Respeite o modelo de autorização RBAC baseado em Roles e Permissions.

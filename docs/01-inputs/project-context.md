@@ -47,8 +47,8 @@ Existe como Role no modelo RBAC para permitir permissões administrativas difere
 
 - Frontend: HTML, CSS e JavaScript.
 - Backend: JavaScript, Node.js e Express.
-- Banco: PostgreSQL.
-- Hospedagem do banco: Aiven.
+- Persistência da entrega atual: dados mockados e `localStorage` no navegador.
+- PostgreSQL/Aiven: deferido para uma futura evolução, fora do MVP acadêmico.
 
 ## Arquitetura
 
@@ -65,7 +65,7 @@ Entidades:
 - `EVENTO`
 - `INSCRICAO`
 
-O usuário possui uma Role por meio de `role_id`. `ROLE_PERMISSIONS` relaciona Roles e Permissions. `INSCRICAO` relaciona alunos e eventos.
+O usuário possui uma Role por meio de `role_id`. `ROLE_PERMISSIONS` relaciona Roles e Permissions. `INSCRICAO` relaciona alunos e eventos. Essas entidades são o modelo lógico da aplicação; no MVP os dados serão mockados e persistidos localmente em `localStorage`.
 
 ## Autenticação e autorização
 
@@ -106,7 +106,8 @@ Não haverá integrações com sistemas externos.
 - Não criar Repository ou Service separado sem necessidade real.
 - Respeitar a arquitetura MVC.
 - Manter frontend e backend no mesmo projeto.
-- Utilizar PostgreSQL hospedado no Aiven.
+- Persistência da entrega atual: dados mockados e `localStorage` no navegador.
+- PostgreSQL/Aiven: deferido para uma futura evolução, fora do MVP acadêmico.
 - Não alterar decisões arquiteturais sem documentar a mudança.
 
 ## Comandos e execução
