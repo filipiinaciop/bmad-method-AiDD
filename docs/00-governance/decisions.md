@@ -9,7 +9,7 @@
 
 - Uma decisão confirmada deve ser refletida na fonte canônica afetada e nos artefatos dependentes.
 - `DEC-001` está refletida em `docs/01-inputs/architecture.md` como `ARCH-DEC-017`.
-- As decisões ainda não resolvem os conflitos de ciclo de vida dos eventos nem as perguntas `ARCH-OQ-*` restantes.
+- As decisões do MVP resolvem os conflitos de ciclo de vida, segurança, RBAC, UX, dados e execução; limitações futuras permanecem registradas em `DEC-012` e no escopo deferido.
 
 | `DEC-003` | 2026-09-04 | A autenticação do MVP é mockada: contas seed e contas criadas ficam em `localStorage`; a sessão corrente também fica localmente; não há autenticação de produção. A senha mínima de demonstração é de 8 caracteres e usuários são sanitizados antes de serem exibidos. | Desbloqueia T001, T002 e T004 sem criar infraestrutura de autenticação externa. | Grupo 3 | confirmada |
 | `DEC-004` | 2026-09-04 | `ADMIN` terá as mesmas capacidades do `PROFESSOR` no MVP, mantendo Role separada para futura diferenciação. `VALIDAR_EVENTO` continua sendo a permissão única para decidir `APROVADO` ou `NEGADO`. | Desbloqueia T003, T008, T016 e T019. | Grupo 3 | confirmada |
