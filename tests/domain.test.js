@@ -119,3 +119,14 @@ test('persistência recupera seed quando localStorage está ausente ou corrompid
   store.transact((data) => { data.events[0].titulo = 'Persistido'; });
   assert.equal(store.read().events[0].titulo, 'Persistido');
 });
+
+test('T013 concorrência repetida nunca excede a capacidade', () => {
+  const data = fresh();
+  const event = Domain.createEvent(data, 2, { titulo: 'Evento concorrente', descricao: 'x', dataInicio: '2026-12-10', dataFim: '2026-12-10', hora: '10:00', localizacao: 'x', capacidade: 1 });
+  const students = Array.from({ length: 10 }, (_, index) => Domain.createAccount(data, 3, { nome: `Aluno ${index}`, email: `concorrente${index}@germinare.edu.br`, senha: 'senhasegura', role: Domain.ROLES.STUDENT }));
+  const accepted = students.filter((student) => {
+    try { Domain.enroll(data, student.id, event.id); return true; } catch (_error) { return false; }
+  });
+  assert.equal(accepted.length, 1);
+  assert.equal(data.enrollments.filter((item) => item.eventoId === event.id && item.status === Domain.ENROLLMENT_STATUS.ACTIVE).length, 1);
+});
