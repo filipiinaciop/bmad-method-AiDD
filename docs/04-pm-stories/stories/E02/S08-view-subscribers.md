@@ -2,11 +2,11 @@
 id: S08
 parent_epic: E02
 parent_feature: F03
-status: blocked
+status: done
 priority: P1
 order: 8
 owner: "Integrante 4 — PM / Stories"
-sources: [PRD-FR-008, ARCH-001, DEC-001]
+sources: [PRD-FR-008, ARCH-001, DEC-004, DEC-007, DEC-008, UX-002]
 depends_on: [DEP-005, DEP-006, DEP-009]
 ---
 
@@ -26,8 +26,8 @@ depends_on: [DEP-005, DEP-006, DEP-009]
 
 ## Bloqueios
 
-Estados ativo/inativo e permissões administrativas ainda dependem de decisões arquiteturais.
+Resolvidos por `DEC-004`, `DEC-007`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T008` — Exibir inscritos persistidos — `blocked`.
+- `T008` — Exibir inscritos persistidos — `done`.

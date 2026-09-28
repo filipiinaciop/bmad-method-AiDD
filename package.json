@@ -1,0 +1,19 @@
+{
+  "name": "germinare-tech-event-manager",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Germinare Tech mock event manager MVP",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/domain.test.js",
+    "lint": "node scripts/lint.js",
+    "build": "node scripts/build.js"
+  },
+  "dependencies": {
+    "express": "4.22.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

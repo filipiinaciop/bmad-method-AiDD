@@ -1,7 +1,7 @@
 ---
 id: F04
 parent_epic: E03
-status: blocked
+status: done
 priority: P1
 sources: [PRD-FR-009, PRD-FR-010, PRD-FR-011, PRD-UJ-002, UX-001, DEC-001]
 depends_on: [DEP-004, DEP-008]

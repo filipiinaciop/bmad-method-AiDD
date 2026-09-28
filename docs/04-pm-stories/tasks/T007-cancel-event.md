@@ -2,12 +2,12 @@
 id: T007
 parent_story: S07
 parent_epic: E02
-status: blocked
+status: done
 type: frontend | data | test
 priority: P1
 order: 7
 owner: "A definir"
-sources: [PRD-FR-006, ARCH-001, DEC-001]
+sources: [PRD-FR-006, ARCH-001, DEC-001, DEC-005, DEC-007, DEC-008, UX-002]
 acceptance_criteria: [AC-S07-01, AC-S07-02]
 depends_on: [DEP-004, DEP-005, DEP-006]
 blocks: []
@@ -30,6 +30,13 @@ Aplicar cancelamento sem apagar histórico, conforme a política de evento decid
 
 Cenário de cancelamento e tentativa posterior de inscrição.
 
+## Resultado da execução
+
+- `Domain.cancelEvent` exige permissão e muda o estado para `CANCELADO`.
+- O registro do evento e as inscrições existentes permanecem no `localStorage`.
+- Novas inscrições em evento cancelado são rejeitadas.
+- Validação: teste direcionado T007, suíte completa, lint e build.
+
 ## Bloqueio
 
-`Q-ARCH-005` e `CONFLICT-001` abertas.
+Resolvido por `DEC-005`, `DEC-007`, `DEC-008` e `DEC-009`.

@@ -2,7 +2,7 @@
 id: T013
 parent_story: S13
 parent_epic: E03
-status: blocked
+status: done
 type: data | test
 priority: P1
 order: 13

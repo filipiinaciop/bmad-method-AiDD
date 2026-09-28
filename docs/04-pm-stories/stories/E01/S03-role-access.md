@@ -2,11 +2,11 @@
 id: S03
 parent_epic: E01
 parent_feature: F02
-status: blocked
+status: done
 priority: P1
 order: 3
 owner: "Integrante 4 — PM / Stories"
-sources: [PRD-FR-003, ARCH-001, DEC-001, UX-001]
+sources: [PRD-FR-003, ARCH-001, DEC-001, DEC-004, DEC-008, UX-002]
 depends_on: [DEP-002, DEP-003, DEP-012]
 ---
 
@@ -31,8 +31,8 @@ depends_on: [DEP-002, DEP-003, DEP-012]
 
 ## Bloqueios
 
-`ARCH-OQ-002` deixa permissões de `ADMIN` abertas e `ARCH-OQ-003` deixa contratos de fronteira abertos. UX de navegação e erro ainda é `unknown`.
+Resolvidos por `DEC-004`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T003` — Aplicar matriz RBAC nos fluxos mockados — `blocked`.
+- `T003` — Aplicar matriz RBAC nos fluxos mockados — `done`.

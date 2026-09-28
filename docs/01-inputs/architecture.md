@@ -14,8 +14,8 @@ source: "promoted-from-user-provided-architecture-artifact"
 
 ## Estado da arquitetura
 
-- **Status:** `proposed`
-- **Classificação:** decisões abaixo são `confirmed` no artefato recebido; lacunas estão registradas como `unknown` em `ARCH-OQ-*`.
+- **Status:** `proposed` — decisões do MVP reconciliadas; promoção final depende de revisão de código e validação do Integrante 5.
+- **Classificação:** decisões abaixo são `confirmed` no artefato recebido ou confirmadas pelo Grupo 3 em `DEC-003`–`DEC-009`; lacunas futuras permanecem em `ARCH-OQ-*`.
 - **Regra:** não implementar uma lacuna arquitetural por inferência. Promova uma decisão `ARCH-DEC-*` antes de marcar um item dependente como `ready`.
 - **Escopo:** uma escola específica, frontend e backend no mesmo projeto Node.js + Express, sem API REST pública independente.
 - **Persistência da entrega atual:** dados mockados inicializados no navegador e persistidos em `localStorage`, conforme `DEC-001`/`ARCH-DEC-017`. PostgreSQL/Aiven fica deferido e não será usado no MVP acadêmico.
@@ -273,14 +273,14 @@ Estas perguntas foram extraídas do artefato recebido. Elas não devem ser resol
 
 | ID | Pergunta | Impacto | Status |
 |---|---|---|---|
-| `ARCH-OQ-001` | Como senhas serão armazenadas com segurança? Como funcionarão sessão, expiração, cookies/tokens, recuperação e proteção de transporte? | Autenticação e segurança | `open` |
-| `ARCH-OQ-002` | Quais permissões concretas o `ADMIN` terá e como diferem de `PROFESSOR`? | RBAC e telas protegidas | `open` |
-| `ARCH-OQ-003` | Quais rotas, métodos, payloads, respostas, erros e fronteiras View/Controller existirão? | UX, implementação e testes | `open` |
-| `ARCH-OQ-004` | O banco usará `timestamp`, `timestamp with time zone` ou outro tipo? Qual timezone será a referência? | Datas, inscrições e encerramento no futuro banco relacional | `deferred-mvp` |
-| `ARCH-OQ-005` | Evento cancelado será marcado por status/flag ou excluído? O que acontece com inscrições e histórico? | Integridade, auditoria e UX | `open` |
-| `ARCH-OQ-006` | Qual é o tamanho mínimo da senha e quais são as regras de validação de credenciais? | Autenticação e segurança | `open` |
+| `ARCH-OQ-001` | Como senhas serão armazenadas com segurança? Como funcionarão sessão, expiração, cookies/tokens, recuperação e proteção de transporte? | Autenticação e segurança do MVP mockado | `resolved-by-DEC-003` |
+| `ARCH-OQ-002` | Quais permissões concretas o `ADMIN` terá e como diferem de `PROFESSOR`? | RBAC e telas protegidas | `resolved-by-DEC-004` |
+| `ARCH-OQ-003` | Quais rotas, métodos, payloads, respostas, erros e fronteiras View/Controller existirão? | UX, implementação e testes | `resolved-by-DEC-009` |
+| `ARCH-OQ-004` | Qual referência temporal será usada para datas e encerramento no `localStorage`? | Datas, inscrições e encerramento no MVP | `resolved-by-DEC-003` |
+| `ARCH-OQ-005` | Evento cancelado será marcado por status/flag ou excluído? O que acontece com inscrições e histórico? | Integridade, auditoria e UX | `resolved-by-DEC-005/DEC-007` |
+| `ARCH-OQ-006` | Qual é o tamanho mínimo da senha e quais são as regras de validação de credenciais? | Autenticação e segurança | `resolved-by-DEC-003` |
 | `ARCH-OQ-007` | Quais políticas de FK (`ON DELETE`, nulabilidade e atualização) serão usadas? Qual convenção de nomes será adotada? | Banco e migrações futuras | `deferred-mvp` |
-| `ARCH-OQ-008` | Quais comandos de instalação, execução, migração, seed, lint, testes, build e deploy validam a solução? | Execução e DoD | `open` |
+| `ARCH-OQ-008` | Quais comandos de instalação, execução, migração, seed, lint, testes, build e deploy validam a solução? | Execução e DoD | `resolved-by-DEC-009` |
 
 ## Critérios para promoção a `approved`
 
@@ -293,4 +293,5 @@ A arquitetura pode ser promovida de `proposed` para `approved` quando:
 - [ ] políticas de evento cancelado, FKs e nomes estiverem definidas;
 - [ ] comandos de validação forem confirmados;
 - [ ] não houver conflito não registrado com PRD ou UX;
+- [x] decisões do MVP foram confirmadas em `DEC-003` a `DEC-009`;
 - [ ] o Integrante 3 e o Integrante 5 validarem o handoff.

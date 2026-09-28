@@ -50,6 +50,29 @@ A aplicação deste documento é uma adaptação dos arquivos fornecidos em `.ag
 
 ## UX-002 — Contratos específicos do produto
 
-**Status:** `unknown` / `blocked`.
+**Status:** `confirmed`.
 
-Os assets fornecidos definem fundação visual, mas ainda não definem telas, navegação, loading, estados vazios, erros, permissões visuais, foco ou fluxos específicos do Germinare Tech. Esses contratos devem ser publicados pelo Integrante 2 antes de as Stories dependentes ficarem `ready`.
+A experiência do MVP deve usar os assets visuais e os fluxos abaixo.
+
+### Fluxos e superfícies
+
+- **Autenticação:** tela dividida entre apresentação em bloco pastel e formulário branco; feedback de credencial inválida é visível, acessível e não revela se o e-mail existe.
+- **Shell autenticado:** topo com identidade do usuário e saída; navegação mostra somente capacidades permitidas pela Role.
+- **Eventos:** lista com busca/filtro, calendário mensal, detalhe, criação/edição e gerenciamento; Professor/Admin possui validação, gestão e inscritos conforme permissão.
+- **Inscrições:** detalhe oferece inscrição quando o evento está `APROVADO` e disponível; `Minhas inscrições` mostra estados `ATIVA`/`CANCELADA`.
+- **Sugestões:** Aluno envia e consulta suas sugestões; Professor/Admin vê a fila e aprova/rejeita explicitamente.
+
+### Estados comportamentais
+
+- Loading: usar feedback textual ou estado de carregamento sem bloquear o teclado.
+- Vazio: explicar o que está vazio e oferecer a próxima ação quando houver.
+- Erro: preservar dados válidos, mostrar mensagem compreensível e manter foco no contexto da ação.
+- Permissão: ocultar ações não permitidas e negar também a operação de domínio.
+- Persistência: após recarregar a página, dados válidos de `localStorage` continuam disponíveis; dados corrompidos retornam ao seed.
+
+### Acessibilidade e responsividade
+
+- Usar labels associados a inputs, `aria-live` para feedback e `:focus-visible` perceptível.
+- Manter alvos de toque de pelo menos 44px.
+- Reorganizar a navegação e formulários para telas menores sem perder ações essenciais.
+- Manter a paleta e tipografia de UX-001, sem introduzir cores ou componentes fora do guia.

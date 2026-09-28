@@ -2,7 +2,7 @@
 id: S20
 parent_epic: E04
 parent_feature: F07
-status: blocked
+status: done
 priority: P1
 order: 20
 owner: "Integrante 4 — PM / Stories"

@@ -2,11 +2,11 @@
 id: S02
 parent_epic: E01
 parent_feature: F01
-status: blocked
+status: done
 priority: P1
 order: 2
 owner: "Integrante 4 — PM / Stories"
-sources: [PRD-FR-002, ARCH-001, DEC-001]
+sources: [PRD-FR-002, ARCH-001, DEC-001, DEC-003, DEC-004, UX-002]
 depends_on: [DEP-001, DEP-002, DEP-003]
 ---
 
@@ -31,8 +31,8 @@ depends_on: [DEP-001, DEP-002, DEP-003]
 
 ## Bloqueios
 
-`Q-ARCH-001`, `Q-ARCH-002`, `Q-ARCH-006` e `Q-ARCH-007` deixam segurança, Admin, senha e política de dados indefinidos. `localStorage` é confirmado por [DEC-001](../../../../docs/00-governance/decisions.md), mas não resolve a política de credenciais.
+Resolvidos por `DEC-003`, `DEC-004`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T002` — Preparar criação de contas mockadas — `blocked`.
+- `T002` — Preparar criação de contas mockadas — `done`.

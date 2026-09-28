@@ -1,10 +1,10 @@
 # Epics
 
-A decomposição formal do Grupo 3 possui quatro Epics, todos `blocked` enquanto houver dependências de decisão ou contrato abertas.
+A decomposição formal do Grupo 3 possui quatro Epics concluídos no MVP.
 
-- `E01` — Acesso e Contas
-- `E02` — Gestão do Ciclo de Eventos
-- `E03` — Descoberta e Inscrições
-- `E04` — Sugestões e Análise
+- `E01` — Acesso e Contas — `done`
+- `E02` — Gestão do Ciclo de Eventos — `done`
+- `E03` — Descoberta e Inscrições — `done`
+- `E04` — Sugestões e Análise — `done`
 
-Cada Epic usa o template `docs/templates/epic.md` e aponta para Features formais em `../features/`.
+Cada Epic aponta para Features formais em `../features/` e Stories/Tasks rastreáveis.

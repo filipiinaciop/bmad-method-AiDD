@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gerenciador de eventos escolares Germinare Tech">
+  <title>Germinare Tech — Eventos</title>
+  <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+  <main id="app" class="site-shell">
+    <section id="auth-view" class="auth-layout" aria-labelledby="auth-title">
+      <div class="auth-intro pastel-lilac">
+        <p class="eyebrow">GERMINARE TECH / EVENTOS</p>
+        <h1 id="auth-title">Ideias que viram encontros.</h1>
+        <p>Encontre atividades da escola, participe das experiências e ajude a construir a próxima programação.</p>
+        <div class="mock-note"><strong>Contas de demonstração</strong><span>aluna@germinare.edu.br / aluna123</span><span>professor@germinare.edu.br / prof1234</span><span>admin@germinare.edu.br / admin123</span></div>
+      </div>
+      <div class="auth-card card">
+        <p class="eyebrow">ACESSO</p>
+        <h2>Entrar na sua conta</h2>
+        <p class="muted">Use seu e-mail institucional e senha.</p>
+        <div id="auth-feedback" class="feedback" role="alert" aria-live="polite"></div>
+        <form id="login-form" novalidate>
+          <label for="login-email">E-mail<input id="login-email" name="email" type="email" autocomplete="username" required></label>
+          <label for="login-password">Senha<input id="login-password" name="password" type="password" autocomplete="current-password" required></label>
+          <button class="button button-primary" type="submit">Entrar</button>
+        </form>
+      </div>
+    </section>
+    <section id="app-view" class="app-layout" hidden aria-label="Área autenticada">
+      <header class="topbar">
+        <a class="brand" href="#eventos" data-view="events"><span class="brand-mark">G</span><span>Germinare Tech</span></a>
+        <div class="user-menu"><span id="user-identity"></span><button id="logout-button" class="button button-quiet" type="button">Sair</button></div>
+      </header>
+      <div class="workspace">
+        <aside class="sidebar" aria-label="Navegação principal"><p class="eyebrow">NAVEGAÇÃO</p><nav id="main-nav"></nav></aside>
+        <section class="content-area"><div id="feedback" class="feedback" role="status" aria-live="polite"></div><div id="view-content"></div></section>
+      </div>
+    </section>
+  </main>
+  <script src="/models/domain.js"></script>
+  <script src="/models/store.js"></script>
+  <script src="/controllers/app-controller.js"></script>
+</body>
+</html>

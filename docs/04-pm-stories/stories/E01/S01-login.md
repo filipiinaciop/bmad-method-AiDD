@@ -2,11 +2,11 @@
 id: S01
 parent_epic: E01
 parent_feature: F01
-status: blocked
+status: done
 priority: P1
 order: 1
 owner: "Integrante 4 — PM / Stories"
-sources: [PRD-FR-001, ARCH-001, DEC-001]
+sources: [PRD-FR-001, ARCH-001, DEC-001, DEC-003, UX-002]
 depends_on: [DEP-001, DEP-003]
 blocks: [S03]
 ---
@@ -32,14 +32,14 @@ blocks: [S03]
 
 ## UX e arquitetura
 
-- Tratamento visual deve seguir [UX-001](../../../../docs/01-inputs/ux.md), sem inventar estados de loading/erro não especificados.
+- Tratamento visual deve seguir [UX-001](../../../../docs/01-inputs/ux.md), com os estados específicos de [UX-002](../../../../docs/01-inputs/ux.md#ux-002--contratos-específicos-do-produto).
 - RBAC: [ARCH-001](../../../../docs/01-inputs/architecture.md#arch-sec-006--autenticação).
 - Persistência de dados mockados: [DEC-001](../../../../docs/00-governance/decisions.md).
 
 ## Bloqueios
 
-`Q-ARCH-001`, `Q-ARCH-006` e `Q-ARCH-003` deixam sessão, credenciais, senha e contrato indefinidos. A story permanece `blocked`.
+Resolvidos por `DEC-003`, `DEC-004`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T001` — Preparar autenticação mockada — `blocked`.
+- `T001` — Preparar autenticação mockada — `done`.

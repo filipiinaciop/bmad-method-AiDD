@@ -1,6 +1,6 @@
 ---
 id: E03
-status: blocked
+status: done
 priority: P1
 owner: "Integrante 4 — PM / Stories"
 sources:
