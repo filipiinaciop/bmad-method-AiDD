@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node --test tests/domain.test.js",
+    "test": "node --test tests/domain.test.js tests/qa-scenarios.test.js",
     "lint": "node scripts/lint.js",
     "build": "node scripts/build.js"
   },
