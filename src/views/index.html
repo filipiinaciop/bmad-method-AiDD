@@ -21,9 +21,9 @@
         <h2>Entrar na sua conta</h2>
         <p class="muted">Use seu e-mail institucional e senha.</p>
         <div id="auth-feedback" class="feedback" role="alert" aria-live="polite"></div>
-        <form id="login-form" novalidate>
-          <label for="login-email">E-mail<input id="login-email" name="email" type="email" autocomplete="username" required></label>
-          <label for="login-password">Senha<input id="login-password" name="password" type="password" autocomplete="current-password" required></label>
+        <form id="login-form" novalidate autocomplete="off">
+          <label for="login-email">E-mail<input id="login-email" name="email" type="email" autocomplete="off" required></label>
+          <label for="login-password">Senha<input id="login-password" name="password" type="password" autocomplete="new-password" required></label>
           <button class="button button-primary" type="submit">Entrar</button>
         </form>
       </div>
@@ -35,7 +35,7 @@
       </header>
       <div class="workspace">
         <aside class="sidebar" aria-label="Navegação principal"><p class="eyebrow">NAVEGAÇÃO</p><nav id="main-nav"></nav></aside>
-        <section class="content-area"><div id="feedback" class="feedback" role="status" aria-live="polite"></div><div id="view-content"></div></section>
+        <section class="content-area"><div id="feedback" class="feedback" role="status" aria-live="polite" tabindex="-1"></div><div id="view-content"></div></section>
       </div>
     </section>
   </main>
