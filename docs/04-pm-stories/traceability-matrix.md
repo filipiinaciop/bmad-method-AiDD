@@ -35,5 +35,5 @@ Estado: execução do MVP em lote concluída para T001–T021; cada linha aponta
 
 - Cobertura dos `PRD-FR-001` a `PRD-FR-024`: 23 implementados e 1 deferido explicitamente.
 - Cada Story implementada possui Task e verification correspondente: sim.
-- Critérios de aceitação possuem evidência executada: 14 testes de domínio, lint, build e smoke HTTP; fluxos visuais T009–T021 também requerem walkthrough manual.
+- Critérios de aceitação possuem evidência executada: 71 testes automatizados — `tests/domain.test.js` e `tests/qa-scenarios.test.js`, executados pelo comando oficial `npm test` de `DEC-009` — além de lint, build e smoke HTTP; fluxos visuais T009–T021 também requerem walkthrough manual.
 - Commits separados por Task: T001–T021 registrados.

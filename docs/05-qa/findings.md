@@ -8,42 +8,47 @@ sources: [PRD-001, UX-001, ARCH-001, DEC-001, DEC-005, DEC-009, DEC-011, E01, E0
 
 # Achados de validação
 
-Registro dos problemas identificados na revisão de PRD, UX, Arquitetura, Stories e implementação. Cada achado aponta evidência localizável e um responsável pela decisão. Nenhum achado foi corrigido em `src/` por esta camada — ver [`README.md`](README.md#autoridade-e-limites).
+Registro dos problemas identificados na revisão de PRD, UX, Arquitetura, Stories e implementação. Cada achado aponta evidência localizável e um responsável pela decisão.
+
+Os achados de produto foram corrigidos na rodada autorizada por `DEC-013` a `DEC-016`, e os achados de interface `QA-020` a `QA-022` na rodada autorizada por `DEC-017` a `DEC-019`. Ambas estão registradas em [`correction-validation.md`](correction-validation.md). O corpo de cada achado preserva a evidência original do defeito: ele descreve o estado no momento da detecção, não o estado atual.
 
 ## Resumo
 
-| Severidade | Quantidade | Abertos |
-|---|---:|---:|
-| Alta | 7 | 6 |
-| Média | 8 | 7 |
-| Baixa | 3 | 3 |
-| **Total** | **18** | **16** |
+| Severidade | Quantidade | Abertos | Revalidados |
+|---|---:|---:|---:|
+| Alta | 7 | 0 | 7 |
+| Média | 11 | 0 | 11 |
+| Baixa | 4 | 0 | 4 |
+| **Total** | **22** | **0** | **22** |
 
-Dois achados (`QA-015`, `QA-016`) foram resolvidos dentro desta entrega por serem de infraestrutura de validação, não de produto.
+Nenhum achado permanece aberto. `QA-015` e `QA-016` foram resolvidos dentro da entrega de QA por serem de infraestrutura de validação; os demais foram corrigidos pelos responsáveis após o registro das decisões correspondentes. `QA-020` a `QA-022` foram levantados por inspeção da aplicação em execução, depois da rodada de correções de produto.
 
 ## Índice
 
 | ID | Severidade | Título | Responsável | Status |
 |---|---|---|---|---|
-| [QA-001](#qa-001) | Alta | Cascata `done` → `blocked` em Epics, Features e Stories | Integrante 4 | aberto |
-| [QA-002](#qa-002) | Alta | Stories `done` declaram a Task como `blocked` | Integrante 4 | aberto |
-| [QA-003](#qa-003) | Média | Seção "Bloqueios" descreve conflitos já resolvidos | Integrante 4 | aberto |
-| [QA-004](#qa-004) | Média | `DEC-003`–`DEC-012` fora de tabela válida em `decisions.md` | Integrante 4 | aberto |
-| [QA-005](#qa-005) | Média | `ux.md` declara dois status incompatíveis no mesmo arquivo | Integrante 2 | aberto |
-| [QA-006](#qa-006) | Baixa | Responsável da arquitetura permanece "a confirmar" | Integrante 3 | aberto |
-| [QA-018](#qa-018) | Alta | Arquitetura canônica não reflete `DEC-006` e `DEC-007` | Integrante 3 | aberto |
-| [QA-007](#qa-007) | Alta | "Cancelar evento" é oferecido em estados que o domínio recusa | Integrantes 2 e 3 | aberto |
-| [QA-008](#qa-008) | Alta | "Editar" é oferecido em evento cancelado, que o domínio recusa | Integrantes 2 e 3 | aberto |
-| [QA-009](#qa-009) | Alta | Aluno autor não tem superfície para acompanhar a própria proposta | Integrante 1 | aberto |
-| [QA-010](#qa-010) | Média | Evento `NEGADO` permanece editável sem regra de origem | Integrantes 1 e 3 | aberto |
-| [QA-011](#qa-011) | Média | Aluno não pode editar nem cancelar o evento que criou | Integrante 1 | aberto |
-| [QA-012](#qa-012) | Média | Evento com data passada continua aberto a inscrição | Integrante 1 | aberto |
-| [QA-013](#qa-013) | Média | Erro de formulário aparece fora do contexto da ação | Integrante 2 | aberto |
-| [QA-014](#qa-014) | Baixa | Foco programático em elemento não focável | Integrante 2 | aberto |
+| [QA-001](#qa-001) | Alta | Cascata `done` → `blocked` em Epics, Features e Stories | Integrante 4 | revalidado |
+| [QA-002](#qa-002) | Alta | Stories `done` declaram a Task como `blocked` | Integrante 4 | revalidado |
+| [QA-003](#qa-003) | Média | Seção "Bloqueios" descreve conflitos já resolvidos | Integrante 4 | revalidado |
+| [QA-004](#qa-004) | Média | `DEC-003`–`DEC-012` fora de tabela válida em `decisions.md` | Integrante 4 | revalidado |
+| [QA-005](#qa-005) | Média | `ux.md` declara dois status incompatíveis no mesmo arquivo | Integrante 2 | revalidado |
+| [QA-006](#qa-006) | Baixa | Responsável da arquitetura permanece "a confirmar" | Integrante 3 | revalidado |
+| [QA-018](#qa-018) | Alta | Arquitetura canônica não reflete `DEC-006` e `DEC-007` | Integrante 3 | revalidado |
+| [QA-007](#qa-007) | Alta | "Cancelar evento" é oferecido em estados que o domínio recusa | Integrantes 2 e 3 | revalidado |
+| [QA-008](#qa-008) | Alta | "Editar" é oferecido em evento cancelado, que o domínio recusa | Integrantes 2 e 3 | revalidado |
+| [QA-009](#qa-009) | Alta | Aluno autor não tem superfície para acompanhar a própria proposta | Integrante 1 | revalidado |
+| [QA-010](#qa-010) | Média | Evento `NEGADO` permanece editável sem regra de origem | Integrantes 1 e 3 | revalidado |
+| [QA-011](#qa-011) | Média | Aluno não pode editar nem cancelar o evento que criou | Integrante 1 | revalidado |
+| [QA-012](#qa-012) | Média | Evento com data passada continua aberto a inscrição | Integrante 1 | revalidado |
+| [QA-013](#qa-013) | Média | Erro de formulário aparece fora do contexto da ação | Integrante 2 | revalidado |
+| [QA-014](#qa-014) | Baixa | Foco programático em elemento não focável | Integrante 2 | revalidado |
 | [QA-015](#qa-015) | Alta | Comando oficial de teste não cobria toda a pasta `tests/` | QA / Validation | revalidado |
 | [QA-016](#qa-016) | Média | Lacunas de cobertura automatizada em regras já exigidas | QA / Validation | revalidado |
-| [QA-017](#qa-017) | Baixa | Contagem de evidência incorreta na matriz de rastreabilidade | Integrante 4 | aberto |
-| [QA-018](#qa-018) | Alta | Arquitetura canônica não reflete `DEC-006` e `DEC-007` | Integrante 3 | aberto |
+| [QA-017](#qa-017) | Baixa | Contagem de evidência incorreta na matriz de rastreabilidade | Integrante 4 | revalidado |
+| [QA-019](#qa-019) | Média | Âncoras `PRD-USER-001` e `SM-C1` não existem como cabeçalho | Integrante 4 | revalidado |
+| [QA-020](#qa-020) | Média | Feedback global permanece na tela indefinidamente | Integrante 2 | revalidado |
+| [QA-021](#qa-021) | Média | Botão de retorno volta para destino fixo, não para a tela anterior | Integrante 2 | revalidado |
+| [QA-022](#qa-022) | Baixa | Credenciais permanecem nos campos de login após logout | Integrante 2 | revalidado |
 
 ---
 
@@ -51,7 +56,9 @@ Dois achados (`QA-015`, `QA-016`) foram resolvidos dentro desta entrega por sere
 
 ### QA-001
 
-**Severidade:** Alta · **Responsável:** Integrante 4 — PM / Stories · **Status:** aberto
+**Severidade:** Alta · **Responsável:** Integrante 4 — PM / Stories · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 As sete Features declaram `status: done` no front-matter, mas o corpo de cada uma lista **todas** as suas Stories como `blocked`.
 
@@ -89,7 +96,9 @@ Atualizar o status de cada Feature listada em `E01`–`E04`, de cada Story lista
 
 ### QA-002
 
-**Severidade:** Alta · **Responsável:** Integrante 4 — PM / Stories · **Status:** aberto
+**Severidade:** Alta · **Responsável:** Integrante 4 — PM / Stories · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 Treze Stories declaram `status: done` no front-matter, mas registram a Task filha como `blocked` na última seção.
 
@@ -116,7 +125,9 @@ Atualizar o status da Task em `S09`–`S21` para `done`, apontando a verificatio
 
 ### QA-003
 
-**Severidade:** Média · **Responsável:** Integrante 4 — PM / Stories · **Status:** aberto
+**Severidade:** Média · **Responsável:** Integrante 4 — PM / Stories · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 As mesmas treze Stories mantêm a seção `## Bloqueios` descrevendo conflitos já resolvidos como se estivessem abertos.
 
@@ -144,7 +155,9 @@ Substituir o texto da seção por referência às decisões que resolveram cada 
 
 ### QA-004
 
-**Severidade:** Média · **Responsável:** Integrante 4 — PM / Stories · **Status:** aberto
+**Severidade:** Média · **Responsável:** Integrante 4 — PM / Stories · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 Em `decisions.md`, as decisões `DEC-003` a `DEC-012` estão escritas como linhas de tabela, mas sem cabeçalho e separador precedentes. Em Markdown elas não renderizam como tabela.
 
@@ -174,7 +187,9 @@ Mover `DEC-003`–`DEC-012` para a tabela principal ou abrir uma nova tabela com
 
 ### QA-005
 
-**Severidade:** Média · **Responsável:** Integrante 2 — UX / Product Experience · **Status:** aberto
+**Severidade:** Média · **Responsável:** Integrante 2 — UX / Product Experience · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 `docs/01-inputs/ux.md` declara dois status incompatíveis para o próprio conteúdo.
 
@@ -206,7 +221,9 @@ Promover o front-matter para `confirmed` e reconciliar o texto de `UX-004`, ou r
 
 ### QA-006
 
-**Severidade:** Baixa · **Responsável:** Integrante 3 — Architect · **Status:** aberto
+**Severidade:** Baixa · **Responsável:** Integrante 3 — Architect · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 A fonte arquitetural canônica não tem responsável confirmado e mantém a maioria dos critérios de promoção desmarcados.
 
@@ -232,7 +249,9 @@ Confirmar responsável e versão, e reavaliar os critérios à luz de `DEC-003`�
 
 ### QA-018
 
-**Severidade:** Alta · **Responsável:** Integrante 3 — Architect · **Status:** aberto
+**Severidade:** Alta · **Responsável:** Integrante 3 — Architect · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 A arquitetura canônica não foi atualizada para refletir `DEC-006` e `DEC-007`. Três estruturas de dados centrais do MVP implementado não existem na fonte arquitetural.
 
@@ -282,7 +301,9 @@ Atualizar `ARCH-DATA-005` com `capacidade` e `criadoPor`, `ARCH-DATA-006` com `s
 
 ### QA-007
 
-**Severidade:** Alta · **Responsável:** Integrantes 2 e 3 · **Status:** aberto
+**Severidade:** Alta · **Responsável:** Integrantes 2 e 3 · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 A tela de gestão oferece "Cancelar evento" para eventos `PENDENTE` e `NEGADO`. O domínio recusa a operação nos dois casos.
 
@@ -328,7 +349,9 @@ Condicionar o botão a `event.status === APROVADO`, alinhando a interface a `DEC
 
 ### QA-008
 
-**Severidade:** Alta · **Responsável:** Integrantes 2 e 3 · **Status:** aberto
+**Severidade:** Alta · **Responsável:** Integrantes 2 e 3 · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 Mesma classe de problema de `QA-007`: a ação "Editar" é oferecida sem nenhuma verificação de status, inclusive para eventos cancelados.
 
@@ -362,7 +385,9 @@ Condicionar o botão aos estados que `updateEvent` aceita, considerando a decis�
 
 ### QA-009
 
-**Severidade:** Alta · **Responsável:** Integrante 1 — Product / Requirements · **Status:** aberto
+**Severidade:** Alta · **Responsável:** Integrante 1 — Product / Requirements · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 Um Aluno pode criar um evento, que nasce `PENDENTE`, mas não existe nenhuma tela em que ele consiga vê-lo depois. A proposta desaparece da perspectiva do autor.
 
@@ -408,7 +433,9 @@ Decidir e registrar: ou o Aluno ganha uma superfície de acompanhamento da próp
 
 ### QA-010
 
-**Severidade:** Média · **Responsável:** Integrantes 1 e 3 · **Status:** aberto
+**Severidade:** Média · **Responsável:** Integrantes 1 e 3 · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 `updateEvent` bloqueia apenas eventos `CANCELADO`. Um evento `NEGADO` pode ser editado livremente, e nenhuma fonte define esse comportamento.
 
@@ -443,7 +470,9 @@ Registrar uma decisão declarando `NEGADO` terminal para edição ou explicitame
 
 ### QA-011
 
-**Severidade:** Média · **Responsável:** Integrante 1 — Product / Requirements · **Status:** aberto
+**Severidade:** Média · **Responsável:** Integrante 1 — Product / Requirements · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 O Aluno tem `CRIAR_EVENTO`, mas não tem `EDITAR_EVENTO` nem `CANCELAR_EVENTO`. Ele não consegue corrigir um erro de digitação na própria proposta nem retirá-la.
 
@@ -471,7 +500,9 @@ Decidir se o autor pode editar ou retirar a própria proposta enquanto ela estiv
 
 ### QA-012
 
-**Severidade:** Média · **Responsável:** Integrante 1 — Product / Requirements · **Status:** aberto
+**Severidade:** Média · **Responsável:** Integrante 1 — Product / Requirements · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 Um evento cuja data já passou permanece `APROVADO` e continua aceitando inscrições.
 
@@ -498,7 +529,9 @@ Registrar o efeito colateral do deferimento de `PRD-FR-007` no escopo do MVP, e 
 
 ### QA-013
 
-**Severidade:** Média · **Responsável:** Integrante 2 — UX / Product Experience · **Status:** aberto
+**Severidade:** Média · **Responsável:** Integrante 2 — UX / Product Experience · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 O formulário de evento renderiza um container de erro dedicado que nunca recebe mensagem. Todos os erros vão para o feedback global, no topo da área de conteúdo.
 
@@ -529,7 +562,9 @@ Direcionar erros de formulário para `#form-feedback`, ou remover o container n�
 
 ### QA-014
 
-**Severidade:** Baixa · **Responsável:** Integrante 2 — UX / Product Experience · **Status:** aberto
+**Severidade:** Baixa · **Responsável:** Integrante 2 — UX / Product Experience · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 O feedback global tenta receber foco programático, mas o elemento não é focável.
 
@@ -630,7 +665,9 @@ Nenhuma lacuna fechada revelou defeito: todos os comportamentos verificados esta
 
 ### QA-017
 
-**Severidade:** Baixa · **Responsável:** Integrante 4 — PM / Stories · **Status:** aberto
+**Severidade:** Baixa · **Responsável:** Integrante 4 — PM / Stories · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
 
 A matriz de rastreabilidade declara uma contagem de evidência que não corresponde à suíte.
 
@@ -655,3 +692,140 @@ Baixo em consequência, relevante em natureza: é uma imprecisão numérica em u
 **Condição de fechamento**
 
 Atualizar a seção de auditoria para refletir a contagem real e incluir a suíte de cenários de QA entre as evidências.
+
+---
+
+### QA-019
+
+**Severidade:** Média · **Responsável:** Integrante 4 — PM / Stories · **Status:** revalidado
+
+**Correção:** reteste registrado em [`correction-validation.md`](correction-validation.md#registro-de-revalidações).
+
+Dois links de evidência apontam para âncoras que não existem no arquivo de destino. O arquivo resolve, mas o leitor cai no topo do documento, sem chegar à afirmação citada.
+
+**Evidência**
+
+Detectado por varredura das 105 âncoras relativas de `docs/`, ignorando blocos e trechos de código:
+
+```text
+docs/04-pm-stories/epics/E01-access-and-accounts.md
+  -> ../../../docs/01-inputs/prd.md#prd-user-001
+
+docs/04-pm-stories/epics/E04-suggestions-and-review.md
+  -> .../prd-bmad-method-AiDD-2026-09-14/prd.md#pr-d-sm-c1
+```
+
+`PRD-USER-001` existe apenas como célula da tabela em `docs/01-inputs/prd.md:35`, e `SM-C1` apenas como item de lista em `§7` do PRD de origem. Markdown não gera âncora para linha de tabela nem para item de lista, então nenhum dos dois identificadores é endereçável.
+
+**Impacto**
+
+[`evidence-protocol.md`](../00-governance/evidence-protocol.md) exige que toda fonte aponte para `caminho-relativo#seção-ou-âncora` e que a localização seja reproduzível. Uma âncora inexistente falha silenciosamente: o link funciona, a navegação não leva à evidência, e quem revisa precisa procurar manualmente.
+
+Não foi detectado na primeira revisão porque a verificação de links checava existência de arquivo, não resolução de âncora.
+
+**Condição de fechamento**
+
+Apontar para o cabeçalho que contém a afirmação citada, preservando o ID no texto do link.
+
+---
+
+### QA-020
+
+| Campo | Valor |
+|---|---|
+| Severidade | Média |
+| Responsável | Integrante 2 — UX |
+| Estado | `revalidado` — ver [`correction-validation.md`](correction-validation.md) |
+| Decisão que fecha | `DEC-017` |
+
+**Problema**
+
+A mensagem de feedback no topo da tela não tinha tempo de vida. Uma vez exibida, permanecia visível até que outra ação a sobrescrevesse ou a página fosse recarregada.
+
+**Evidência**
+
+Em `src/controllers/app-controller.js`, `setFeedback` escrevia o texto e a classe no elemento e encerrava. Não havia `setTimeout`, nem limpeza em troca de tela:
+
+```js
+const setFeedback = (message, type = 'success') => {
+  const element = $('#feedback');
+  element.textContent = message || '';
+  element.className = message ? `feedback ${type}` : 'feedback';
+};
+```
+
+O erro de autenticação era pior: escrevia direto em `#auth-feedback` sem passar por `setFeedback`, logo não seria coberto nem se o temporizador existisse.
+
+**Impacto**
+
+[`UX-002`](../01-inputs/ux.md#ux-002--contratos-específicos-do-produto) exige mensagem compreensível no ponto da ação, mas não definia duração. Sem expiração, uma mensagem de sucesso de uma ação já concluída continua afirmando algo sobre o estado atual da tela. Em `role="status"` com `aria-live="polite"`, isso também deixa o leitor de tela com um anúncio que não corresponde mais ao contexto.
+
+**Condição de fechamento**
+
+Definir duração por tipo de mensagem, cancelar o temporizador anterior ao exibir uma nova, e aplicar a mesma regra ao feedback de formulário e ao de autenticação.
+
+---
+
+### QA-021
+
+| Campo | Valor |
+|---|---|
+| Severidade | Média |
+| Responsável | Integrante 2 — UX |
+| Estado | `revalidado` — ver [`correction-validation.md`](correction-validation.md) |
+| Decisão que fecha | `DEC-018` |
+
+**Problema**
+
+Os botões de retorno não voltavam para a tela anterior. Cada um apontava para um destino fixo, então entrar em um fluxo a partir de qualquer tela que não fosse a lista de eventos e clicar em voltar levava o usuário para a lista de eventos.
+
+**Evidência**
+
+Em `src/controllers/app-controller.js`, os botões de retorno eram `data-view="events"`, tratados pelo mesmo ramo que a navegação lateral:
+
+```js
+if (target.dataset.view) { state.view = target.dataset.view; render(); return; }
+```
+
+`state` não guardava histórico. Reprodução: Calendário → clicar em um evento → "← Voltar" caía em Eventos, não em Calendário.
+
+**Impacto**
+
+[`UX-002`](../01-inputs/ux.md#ux-002--contratos-específicos-do-produto) define a navegação por permissão, mas não o comportamento de retorno. O usuário que abre um detalhe a partir do calendário perde o contexto do mês que estava consultando e precisa refazer a navegação.
+
+**Condição de fechamento**
+
+Manter pilha de histórico de telas e fazer o botão de retorno consumir a entrada anterior, com destino fixo apenas como fallback de pilha vazia.
+
+---
+
+### QA-022
+
+| Campo | Valor |
+|---|---|
+| Severidade | Baixa |
+| Responsável | Integrante 2 — UX |
+| Estado | `revalidado` — ver [`correction-validation.md`](correction-validation.md) |
+| Decisão que fecha | `DEC-019` |
+
+**Problema**
+
+Após o logout, os campos de e-mail e senha do formulário de login continuavam preenchidos com as credenciais do usuário que saiu.
+
+**Evidência**
+
+Em `src/controllers/app-controller.js`, o logout limpava a sessão e o estado de view, mas não tocava no formulário:
+
+```js
+if (target.id === 'logout-button') { Store.setSession(storage, null); state.view = 'events'; render(); return; }
+```
+
+O formulário em `src/views/index.html` não declarava `autocomplete`, então o navegador também era livre para repreencher os campos.
+
+**Impacto**
+
+O formulário de autenticação nunca é removido do DOM — `render` apenas alterna `hidden` entre `#auth-view` e `#app-view`. Em máquina compartilhada, o próximo usuário vê o e-mail do anterior e um campo de senha preenchido, bastando um clique em Entrar. Contraria a intenção de `PRD-NFR-001` e o modelo de sessão de `DEC-003`.
+
+**Condição de fechamento**
+
+Limpar programaticamente os campos e o feedback de credencial no logout, e declarar `autocomplete` restritivo no formulário e nos campos.
