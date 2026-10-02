@@ -35,4 +35,4 @@ Resolvidos por `DEC-003`, `DEC-004`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T002` — Preparar criação de contas mockadas — `done`.
+- `T002` — Preparar criação de contas mockadas — `done`. Evidência: [`T002.md`](../../../../_bmad-output/implementation-artifacts/verification/T002.md).

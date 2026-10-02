@@ -50,11 +50,11 @@ Permitir que a comunidade escolar crie, valide, edite, cancele e acompanhe event
 
 ## Desconhecidos e conflitos
 
-- `CONFLICT-001`: PRD e Arquitetura divergem sobre ator inicial e estados do Evento.
-- `Q-ARCH-003`, `Q-ARCH-004`, `Q-ARCH-005`: contratos, datas e cancelamento.
-- Modelo de capacidade/vagas não está na arquitetura canônica.
+- `CONFLICT-001` (ator inicial e estados do Evento): resolvido por `DEC-005`; terminalidade de `NEGADO` definida por `DEC-013`.
+- `ARCH-OQ-003` (contratos): resolvido por `DEC-009`. `ARCH-OQ-004` (datas): resolvido por `DEC-003` e `DEC-016`. `ARCH-OQ-005` (cancelamento): resolvido por `DEC-005`, `DEC-011` e `DEC-014`.
+- Modelo de capacidade/vagas: definido por `DEC-006` e refletido em `ARCH-DATA-005`.
 
 ## Features
 
-- [F03](../features/F03-event-management.md) — Gestão de eventos — `blocked`.
-- [F07](../features/F07-event-validation.md) — Validação de eventos — `blocked`.
+- [F03](../features/F03-event-management.md) — Gestão de eventos — `done`.
+- [F07](../features/F07-event-validation.md) — Validação de eventos — `done`.

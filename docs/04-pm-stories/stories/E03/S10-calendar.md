@@ -29,8 +29,8 @@ depends_on: [DEP-004, DEP-008]
 
 ## Bloqueios
 
-Timezone e estados de evento dependem de `Q-ARCH-004`/`CONFLICT-001`; layout e estados da tela ainda dependem de UX específica.
+Resolvidos por `DEC-003`, `DEC-005`, `DEC-008` e `DEC-016`.
 
 ## Task
 
-- `T010` — Implementar visualização mensal — `blocked`.
+- `T010` — Implementar visualização mensal — `done`. Evidência: [`T010.md`](../../../../_bmad-output/implementation-artifacts/verification/T010.md).

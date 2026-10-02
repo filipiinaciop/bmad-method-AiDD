@@ -29,7 +29,7 @@ Permitir que Aluno e Professor/Admin acessem o Germinare Tech com conta mockada 
 
 ## Evidências de origem
 
-- [PRD-USER-001](../../../docs/01-inputs/prd.md#prd-user-001) — define Aluno e Professor/Admin como usuários.
+- [PRD-USER-001](../../../docs/01-inputs/prd.md#mapa-de-requirements) — define Aluno e Professor/Admin como usuários.
 - [PRD-FR-001](../../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#fr-1-login-por-credenciais) — login por e-mail e senha.
 - [PRD-FR-002](../../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#fr-2-criação-manual-de-conta) — criação manual de conta.
 - [PRD-FR-003](../../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#fr-3-controle-de-acesso-por-perfil) — controle por perfil.
@@ -53,19 +53,21 @@ Permitir que Aluno e Professor/Admin acessem o Germinare Tech com conta mockada 
 
 ## Critérios de sucesso do epic
 
-- [ ] Usuários mockados acessam os fluxos permitidos e são impedidos de acessar capacidades protegidas.
-- [ ] Os dados de demonstração persistem em `localStorage` durante a execução.
+- [x] Usuários mockados acessam os fluxos permitidos e são impedidos de acessar capacidades protegidas — verificado em `T001`, `T003` e pelos cenários `TEST-S01-*` e `TEST-S03-*`.
+- [x] Os dados de demonstração persistem em `localStorage` durante a execução — verificado em `T002` e pelo cenário `TEST-NFR-02`.
 
 ## Desconhecidos e conflitos
 
-- `Q-ARCH-001`, `Q-ARCH-002`, `Q-ARCH-003`, `Q-ARCH-006`: segurança, Admin, contratos e senha.
-- UX específica de login, loading, erro e acessibilidade ainda não possui contrato `UX-*`.
+- `ARCH-OQ-001` e `ARCH-OQ-006` (segurança e senha): resolvidos por `DEC-003`.
+- `ARCH-OQ-002` (capacidades do Admin): resolvido por `DEC-004` e `DEC-010`.
+- `ARCH-OQ-003` (contratos View/Controller): resolvido por `DEC-009`.
+- UX de login, loading, erro e acessibilidade: contratada por `DEC-008` em `UX-002`.
 
 ## Features
 
-- [F01](../features/F01-authentication.md) — Autenticação e contas — `blocked`.
-- [F02](../features/F02-rbac.md) — Autorização por perfil — `blocked`.
+- [F01](../features/F01-authentication.md) — Autenticação e contas — `done`.
+- [F02](../features/F02-rbac.md) — Autorização por perfil — `done`.
 
 ## Rastreabilidade
 
-Matriz atualizada após a criação dos filhos: `sim`. O epic permanece `blocked` enquanto as dependências decision estiverem abertas.
+Matriz atualizada após a criação dos filhos: `sim`. As dependências de decisão foram resolvidas por `DEC-003`, `DEC-004`, `DEC-008`, `DEC-009` e `DEC-010`, e o epic está `done`.

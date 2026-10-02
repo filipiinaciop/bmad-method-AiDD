@@ -15,10 +15,10 @@ Usuários mockados entram no sistema e Professor/Admin gerencia contas dentro do
 
 ## Stories
 
-- `S01` Login por credenciais — `blocked`.
-- `S02` Criar conta mockada — `blocked`.
-- `S04` Redefinir senha — `blocked`.
+- `S01` Login por credenciais — `done`.
+- `S02` Criar conta mockada — `done`.
+- `S04` Redefinir senha — `done`.
 
 ## Critério de conclusão
 
-Os fluxos de conta possuem critérios verificáveis, persistência local, tratamento de erro e política de segurança confirmada. Enquanto `ARCH-OQ-001` e `ARCH-OQ-006` estiverem abertos, a Feature permanece `blocked`.
+Os fluxos de conta possuem critérios verificáveis, persistência local, tratamento de erro e política de segurança confirmada. `ARCH-OQ-001` e `ARCH-OQ-006` foram resolvidos por `DEC-003`. Verificado em `T001`, `T002` e `T004`.

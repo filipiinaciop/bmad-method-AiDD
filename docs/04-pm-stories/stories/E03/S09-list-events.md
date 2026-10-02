@@ -26,8 +26,8 @@ depends_on: [DEP-004, DEP-008]
 
 ## Bloqueios
 
-`CONFLICT-001` diverge sobre quais estados tornam um evento disponível. Estados vazios, loading, erro e navegação não possuem contrato UX específico.
+Resolvidos por `DEC-005` e `DEC-008`.
 
 ## Task
 
-- `T009` — Renderizar lista de eventos mockados — `blocked`.
+- `T009` — Renderizar lista de eventos mockados — `done`. Evidência: [`T009.md`](../../../../_bmad-output/implementation-artifacts/verification/T009.md).

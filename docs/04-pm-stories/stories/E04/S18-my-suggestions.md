@@ -26,8 +26,8 @@ depends_on: [DEP-010, DEP-011]
 
 ## Bloqueios
 
-Entidade, status, histórico e tela não estão definidos na Arquitetura/UX.
+Resolvidos por `DEC-006` e `DEC-008`.
 
 ## Task
 
-- `T018` — Renderizar minhas sugestões — `blocked`.
+- `T018` — Renderizar minhas sugestões — `done`. Evidência: [`T018.md`](../../../../_bmad-output/implementation-artifacts/verification/T018.md).

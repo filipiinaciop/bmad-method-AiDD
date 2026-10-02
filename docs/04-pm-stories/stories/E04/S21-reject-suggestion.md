@@ -30,8 +30,8 @@ depends_on: [DEP-010, DEP-011]
 
 ## Bloqueios
 
-A arquitetura não define entidade/histórico de Sugestão; o contrato UX de feedback também está ausente.
+Resolvidos por `DEC-006` e `DEC-008`.
 
 ## Task
 
-- `T021` — Persistir rejeição de sugestão — `blocked`.
+- `T021` — Persistir rejeição de sugestão — `done`. Evidência: [`T021.md`](../../../../_bmad-output/implementation-artifacts/verification/T021.md).

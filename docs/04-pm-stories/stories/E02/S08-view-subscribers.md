@@ -30,4 +30,4 @@ Resolvidos por `DEC-004`, `DEC-007`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T008` — Exibir inscritos persistidos — `done`.
+- `T008` — Exibir inscritos persistidos — `done`. Evidência: [`T008.md`](../../../../_bmad-output/implementation-artifacts/verification/T008.md).

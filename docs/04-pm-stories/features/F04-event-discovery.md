@@ -15,10 +15,10 @@ Aluno encontra eventos em lista ou calendário e consulta seus detalhes.
 
 ## Stories
 
-- `S09` Listar eventos — `blocked`.
-- `S10` Navegar por calendário — `blocked`.
-- `S11` Consultar detalhe do evento — `blocked`.
+- `S09` Listar eventos — `done`.
+- `S10` Navegar por calendário — `done`.
+- `S11` Consultar detalhe do evento — `done`.
 
 ## Critério de conclusão
 
-Os status exibidos, critérios de disponibilidade, telas, estados vazios/erro e comportamento responsivo devem estar definidos.
+Os status exibidos e os critérios de disponibilidade estão definidos por `DEC-005`; a superfície do autor por `DEC-015`; telas, estados vazios/erro e comportamento responsivo por `DEC-008` em `UX-002`. Verificado em `T009` a `T011`.

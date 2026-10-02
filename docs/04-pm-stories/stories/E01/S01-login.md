@@ -42,4 +42,4 @@ Resolvidos por `DEC-003`, `DEC-004`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T001` — Preparar autenticação mockada — `done`.
+- `T001` — Preparar autenticação mockada — `done`. Evidência: [`T001.md`](../../../../_bmad-output/implementation-artifacts/verification/T001.md).

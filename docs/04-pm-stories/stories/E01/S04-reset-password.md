@@ -34,4 +34,4 @@ Resolvidos por `DEC-003`, `DEC-004`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T004` — Preparar redefinição de senha mockada — `done`.
+- `T004` — Preparar redefinição de senha mockada — `done`. Evidência: [`T004.md`](../../../../_bmad-output/implementation-artifacts/verification/T004.md).

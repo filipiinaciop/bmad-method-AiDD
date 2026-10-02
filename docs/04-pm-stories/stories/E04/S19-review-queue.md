@@ -30,8 +30,8 @@ depends_on: [DEP-002, DEP-010, DEP-011]
 
 ## Bloqueios
 
-A entidade Sugestão e as permissões Admin/Professor ainda precisam de decisão.
+Resolvidos por `DEC-004`, `DEC-006` e `DEC-010`.
 
 ## Task
 
-- `T019` — Criar fila de análise mockada — `blocked`.
+- `T019` — Criar fila de análise mockada — `done`. Evidência: [`T019.md`](../../../../_bmad-output/implementation-artifacts/verification/T019.md).

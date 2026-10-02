@@ -35,4 +35,4 @@ Resolvidos por `DEC-004`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T003` — Aplicar matriz RBAC nos fluxos mockados — `done`.
+- `T003` — Aplicar matriz RBAC nos fluxos mockados — `done`. Evidência: [`T003.md`](../../../../_bmad-output/implementation-artifacts/verification/T003.md).

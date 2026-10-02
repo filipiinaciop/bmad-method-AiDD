@@ -31,8 +31,8 @@ depends_on: [DEP-005, DEP-009]
 
 ## Bloqueios
 
-A arquitetura não define capacidade nem status ativo/inativo; a implementação de concorrência no `localStorage` ainda precisa de estratégia validada.
+Resolvidos por `DEC-006`, `DEC-007` e `DEC-012`.
 
 ## Task
 
-- `T013` — Garantir integridade de inscrições mockadas — `blocked`.
+- `T013` — Garantir integridade de inscrições mockadas — `done`. Evidência: [`T013.md`](../../../../_bmad-output/implementation-artifacts/verification/T013.md).
