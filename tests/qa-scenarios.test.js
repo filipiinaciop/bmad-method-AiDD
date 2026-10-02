@@ -2,8 +2,7 @@
 
 // Cenários de QA / Validation — TEST-S##-## e TEST-NFR-##.
 // Cada cenário referencia a Story, o critério de aceitação e a fonte normativa que valida.
-// Testes marcados como [caracterização] registram o comportamento ATUAL de um achado QA-### aberto:
-// eles não aprovam o comportamento, apenas impedem que ele mude sem decisão registrada.
+// As datas são relativas ao dia de execução por DEC-016: a suíte não depende de um calendário fixo.
 // Ver docs/05-qa/test-scenarios.md e docs/05-qa/findings.md.
 
 const test = require('node:test');
@@ -24,8 +23,8 @@ const throwsCode = (fn, code) => assert.throws(fn, (error) => error instanceof D
 const validEventInput = (overrides = {}) => ({
   titulo: 'Evento de teste',
   descricao: 'Descrição do evento de teste.',
-  dataInicio: '2026-12-01',
-  dataFim: '2026-12-01',
+  dataInicio: Domain.dayOffset(60),
+  dataFim: Domain.dayOffset(60),
   hora: '10:00',
   localizacao: 'Sala 1',
   capacidade: null,
@@ -188,7 +187,7 @@ test('TEST-S05-02 evento inválido é recusado sem persistir registro incompleto
   throwsCode(() => Domain.createEvent(data, SEED_TEACHER, validEventInput({ descricao: '' })), 'REQUIRED');
   throwsCode(() => Domain.createEvent(data, SEED_TEACHER, validEventInput({ localizacao: '' })), 'REQUIRED');
   throwsCode(() => Domain.createEvent(data, SEED_TEACHER, validEventInput({ dataInicio: '01/12/2026' })), 'INVALID_DATE');
-  throwsCode(() => Domain.createEvent(data, SEED_TEACHER, validEventInput({ dataInicio: '2026-12-10', dataFim: '2026-12-01' })), 'INVALID_DATE');
+  throwsCode(() => Domain.createEvent(data, SEED_TEACHER, validEventInput({ dataInicio: Domain.dayOffset(70), dataFim: Domain.dayOffset(60) })), 'INVALID_DATE');
   throwsCode(() => Domain.createEvent(data, SEED_TEACHER, validEventInput({ hora: '10h' })), 'INVALID_TIME');
   throwsCode(() => Domain.createEvent(data, SEED_TEACHER, validEventInput({ capacidade: 0 })), 'INVALID_CAPACITY');
   throwsCode(() => Domain.createEvent(data, SEED_TEACHER, validEventInput({ capacidade: 2.5 })), 'INVALID_CAPACITY');
@@ -200,6 +199,32 @@ test('TEST-S05-03 capacidade vazia é tratada como ilimitada', () => {
   for (const capacidade of ['', null, undefined]) {
     assert.equal(Domain.createEvent(data, SEED_TEACHER, validEventInput({ capacidade })).capacidade, null);
   }
+});
+
+test('TEST-S05-04 o autor retira a própria proposta enquanto ela está PENDENTE (DEC-014)', () => {
+  const data = fresh();
+  const own = Domain.createEvent(data, SEED_STUDENT, validEventInput({ titulo: 'Proposta a retirar' }));
+  assert.equal(own.status, Domain.EVENT_STATUS.PENDING);
+
+  const withdrawn = Domain.cancelEvent(data, SEED_STUDENT, own.id);
+  assert.equal(withdrawn.status, Domain.EVENT_STATUS.CANCELLED);
+  assert.equal(withdrawn.canceladoPor, SEED_STUDENT);
+  assert.equal(data.events.filter((event) => event.status === Domain.EVENT_STATUS.PENDING).some((event) => event.id === own.id), false, 'a proposta retirada sai da fila de validação');
+  throwsCode(() => Domain.validateEvent(data, SEED_TEACHER, own.id, Domain.EVENT_STATUS.APPROVED), 'INVALID_TRANSITION');
+});
+
+test('TEST-S05-05 a retirada pelo autor não vira capacidade administrativa (DEC-011/DEC-014)', () => {
+  const alheio = fresh();
+  throwsCode(() => Domain.cancelEvent(alheio, SEED_STUDENT, EVENT_APPROVED_WITH_CAPACITY), 'FORBIDDEN');
+  throwsCode(() => Domain.cancelEvent(alheio, SEED_STUDENT, 999), 'NOT_FOUND');
+
+  const aprovado = fresh();
+  Domain.validateEvent(aprovado, SEED_TEACHER, EVENT_PENDING_BY_STUDENT, Domain.EVENT_STATUS.APPROVED);
+  throwsCode(() => Domain.cancelEvent(aprovado, SEED_STUDENT, EVENT_PENDING_BY_STUDENT), 'INVALID_TRANSITION');
+
+  const negado = fresh();
+  Domain.validateEvent(negado, SEED_TEACHER, EVENT_PENDING_BY_STUDENT, Domain.EVENT_STATUS.DENIED);
+  throwsCode(() => Domain.cancelEvent(negado, SEED_STUDENT, EVENT_PENDING_BY_STUDENT), 'INVALID_TRANSITION');
 });
 
 test('TEST-S06-01 edição válida atualiza o registro persistido', () => {
@@ -227,12 +252,13 @@ test('TEST-S06-03 evento CANCELADO é terminal para edição', () => {
   throwsCode(() => Domain.updateEvent(data, SEED_TEACHER, EVENT_APPROVED_NO_CAPACITY, validEventInput()), 'TERMINAL_EVENT');
 });
 
-test('TEST-S06-04 [caracterização QA-010] evento NEGADO permanece editável — sem regra de origem', () => {
+test('TEST-S06-04 evento NEGADO é terminal para edição (DEC-013)', () => {
   const data = fresh();
   Domain.validateEvent(data, SEED_TEACHER, EVENT_PENDING_BY_STUDENT, Domain.EVENT_STATUS.DENIED);
-  const updated = Domain.updateEvent(data, SEED_TEACHER, EVENT_PENDING_BY_STUDENT, validEventInput({ titulo: 'Título alterado após negar' }));
-  assert.equal(updated.titulo, 'Título alterado após negar');
-  assert.equal(updated.status, Domain.EVENT_STATUS.DENIED, 'editar não deve ressuscitar um evento negado');
+  throwsCode(() => Domain.updateEvent(data, SEED_TEACHER, EVENT_PENDING_BY_STUDENT, validEventInput({ titulo: 'Título alterado após negar' })), 'TERMINAL_EVENT');
+  const event = Domain.getEvent(data, EVENT_PENDING_BY_STUDENT);
+  assert.equal(event.status, Domain.EVENT_STATUS.DENIED);
+  assert.notEqual(event.titulo, 'Título alterado após negar', 'a recusa preserva o registro original');
 });
 
 test('TEST-S07-01 cancelamento de evento APROVADO registra autor e data', () => {
@@ -286,13 +312,28 @@ test('TEST-S08-01 lista de inscritos exige permissão e preserva registros cance
 // E03 — Descoberta e inscrições
 // ---------------------------------------------------------------------------
 
-test('TEST-S09-01 [caracterização QA-009] evento PENDENTE do aluno fica fora do filtro da lista', () => {
+test('TEST-S09-01 a lista pública permanece restrita a APROVADO e CANCELADO', () => {
   const data = fresh();
   const own = Domain.createEvent(data, SEED_STUDENT, validEventInput({ titulo: 'Proposta do aluno' }));
   assert.equal(own.status, Domain.EVENT_STATUS.PENDING);
   // Filtro aplicado por app-controller.js:renderEvents.
   const visible = Domain.listEvents(data).filter((event) => [Domain.EVENT_STATUS.APPROVED, Domain.EVENT_STATUS.CANCELLED].includes(event.status));
-  assert.equal(visible.some((event) => event.id === own.id), false, 'o autor não possui superfície para acompanhar a própria proposta');
+  assert.equal(visible.some((event) => event.id === own.id), false, 'proposta pendente não entra na agenda pública');
+});
+
+test('TEST-S09-03 o autor acompanha a própria proposta em "Minhas propostas" (DEC-015)', () => {
+  const data = fresh();
+  const own = Domain.createEvent(data, SEED_STUDENT, validEventInput({ titulo: 'Proposta acompanhada' }));
+  const mine = Domain.listMyEvents(data, SEED_STUDENT);
+  const found = mine.find((event) => event.id === own.id);
+  assert.ok(found, 'o autor enxerga a própria proposta');
+  assert.equal(found.status, Domain.EVENT_STATUS.PENDING);
+
+  Domain.validateEvent(data, SEED_TEACHER, own.id, Domain.EVENT_STATUS.DENIED);
+  assert.equal(Domain.listMyEvents(data, SEED_STUDENT).find((event) => event.id === own.id).status, Domain.EVENT_STATUS.DENIED, 'o desfecho da validação chega ao autor');
+
+  const outro = addStudent(data, 'sem-propostas');
+  assert.equal(Domain.listMyEvents(data, outro.id).length, 0, 'a superfície é isolada por autor');
 });
 
 test('TEST-S09-02 busca filtra por título, descrição e local sem diferenciar caixa', () => {
@@ -546,13 +587,17 @@ test('TEST-NFR-03 operação recusada não deixa efeito colateral no estado', ()
   assert.equal(JSON.stringify(data), snapshot);
 });
 
-test('TEST-NFR-04 [caracterização QA-012] evento com data passada continua APROVADO e aberto a inscrição', () => {
+test('TEST-NFR-04 criação recusa data de início no passado; edição não aplica a regra (DEC-016)', () => {
   const data = fresh();
-  // ENCERRADO foi deferido do MVP por DEC-005; nada recalcula o status por tempo.
-  const past = Domain.createEvent(data, SEED_TEACHER, validEventInput({ titulo: 'Evento já ocorrido', dataInicio: '2020-01-01', dataFim: '2020-01-01' }));
-  assert.equal(past.status, Domain.EVENT_STATUS.APPROVED);
-  const student = addStudent(data, 'evento-passado');
-  assert.equal(Domain.enroll(data, student.id, past.id).status, Domain.ENROLLMENT_STATUS.ACTIVE);
+  // ENCERRADO continua deferido por DEC-005; a regra aqui é validação de entrada, não recálculo por tempo.
+  throwsCode(() => Domain.createEvent(data, SEED_TEACHER, validEventInput({ dataInicio: Domain.dayOffset(-1), dataFim: Domain.dayOffset(1) })), 'PAST_DATE');
+  assert.equal(Domain.createEvent(data, SEED_TEACHER, validEventInput({ dataInicio: Domain.today(), dataFim: Domain.today() })).status, Domain.EVENT_STATUS.APPROVED, 'o próprio dia é aceito');
+
+  const updated = Domain.updateEvent(data, SEED_TEACHER, EVENT_APPROVED_NO_CAPACITY, validEventInput({ titulo: 'Correção pós-início', dataInicio: Domain.dayOffset(-5), dataFim: Domain.dayOffset(-5) }));
+  assert.equal(updated.dataInicio, Domain.dayOffset(-5), 'a correção de um evento já iniciado permanece possível');
+
+  const seedDates = fresh().events.map((event) => event.dataInicio);
+  for (const date of seedDates) assert.ok(date >= Domain.today(), `o dado mockado ${date} deveria estar no futuro`);
 });
 
 test('TEST-NFR-05 leitura do domínio não expõe referência mutável do estado', () => {

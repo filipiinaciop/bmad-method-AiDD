@@ -40,18 +40,18 @@ test('T004 permite redefinição autorizada e login com a nova senha', () => {
 
 test('T005 cria evento com status por papel e valida campos', () => {
   const data = fresh();
-  const studentEvent = Domain.createEvent(data, 1, { titulo: 'Evento aluno', descricao: 'Descrição', dataInicio: '2026-11-01', dataFim: '2026-11-01', hora: '09:00', localizacao: 'Sala 1', capacidade: 5 });
-  const teacherEvent = Domain.createEvent(data, 2, { titulo: 'Evento professor', descricao: 'Descrição', dataInicio: '2026-11-02', dataFim: '2026-11-03', hora: '09:00', localizacao: 'Sala 2', capacidade: '' });
+  const studentEvent = Domain.createEvent(data, 1, { titulo: 'Evento aluno', descricao: 'Descrição', dataInicio: Domain.dayOffset(31), dataFim: Domain.dayOffset(31), hora: '09:00', localizacao: 'Sala 1', capacidade: 5 });
+  const teacherEvent = Domain.createEvent(data, 2, { titulo: 'Evento professor', descricao: 'Descrição', dataInicio: Domain.dayOffset(32), dataFim: Domain.dayOffset(33), hora: '09:00', localizacao: 'Sala 2', capacidade: '' });
   assert.equal(studentEvent.status, Domain.EVENT_STATUS.PENDING);
   assert.equal(teacherEvent.status, Domain.EVENT_STATUS.APPROVED);
-  throwsCode(() => Domain.createEvent(data, 2, { titulo: '', descricao: 'x', dataInicio: '2026-11-02', dataFim: '2026-11-02', hora: '09:00', localizacao: 'x' }), 'REQUIRED');
-  throwsCode(() => Domain.createEvent(data, 2, { titulo: 'x', descricao: 'x', dataInicio: '2026-11-03', dataFim: '2026-11-02', hora: '09:00', localizacao: 'x' }), 'INVALID_DATE');
+  throwsCode(() => Domain.createEvent(data, 2, { titulo: '', descricao: 'x', dataInicio: Domain.dayOffset(32), dataFim: Domain.dayOffset(32), hora: '09:00', localizacao: 'x' }), 'REQUIRED');
+  throwsCode(() => Domain.createEvent(data, 2, { titulo: 'x', descricao: 'x', dataInicio: Domain.dayOffset(33), dataFim: Domain.dayOffset(32), hora: '09:00', localizacao: 'x' }), 'INVALID_DATE');
 });
 
 test('T006 edita evento e não reduz capacidade abaixo de inscrições', () => {
   const data = fresh();
-  throwsCode(() => Domain.updateEvent(data, 2, 1, { titulo: 'Atualizado', descricao: 'Descrição', dataInicio: '2026-10-15', dataFim: '2026-10-15', hora: '14:00', localizacao: 'Auditório', capacidade: 0 }), 'INVALID_CAPACITY');
-  const updated = Domain.updateEvent(data, 2, 1, { titulo: 'Atualizado', descricao: 'Descrição', dataInicio: '2026-10-15', dataFim: '2026-10-15', hora: '14:00', localizacao: 'Auditório', capacidade: 2 });
+  throwsCode(() => Domain.updateEvent(data, 2, 1, { titulo: 'Atualizado', descricao: 'Descrição', dataInicio: Domain.dayOffset(14), dataFim: Domain.dayOffset(14), hora: '14:00', localizacao: 'Auditório', capacidade: 0 }), 'INVALID_CAPACITY');
+  const updated = Domain.updateEvent(data, 2, 1, { titulo: 'Atualizado', descricao: 'Descrição', dataInicio: Domain.dayOffset(14), dataFim: Domain.dayOffset(14), hora: '14:00', localizacao: 'Auditório', capacidade: 2 });
   assert.equal(updated.titulo, 'Atualizado');
 });
 
@@ -80,7 +80,7 @@ test('T009-T011 lista, filtra, calcula detalhe e trata registro ausente', () => 
 
 test('T012-T013 aceita inscrição, rejeita duplicidade e respeita capacidade', () => {
   const data = fresh();
-  Domain.createEvent(data, 2, { titulo: 'Lotado', descricao: 'x', dataInicio: '2026-12-01', dataFim: '2026-12-01', hora: '10:00', localizacao: 'x', capacidade: 1 });
+  Domain.createEvent(data, 2, { titulo: 'Lotado', descricao: 'x', dataInicio: Domain.dayOffset(61), dataFim: Domain.dayOffset(61), hora: '10:00', localizacao: 'x', capacidade: 1 });
   Domain.createAccount(data, 3, { nome: 'Aluno Dois', email: 'dois@germinare.edu.br', senha: 'senhadois', role: Domain.ROLES.STUDENT });
   const enrollment = Domain.enroll(data, 4, 4);
   assert.equal(enrollment.status, Domain.ENROLLMENT_STATUS.ACTIVE);
@@ -122,7 +122,7 @@ test('persistência recupera seed quando localStorage está ausente ou corrompid
 
 test('T013 concorrência repetida nunca excede a capacidade', () => {
   const data = fresh();
-  const event = Domain.createEvent(data, 2, { titulo: 'Evento concorrente', descricao: 'x', dataInicio: '2026-12-10', dataFim: '2026-12-10', hora: '10:00', localizacao: 'x', capacidade: 1 });
+  const event = Domain.createEvent(data, 2, { titulo: 'Evento concorrente', descricao: 'x', dataInicio: Domain.dayOffset(70), dataFim: Domain.dayOffset(70), hora: '10:00', localizacao: 'x', capacidade: 1 });
   const students = Array.from({ length: 10 }, (_, index) => Domain.createAccount(data, 3, { nome: `Aluno ${index}`, email: `concorrente${index}@germinare.edu.br`, senha: 'senhasegura', role: Domain.ROLES.STUDENT }));
   const accepted = students.filter((student) => {
     try { Domain.enroll(data, student.id, event.id); return true; } catch (_error) { return false; }

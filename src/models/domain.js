@@ -13,12 +13,13 @@
   const PERMISSIONS = Object.freeze({
     VIEW_EVENTS: 'VISUALIZAR_EVENTOS', VIEW_CALENDAR: 'VISUALIZAR_CALENDARIO', VIEW_NEXT_EVENTS: 'VISUALIZAR_PROXIMOS_EVENTOS', VIEW_DETAIL: 'VISUALIZAR_DETALHE_EVENTO',
     CREATE_EVENT: 'CRIAR_EVENTO', VALIDATE_EVENT: 'VALIDAR_EVENTO', EDIT_EVENT: 'EDITAR_EVENTO', CANCEL_EVENT: 'CANCELAR_EVENTO', VIEW_SUBSCRIBERS: 'VISUALIZAR_INSCRITOS',
+    CANCEL_OWN_EVENT: 'CANCELAR_PROPRIO_EVENTO', VIEW_MY_EVENTS: 'VISUALIZAR_MINHAS_PROPOSTAS',
     ENROLL: 'INSCREVER_EVENTO', CANCEL_OWN_ENROLLMENT: 'CANCELAR_PROPRIA_INSCRICAO', VIEW_MY_ENROLLMENTS: 'VISUALIZAR_MINHAS_INSCRICOES', ADMIN_CANCEL_ENROLLMENT: 'CANCELAR_INSCRICAO_ADMIN',
     CREATE_ACCOUNT: 'CRIAR_CONTA', RESET_PASSWORD: 'REDEFINIR_SENHA', SUBMIT_SUGGESTION: 'ENVIAR_SUGESTAO', VIEW_MY_SUGGESTIONS: 'VISUALIZAR_MINHAS_SUGESTOES',
     REVIEW_SUGGESTIONS: 'REVISAR_SUGESTOES', APPROVE_SUGGESTION: 'APROVAR_SUGESTAO', REJECT_SUGGESTION: 'REJEITAR_SUGESTAO'
   });
   const ROLE_PERMISSIONS = Object.freeze({
-    [ROLES.STUDENT]: [PERMISSIONS.VIEW_EVENTS, PERMISSIONS.VIEW_CALENDAR, PERMISSIONS.VIEW_NEXT_EVENTS, PERMISSIONS.VIEW_DETAIL, PERMISSIONS.CREATE_EVENT, PERMISSIONS.ENROLL, PERMISSIONS.CANCEL_OWN_ENROLLMENT, PERMISSIONS.VIEW_MY_ENROLLMENTS, PERMISSIONS.SUBMIT_SUGGESTION, PERMISSIONS.VIEW_MY_SUGGESTIONS],
+    [ROLES.STUDENT]: [PERMISSIONS.VIEW_EVENTS, PERMISSIONS.VIEW_CALENDAR, PERMISSIONS.VIEW_NEXT_EVENTS, PERMISSIONS.VIEW_DETAIL, PERMISSIONS.CREATE_EVENT, PERMISSIONS.CANCEL_OWN_EVENT, PERMISSIONS.VIEW_MY_EVENTS, PERMISSIONS.ENROLL, PERMISSIONS.CANCEL_OWN_ENROLLMENT, PERMISSIONS.VIEW_MY_ENROLLMENTS, PERMISSIONS.SUBMIT_SUGGESTION, PERMISSIONS.VIEW_MY_SUGGESTIONS],
     [ROLES.TEACHER]: [PERMISSIONS.VIEW_EVENTS, PERMISSIONS.VIEW_CALENDAR, PERMISSIONS.VIEW_NEXT_EVENTS, PERMISSIONS.VIEW_DETAIL, PERMISSIONS.CREATE_EVENT, PERMISSIONS.VALIDATE_EVENT, PERMISSIONS.EDIT_EVENT, PERMISSIONS.CANCEL_EVENT, PERMISSIONS.VIEW_SUBSCRIBERS, PERMISSIONS.ADMIN_CANCEL_ENROLLMENT, PERMISSIONS.CREATE_ACCOUNT, PERMISSIONS.RESET_PASSWORD, PERMISSIONS.REVIEW_SUGGESTIONS, PERMISSIONS.APPROVE_SUGGESTION, PERMISSIONS.REJECT_SUGGESTION],
     [ROLES.ADMIN]: [PERMISSIONS.VIEW_EVENTS, PERMISSIONS.VIEW_CALENDAR, PERMISSIONS.VIEW_NEXT_EVENTS, PERMISSIONS.VIEW_DETAIL, PERMISSIONS.CREATE_EVENT, PERMISSIONS.VALIDATE_EVENT, PERMISSIONS.EDIT_EVENT, PERMISSIONS.CANCEL_EVENT, PERMISSIONS.VIEW_SUBSCRIBERS, PERMISSIONS.ADMIN_CANCEL_ENROLLMENT, PERMISSIONS.CREATE_ACCOUNT, PERMISSIONS.RESET_PASSWORD, PERMISSIONS.REVIEW_SUGGESTIONS, PERMISSIONS.APPROVE_SUGGESTION, PERMISSIONS.REJECT_SUGGESTION]
   });
@@ -29,6 +30,10 @@
 
   const clone = (value) => JSON.parse(JSON.stringify(value));
   const now = () => new Date().toISOString();
+  const isoDate = (date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  const today = () => isoDate(new Date());
+  const dayOffset = (days) => { const date = new Date(); date.setDate(date.getDate() + days); return isoDate(date); };
+  const timeOffset = (days) => { const date = new Date(); date.setDate(date.getDate() + days); return date.toISOString(); };
   const nextId = (data, collection) => { const key = collection.slice(0, -1); const id = data.nextIds[key] || 1; data.nextIds[key] = id + 1; return id; };
   const required = (value, label) => { if (typeof value !== 'string' || !value.trim()) throw new DomainError('REQUIRED', `${label} é obrigatório.`); return value.trim(); };
   const validEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -40,7 +45,7 @@
   const activeEnrollments = (data, eventId) => data.enrollments.filter((item) => Number(item.eventoId) === Number(eventId) && item.status === ENROLLMENT_STATUS.ACTIVE);
   const assertActor = (data, actorId, permission) => { const actor = findUser(data, actorId); if (!actor || !hasPermission(actor, permission)) throw new DomainError('FORBIDDEN', 'Você não tem permissão para executar esta ação.'); return actor; };
   const assertRole = (actor, roles) => { if (!actor || !roles.includes(actor.role)) throw new DomainError('FORBIDDEN', 'Você não tem permissão para executar esta ação.'); };
-  const assertEventData = (input) => {
+  const assertEventData = (input, options = {}) => {
     const title = required(input.titulo, 'Título');
     const description = required(input.descricao, 'Descrição');
     const start = required(input.dataInicio, 'Data de início');
@@ -48,6 +53,7 @@
     const time = required(input.hora, 'Horário');
     const location = required(input.localizacao, 'Local');
     if (!validDate(start) || !validDate(end) || start > end) throw new DomainError('INVALID_DATE', 'Informe datas válidas, com início até o fim.');
+    if (options.rejectPastStart && start < today()) throw new DomainError('PAST_DATE', 'A data de início não pode estar no passado.');
     if (!/^\d{2}:\d{2}$/.test(time)) throw new DomainError('INVALID_TIME', 'Informe um horário válido.');
     const capacity = input.capacidade === '' || input.capacidade === null || input.capacidade === undefined ? null : Number(input.capacidade);
     if (capacity !== null && (!Number.isInteger(capacity) || capacity < 1)) throw new DomainError('INVALID_CAPACITY', 'A capacidade deve ser um número inteiro positivo.');
@@ -64,17 +70,17 @@
         { id: 3, nome: 'Admin Germinare', email: 'admin@germinare.edu.br', senha: 'admin123', role: ROLES.ADMIN, role_id: 3 }
       ],
       events: [
-        { id: 1, titulo: 'Feira de Tecnologia', descricao: 'Demonstrações de projetos e oficinas criadas pelos estudantes.', dataInicio: '2026-10-15', dataFim: '2026-10-15', hora: '14:00', localizacao: 'Auditório principal', capacidade: 3, status: EVENT_STATUS.APPROVED, criadoPor: 2, criadoEm: '2026-09-01T10:00:00.000Z' },
-        { id: 2, titulo: 'Clube de Leitura', descricao: 'Encontro mensal para conversar sobre o livro escolhido pela turma.', dataInicio: '2026-10-20', dataFim: '2026-10-20', hora: '16:00', localizacao: 'Biblioteca', capacidade: null, status: EVENT_STATUS.APPROVED, criadoPor: 2, criadoEm: '2026-09-02T10:00:00.000Z' },
-        { id: 3, titulo: 'Oficina de Robótica', descricao: 'Proposta de oficina aguardando validação do professor.', dataInicio: '2026-10-25', dataFim: '2026-10-25', hora: '10:00', localizacao: 'Laboratório maker', capacidade: 10, status: EVENT_STATUS.PENDING, criadoPor: 1, criadoEm: '2026-09-03T10:00:00.000Z' }
+        { id: 1, titulo: 'Feira de Tecnologia', descricao: 'Demonstrações de projetos e oficinas criadas pelos estudantes.', dataInicio: dayOffset(14), dataFim: dayOffset(14), hora: '14:00', localizacao: 'Auditório principal', capacidade: 3, status: EVENT_STATUS.APPROVED, criadoPor: 2, criadoEm: timeOffset(-30) },
+        { id: 2, titulo: 'Clube de Leitura', descricao: 'Encontro mensal para conversar sobre o livro escolhido pela turma.', dataInicio: dayOffset(19), dataFim: dayOffset(19), hora: '16:00', localizacao: 'Biblioteca', capacidade: null, status: EVENT_STATUS.APPROVED, criadoPor: 2, criadoEm: timeOffset(-29) },
+        { id: 3, titulo: 'Oficina de Robótica', descricao: 'Proposta de oficina aguardando validação do professor.', dataInicio: dayOffset(24), dataFim: dayOffset(24), hora: '10:00', localizacao: 'Laboratório maker', capacidade: 10, status: EVENT_STATUS.PENDING, criadoPor: 1, criadoEm: timeOffset(-28) }
       ],
       enrollments: [
-        { id: 1, alunoId: 1, eventoId: 1, data_inscricao: '2026-09-04T10:00:00.000Z', status: ENROLLMENT_STATUS.ACTIVE, canceladoEm: null, canceladoPor: null },
-        { id: 2, alunoId: 1, eventoId: 2, data_inscricao: '2026-09-04T10:00:00.000Z', status: ENROLLMENT_STATUS.ACTIVE, canceladoEm: null, canceladoPor: null }
+        { id: 1, alunoId: 1, eventoId: 1, data_inscricao: timeOffset(-27), status: ENROLLMENT_STATUS.ACTIVE, canceladoEm: null, canceladoPor: null },
+        { id: 2, alunoId: 1, eventoId: 2, data_inscricao: timeOffset(-27), status: ENROLLMENT_STATUS.ACTIVE, canceladoEm: null, canceladoPor: null }
       ],
       suggestions: [
-        { id: 1, titulo: 'Palestra sobre carreiras digitais', descricao: 'Convidar profissionais para falar sobre suas primeiras experiências.', autorId: 1, status: SUGGESTION_STATUS.PENDING, criadoEm: '2026-09-05T10:00:00.000Z', revisadoEm: null, revisadoPor: null, eventoId: null },
-        { id: 2, titulo: 'Mostra de jogos', descricao: 'Uma tarde para apresentar jogos desenvolvidos na escola.', autorId: 1, status: SUGGESTION_STATUS.APPROVED, criadoEm: '2026-09-01T10:00:00.000Z', revisadoEm: '2026-09-02T10:00:00.000Z', revisadoPor: 2, eventoId: null }
+        { id: 1, titulo: 'Palestra sobre carreiras digitais', descricao: 'Convidar profissionais para falar sobre suas primeiras experiências.', autorId: 1, status: SUGGESTION_STATUS.PENDING, criadoEm: timeOffset(-26), revisadoEm: null, revisadoPor: null, eventoId: null },
+        { id: 2, titulo: 'Mostra de jogos', descricao: 'Uma tarde para apresentar jogos desenvolvidos na escola.', autorId: 1, status: SUGGESTION_STATUS.APPROVED, criadoEm: timeOffset(-30), revisadoEm: timeOffset(-25), revisadoPor: 2, eventoId: null }
       ]
     };
   }
@@ -111,7 +117,7 @@
   }
   function createEvent(data, actorId, input) {
     const actor = assertActor(data, actorId, PERMISSIONS.CREATE_EVENT);
-    const fields = assertEventData(input);
+    const fields = assertEventData(input, { rejectPastStart: true });
     const event = { id: nextId(data, 'events'), ...fields, status: actor.role === ROLES.STUDENT ? EVENT_STATUS.PENDING : EVENT_STATUS.APPROVED, criadoPor: actor.id, criadoEm: now() };
     if (input.suggestionId) event.suggestionId = Number(input.suggestionId);
     data.events.push(event);
@@ -126,16 +132,24 @@
     const event = findEvent(data, eventId);
     if (!event) throw new DomainError('NOT_FOUND', 'Evento não encontrado.');
     if (event.status === EVENT_STATUS.CANCELLED) throw new DomainError('TERMINAL_EVENT', 'Eventos cancelados não podem ser alterados.');
+    if (event.status === EVENT_STATUS.DENIED) throw new DomainError('TERMINAL_EVENT', 'Eventos negados não podem ser alterados.');
     const fields = assertEventData(input);
     if (fields.capacidade !== null && activeEnrollments(data, event.id).length > fields.capacidade) throw new DomainError('CAPACITY_TOO_LOW', 'A capacidade não pode ser menor que as inscrições ativas.');
     Object.assign(event, fields, { atualizadoEm: now(), atualizadoPor: actor.id });
     return clone(event);
   }
   function cancelEvent(data, actorId, eventId) {
-    const actor = assertActor(data, actorId, PERMISSIONS.CANCEL_EVENT);
+    const actor = findUser(data, actorId);
+    const administrative = hasPermission(actor, PERMISSIONS.CANCEL_EVENT);
+    if (!administrative && !hasPermission(actor, PERMISSIONS.CANCEL_OWN_EVENT)) throw new DomainError('FORBIDDEN', 'Você não tem permissão para executar esta ação.');
     const event = findEvent(data, eventId);
     if (!event) throw new DomainError('NOT_FOUND', 'Evento não encontrado.');
-    if (event.status !== EVENT_STATUS.APPROVED) throw new DomainError('INVALID_TRANSITION', 'Somente eventos aprovados podem ser cancelados.');
+    if (administrative) {
+      if (event.status !== EVENT_STATUS.APPROVED) throw new DomainError('INVALID_TRANSITION', 'Somente eventos aprovados podem ser cancelados.');
+    } else {
+      if (Number(event.criadoPor) !== Number(actor.id)) throw new DomainError('FORBIDDEN', 'Você só pode retirar a proposta que criou.');
+      if (event.status !== EVENT_STATUS.PENDING) throw new DomainError('INVALID_TRANSITION', 'Somente propostas pendentes podem ser retiradas pelo autor.');
+    }
     event.status = EVENT_STATUS.CANCELLED;
     event.canceladoEm = now(); event.canceladoPor = actor.id;
     return clone(event);
@@ -152,6 +166,7 @@
     return data.events.filter((event) => !filters.status || event.status === filters.status).filter((event) => !filters.search || `${event.titulo} ${event.descricao} ${event.localizacao}`.toLowerCase().includes(String(filters.search).toLowerCase())).map((event) => ({ ...clone(event), vagasRestantes: event.capacidade === null ? null : Math.max(0, event.capacidade - activeEnrollments(data, event.id).length) }));
   }
   function getEvent(data, eventId) { const event = findEvent(data, eventId); return event ? { ...clone(event), vagasRestantes: event.capacidade === null ? null : Math.max(0, event.capacidade - activeEnrollments(data, event.id).length) } : null; }
+  function listMyEvents(data, actorId) { assertActor(data, actorId, PERMISSIONS.VIEW_MY_EVENTS); return data.events.filter((event) => Number(event.criadoPor) === Number(actorId)).map((event) => getEvent(data, event.id)); }
   function enroll(data, actorId, eventId) {
     const actor = assertActor(data, actorId, PERMISSIONS.ENROLL);
     const event = findEvent(data, eventId);
@@ -192,5 +207,5 @@
     suggestion.status = decision; suggestion.revisadoEm = now(); suggestion.revisadoPor = actor.id;
     return clone(suggestion);
   }
-  return { EVENT_STATUS, ENROLLMENT_STATUS, SUGGESTION_STATUS, ROLES, PERMISSIONS, ROLE_PERMISSIONS, MIN_PASSWORD_LENGTH, DomainError, clone, createSeedData, hasPermission, sanitizeUser, authenticate, createAccount, resetPassword, createEvent, updateEvent, cancelEvent, validateEvent, listEvents, getEvent, enroll, cancelEnrollment, listMyEnrollments, listSubscribers, submitSuggestion, listMySuggestions, listSuggestionQueue, reviewSuggestion, findUser };
+  return { EVENT_STATUS, ENROLLMENT_STATUS, SUGGESTION_STATUS, ROLES, PERMISSIONS, ROLE_PERMISSIONS, MIN_PASSWORD_LENGTH, DomainError, clone, createSeedData, hasPermission, sanitizeUser, authenticate, createAccount, resetPassword, createEvent, updateEvent, cancelEvent, validateEvent, listEvents, getEvent, listMyEvents, enroll, cancelEnrollment, listMyEnrollments, listSubscribers, submitSuggestion, listMySuggestions, listSuggestionQueue, reviewSuggestion, findUser, today, dayOffset };
 });
