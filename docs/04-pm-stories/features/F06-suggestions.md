@@ -15,9 +15,9 @@ Aluno registra uma sugestão e acompanha o próprio status.
 
 ## Stories
 
-- `S17` Enviar sugestão — `blocked`.
-- `S18` Consultar minhas sugestões — `blocked`.
+- `S17` Enviar sugestão — `done`.
+- `S18` Consultar minhas sugestões — `done`.
 
 ## Critério de conclusão
 
-A entidade Sugestão, seus campos, status e persistência local devem ser promovidos na arquitetura.
+A entidade Sugestão foi definida por `DEC-006` e promovida na arquitetura como `ARCH-DATA-007`, com os relacionamentos `ARCH-RULE-008` e `ARCH-RULE-009`. Verificado em `T017` e `T018`.

@@ -8,7 +8,7 @@ Este é o registro oficial de informações que ainda não são decisões confir
 |---|---|---|---|---|---|
 | ASM-001 | Nenhum requisito de produto foi confirmado neste repositório. | Artefatos de PM podem ser apenas templates até o recebimento das fontes. | Integrante 1 | rejeitada — PRD e Brief foram recebidos | 2026-09-14 |
 
-## Perguntas resolvidas
+## Perguntas
 
 | ID | Pergunta | Contexto/fonte | Bloqueia | Responsável | Prazo | Status |
 |---|---|---|---|---|---|---|
@@ -21,6 +21,7 @@ Este é o registro oficial de informações que ainda não são decisões confir
 | Q-ARCH-006 | Qual é o tamanho mínimo da senha e quais regras de credenciais serão usadas? | `ARCH-OQ-006` em `docs/01-inputs/architecture.md` | Autenticação e segurança | Integrante 3 | A definir | resolvida |
 | Q-ARCH-007 | Quais políticas de FK, nulabilidade e convenção de nomes serão usadas em uma futura persistência relacional? | `ARCH-OQ-007` em `docs/01-inputs/architecture.md` | Banco e migrações futuras | Integrante 3 | A definir | deferred-mvp |
 | Q-ARCH-008 | Quais comandos oficiais validam instalação, execução, migração, seed, lint, testes, build e deploy? | `ARCH-OQ-008` em `docs/01-inputs/architecture.md` | Execução e DoD | Integrante 3 | A definir | resolvida |
+| Q-QA-001 | Quem conduz o walkthrough manual e julga se a experiência é adequada? | Condição 6 do gate em `docs/05-qa/implementation-readiness.md`; `next_gate` de `_bmad-output/sprint-status.yaml` | Encerramento do projeto | A definir pelo grupo — não pode ser o Integrante 5 | A definir | ativa |
 
 ## Regras
 

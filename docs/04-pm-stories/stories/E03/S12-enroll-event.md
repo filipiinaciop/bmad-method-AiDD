@@ -31,8 +31,8 @@ depends_on: [DEP-004, DEP-008, DEP-009]
 
 ## Bloqueios
 
-Estados do evento, status de inscrição e capacidade não estão reconciliados.
+Resolvidos por `DEC-005`, `DEC-006` e `DEC-007`.
 
 ## Task
 
-- `T012` — Persistir inscrição de aluno — `blocked`.
+- `T012` — Persistir inscrição de aluno — `done`. Evidência: [`T012.md`](../../../../_bmad-output/implementation-artifacts/verification/T012.md).

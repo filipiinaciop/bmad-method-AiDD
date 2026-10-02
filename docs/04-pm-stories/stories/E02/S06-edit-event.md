@@ -34,4 +34,4 @@ Resolvidos por `DEC-005`, `DEC-006`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T006` — Preparar edição de evento — `done`.
+- `T006` — Preparar edição de evento — `done`. Evidência: [`T006.md`](../../../../_bmad-output/implementation-artifacts/verification/T006.md).

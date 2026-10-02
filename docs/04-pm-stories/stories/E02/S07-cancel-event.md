@@ -33,4 +33,4 @@ Resolvidos por `DEC-005`, `DEC-007`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T007` — Implementar cancelamento com persistência local — `done`.
+- `T007` — Implementar cancelamento com persistência local — `done`. Evidência: [`T007.md`](../../../../_bmad-output/implementation-artifacts/verification/T007.md).

@@ -53,11 +53,11 @@ Permitir que o Aluno encontre eventos, consulte detalhes, inscreva-se e cancele 
 
 ## Desconhecidos e conflitos
 
-- `CONFLICT-002`: unicidade permanente da Arquitetura versus re-inscrição após cancelamento no PRD.
-- `Q-ARCH-004`, `Q-ARCH-005`, `Q-ARCH-007`: tempo, cancelamento e modelo de dados.
-- Capacidade/vagas e estados visuais específicos ainda não possuem contrato UX/aprovação arquitetural.
+- `CONFLICT-002` (unicidade versus re-inscrição): resolvido por `DEC-007` e refletido em `ARCH-DATA-006` e `ARCH-RULE-010`.
+- `ARCH-OQ-004` (tempo): resolvido por `DEC-003` e `DEC-016`. `ARCH-OQ-005` (cancelamento): resolvido por `DEC-005` e `DEC-007`. `ARCH-OQ-007` (políticas de FK): permanece `deferred-mvp`, sem banco relacional no MVP.
+- Capacidade/vagas: definida por `DEC-006`. Estados visuais: contratados por `DEC-008`.
 
 ## Features
 
-- [F04](../features/F04-event-discovery.md) — Descoberta de eventos — `blocked`.
-- [F05](../features/F05-enrollments.md) — Inscrições — `blocked`.
+- [F04](../features/F04-event-discovery.md) — Descoberta de eventos — `done`.
+- [F05](../features/F05-enrollments.md) — Inscrições — `done`.

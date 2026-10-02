@@ -26,8 +26,8 @@ depends_on: [DEP-002, DEP-005, DEP-009]
 
 ## Bloqueios
 
-Permissões de Admin, histórico de inscrição e política de cancelamento ainda estão abertos.
+Resolvidos por `DEC-004`, `DEC-007` e `DEC-010`.
 
 ## Task
 
-- `T016` — Permitir cancelamento administrativo — `blocked`.
+- `T016` — Permitir cancelamento administrativo — `done`. Evidência: [`T016.md`](../../../../_bmad-output/implementation-artifacts/verification/T016.md).

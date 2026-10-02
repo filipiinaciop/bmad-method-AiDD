@@ -30,8 +30,8 @@ depends_on: [DEP-005, DEP-009]
 
 ## Bloqueios
 
-`CONFLICT-002` e `Q-ARCH-005` impedem escolher o modelo histórico.
+Resolvidos por `DEC-007`.
 
 ## Task
 
-- `T014` — Implementar cancelamento próprio — `blocked`.
+- `T014` — Implementar cancelamento próprio — `done`. Evidência: [`T014.md`](../../../../_bmad-output/implementation-artifacts/verification/T014.md).

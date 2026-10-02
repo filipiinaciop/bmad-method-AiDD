@@ -34,7 +34,7 @@ Dar ao Aluno um canal formal para sugerir eventos e ao Professor/Admin uma fila 
 
 - [PRD-UJ-004](../../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#23-principais-jornadas-de-usuário) a [PRD-UJ-006](../../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#23-principais-jornadas-de-usuário) — jornadas de sugestão e análise.
 - [PRD-FR-018](../../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#fr-18-envio-de-sugestão) a [PRD-FR-021](../../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#fr-21-rejeição-de-sugestão) e [PRD-FR-024](../../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#fr-24-minhas-sugestões) — requisitos.
-- [PRD-SM-C1](../../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#pr-d-sm-c1) — contra-métrica de curadoria real.
+- [PRD-SM-C1](../../../_bmad-output/planning-artifacts/prds/prd-bmad-method-AiDD-2026-09-14/prd.md#7-critérios-de-sucesso) — contra-métrica de curadoria real.
 
 ## Escopo
 
@@ -50,11 +50,11 @@ Dar ao Aluno um canal formal para sugerir eventos e ao Professor/Admin uma fila 
 
 ## Desconhecidos e conflitos
 
-- `CONFLICT-003`: PRD exige Sugestão persistida e vínculo com Evento; Arquitetura não define entidade Sugestão.
-- `CONFLICT-001`: fluxo de criação/aprovação de Evento diverge entre PRD e Arquitetura.
-- `Q-ARCH-003`, `Q-ARCH-005`: contratos e persistência/histórico.
+- `CONFLICT-003` (entidade Sugestão e vínculo com Evento): resolvido por `DEC-006` e refletido em `ARCH-DATA-007`, `ARCH-RULE-008` e `ARCH-RULE-009`.
+- `CONFLICT-001` (fluxo de criação/aprovação): resolvido por `DEC-005`.
+- `ARCH-OQ-003` (contratos): resolvido por `DEC-009`. `ARCH-OQ-005` (persistência e histórico): resolvido por `DEC-005` e `DEC-007`.
 
 ## Features
 
-- [F06](../features/F06-suggestions.md) — Sugestões do aluno — `blocked`.
-- [F07](../features/F07-event-validation.md) — Fila e análise de eventos/sugestões — `blocked`.
+- [F06](../features/F06-suggestions.md) — Sugestões do aluno — `done`.
+- [F07](../features/F07-event-validation.md) — Fila e análise de eventos/sugestões — `done`.

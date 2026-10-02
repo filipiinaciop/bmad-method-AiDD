@@ -34,4 +34,4 @@ Resolvidos por `DEC-005`, `DEC-006`, `DEC-008` e `DEC-009`.
 
 ## Task
 
-- `T005` — Implementar criação de evento após resolução do ciclo de vida — `done`.
+- `T005` — Implementar criação de evento após resolução do ciclo de vida — `done`. Evidência: [`T005.md`](../../../../_bmad-output/implementation-artifacts/verification/T005.md).

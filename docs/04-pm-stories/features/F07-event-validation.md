@@ -15,10 +15,10 @@ Professor/Admin visualiza pendências e decide aprovar ou rejeitar uma sugestão
 
 ## Stories
 
-- `S19` Visualizar fila — `blocked`.
-- `S20` Aprovar sugestão e pré-preencher criação — `blocked`.
-- `S21` Rejeitar sugestão — `blocked`.
+- `S19` Visualizar fila — `done`.
+- `S20` Aprovar sugestão e pré-preencher criação — `done`.
+- `S21` Rejeitar sugestão — `done`.
 
 ## Critério de conclusão
 
-O fluxo de aprovação, a entidade Sugestão, o vínculo com Evento e os estados precisam ser reconciliados antes do aceite.
+O fluxo de aprovação foi reconciliado por `DEC-005`; a entidade Sugestão e o vínculo opcional com Evento por `DEC-006`, refletidos em `ARCH-DATA-007` e `ARCH-RULE-009`; as permissões de análise por `DEC-004` e `DEC-010`. Verificado em `T019` a `T021`.

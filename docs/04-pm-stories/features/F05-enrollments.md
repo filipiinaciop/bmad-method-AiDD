@@ -15,12 +15,12 @@ Permitir inscrição e cancelamento com regras de disponibilidade, duplicidade, 
 
 ## Stories
 
-- `S12` Inscrever-se em evento — `blocked`.
-- `S13` Impedir duplicidade e excedente de vagas — `blocked`.
-- `S14` Cancelar própria inscrição — `blocked`.
-- `S15` Consultar minhas inscrições — `blocked`.
-- `S16` Cancelar inscrição como Professor/Admin — `blocked`.
+- `S12` Inscrever-se em evento — `done`.
+- `S13` Impedir duplicidade e excedente de vagas — `done`.
+- `S14` Cancelar própria inscrição — `done`.
+- `S15` Consultar minhas inscrições — `done`.
+- `S16` Cancelar inscrição como Professor/Admin — `done`.
 
 ## Critério de conclusão
 
-A modelagem de inscrição ativa/inativa e a política de concorrência devem ser decididas antes de implementação.
+A modelagem `ATIVA`/`CANCELADA` foi decidida por `DEC-007`, refletida em `ARCH-DATA-006` e `ARCH-RULE-010`. O limite da garantia de capacidade está registrado em `DEC-012`. Verificado em `T012` a `T016`.

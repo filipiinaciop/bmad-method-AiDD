@@ -30,8 +30,8 @@ depends_on: [DEP-010, DEP-011]
 
 ## Bloqueios
 
-A arquitetura não define entidade Sugestão, campos ou status. `CONFLICT-003` bloqueia a implementação.
+Resolvidos por `DEC-006`.
 
 ## Task
 
-- `T017` — Persistir sugestão de aluno — `blocked`.
+- `T017` — Persistir sugestão de aluno — `done`. Evidência: [`T017.md`](../../../../_bmad-output/implementation-artifacts/verification/T017.md).

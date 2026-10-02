@@ -1,7 +1,7 @@
 ---
 id: UX-001
 type: ux-foundation
-status: draft
+status: confirmed
 owner: "Integrante 2 — UX / Product Experience"
 sources:
   - ".agents/skills/bmad-agent-ux-designer/assets/design-tokens.json"
@@ -10,7 +10,7 @@ sources:
 
 # UX-001 — Fundação visual do Germinare Tech
 
-Este documento registra como o projeto deve aplicar os assets visuais fornecidos pelo grupo. Ele não inventa fluxos, telas ou estados de produto; esses itens devem ser definidos em contratos UX posteriores.
+Este documento registra como o projeto deve aplicar os assets visuais fornecidos pelo grupo. `UX-001` cobre a fundação visual derivada dos assets; `UX-002` registra os contratos de fluxo, tela e estado do produto, confirmados por `DEC-008`. Nenhuma das duas seções autoriza alterar requisitos, permissões ou estados de evento, que pertencem ao PRD e à arquitetura.
 
 ## UX-001 — Tokens visuais
 
@@ -42,7 +42,7 @@ Este documento registra como o projeto deve aplicar os assets visuais fornecidos
 - A interface deve ser utilizável em desktop, tablet e celular.
 - Alvos de toque devem respeitar pelo menos 44px quando aplicável.
 - Contraste e foco devem ser verificados durante a implementação.
-- Os assets não definem ainda empty states, loading, erros, navegação, fluxos de autenticação ou telas específicas do Germinare Tech; esses itens permanecem `unknown` até uma especificação UX aprovada.
+- Os assets de `UX-001` não definem, sozinhos, empty states, loading, erros, navegação, fluxos de autenticação ou telas específicas do Germinare Tech. Esses itens foram especificados em [`UX-002`](#ux-002--contratos-específicos-do-produto) e confirmados por `DEC-008`; nenhum item permanece `unknown`.
 
 ## Fonte
 
@@ -56,8 +56,8 @@ A experiência do MVP deve usar os assets visuais e os fluxos abaixo.
 
 ### Fluxos e superfícies
 
-- **Autenticação:** tela dividida entre apresentação em bloco pastel e formulário branco; feedback de credencial inválida é visível, acessível e não revela se o e-mail existe.
-- **Shell autenticado:** topo com identidade do usuário e saída; navegação mostra somente capacidades permitidas pela Role.
+- **Autenticação:** tela dividida entre apresentação em bloco pastel e formulário branco; feedback de credencial inválida é visível, acessível e não revela se o e-mail existe. O logout limpa os campos de e-mail e senha e o feedback de credencial, e o formulário declara `autocomplete` restritivo, por `DEC-019`.
+- **Shell autenticado:** topo com identidade do usuário e saída; navegação mostra somente capacidades permitidas pela Role. O botão de retorno dentro de um fluxo volta para a tela anterior real, não para um destino fixo, por `DEC-018`.
 - **Eventos:** lista com busca/filtro, calendário mensal, detalhe, criação/edição e gerenciamento; Professor/Admin possui validação, gestão e inscritos conforme permissão.
 - **Inscrições:** detalhe oferece inscrição quando o evento está `APROVADO` e disponível; `Minhas inscrições` mostra estados `ATIVA`/`CANCELADA`.
 - **Sugestões:** Aluno envia e consulta suas sugestões; Professor/Admin vê a fila e aprova/rejeita explicitamente.
@@ -67,6 +67,7 @@ A experiência do MVP deve usar os assets visuais e os fluxos abaixo.
 - Loading: usar feedback textual ou estado de carregamento sem bloquear o teclado.
 - Vazio: explicar o que está vazio e oferecer a próxima ação quando houver.
 - Erro: preservar dados válidos, mostrar mensagem compreensível e manter foco no contexto da ação.
+- Feedback temporário: mensagens de sucesso desaparecem após 5 segundos e mensagens de erro após 10 segundos; uma nova mensagem cancela o temporizador da anterior. Vale para o feedback global, o de formulário e o de autenticação, por `DEC-017`.
 - Permissão: ocultar ações não permitidas e negar também a operação de domínio.
 - Persistência: após recarregar a página, dados válidos de `localStorage` continuam disponíveis; dados corrompidos retornam ao seed.
 

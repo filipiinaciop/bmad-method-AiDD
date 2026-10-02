@@ -30,8 +30,8 @@ depends_on: [DEP-004, DEP-008, DEP-009]
 
 ## Bloqueios
 
-A definição de vaga/capacidade e dos estados visíveis ainda está conflitante ou ausente.
+Resolvidos por `DEC-005`, `DEC-006` e `DEC-008`.
 
 ## Task
 
-- `T011` — Exibir detalhe do evento — `blocked`.
+- `T011` — Exibir detalhe do evento — `done`. Evidência: [`T011.md`](../../../../_bmad-output/implementation-artifacts/verification/T011.md).

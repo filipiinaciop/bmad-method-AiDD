@@ -29,8 +29,8 @@ depends_on: [DEP-005, DEP-008, DEP-009]
 
 ## Bloqueios
 
-O estado de inscrição e os estados de interface ainda precisam de decisão/UX.
+Resolvidos por `DEC-007` e `DEC-008`.
 
 ## Task
 
-- `T015` — Renderizar minhas inscrições — `blocked`.
+- `T015` — Renderizar minhas inscrições — `done`. Evidência: [`T015.md`](../../../../_bmad-output/implementation-artifacts/verification/T015.md).

@@ -29,8 +29,8 @@ depends_on: [DEP-004, DEP-006, DEP-010, DEP-011]
 
 ## Bloqueios
 
-`CONFLICT-001` e `CONFLICT-003` impedem definir status, entidade e vínculo.
+Resolvidos por `DEC-005` e `DEC-006`.
 
 ## Task
 
-- `T020` — Transformar sugestão aprovada em formulário pré-preenchido — `blocked`.
+- `T020` — Transformar sugestão aprovada em formulário pré-preenchido — `done`. Evidência: [`T020.md`](../../../../_bmad-output/implementation-artifacts/verification/T020.md).

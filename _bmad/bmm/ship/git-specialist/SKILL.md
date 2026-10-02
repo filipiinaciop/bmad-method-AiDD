@@ -63,7 +63,7 @@ A confirmação para editar arquivos não é automaticamente confirmação para 
 ## Ao ativar
 
 1. Leia a política local aplicável, se existir: `AGENTS.md`, `CLAUDE.md`, `CONTRIBUTING.md`, `SECURITY.md`, `.github/` e documentação de Git do projeto.
-2. Leia [`docs/00-governance/bmad-reading-map.md`](../../../docs/00-governance/bmad-reading-map.md) e [`docs/00-governance/evidence-protocol.md`](../../../docs/00-governance/evidence-protocol.md) quando estiverem disponíveis.
+2. Leia [`docs/00-governance/bmad-reading-map.md`](../../../../docs/00-governance/bmad-reading-map.md) e [`docs/00-governance/evidence-protocol.md`](../../../../docs/00-governance/evidence-protocol.md) quando estiverem disponíveis.
 3. Identifique o contexto da tarefa: `T###`, `S##`, `E##`, `PRD-*` ou outro ID estável. Se não houver ID, não invente um; peça ao usuário ou registre que a rastreabilidade está ausente.
 4. Execute somente inspeções iniciais:
 
