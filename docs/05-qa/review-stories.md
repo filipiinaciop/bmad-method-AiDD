@@ -95,10 +95,11 @@ O defeito é o já descrito: 13 dessas Tasks estão declaradas `blocked` dentro 
 
 Avaliação da camada contra [`definition-of-done.md`](../04-pm-stories/definition-of-done.md), seção "Para uma story":
 
+> A tabela registra o estado encontrado no momento desta revisão. Os dois itens "não atendido" foram corrigidos depois, em `QA-001` a `QA-003`, e a contagem de testes subiu de 68 para 71 com `DEC-013` a `DEC-016`. O estado vigente está em [`correction-validation.md`](correction-validation.md).
+
 | Item da DoD | Situação |
 |---|---|
-| Critérios `AC-*` atendidos com evidência verificável | atendido — ver [`acceptance-criteria-validation.md`](acceptance-criteria-validation.md) |
-| Cada critério ligado a fonte/decisão, task e teste | atendido |
+| Critérios `AC-*` atendidos com evidência verificável | atendido — ver [`acceptance-criteria-validation.md`](acceptance-criteria-validation.md) || Cada critério ligado a fonte/decisão, task e teste | atendido |
 | Caminho principal, erros, estados vazios e permissões verificados | atendido — estados vazios em 9 superfícies, permissões em `TEST-S03-01` |
 | Sem fontes conflitantes ou perguntas bloqueadoras sem registro | **não atendido** — [`QA-003`](findings.md#qa-003) |
 | Tasks filhas `done` ou canceladas com justificativa | **não atendido** — 13 declaradas `blocked` |

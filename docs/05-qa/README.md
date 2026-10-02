@@ -68,16 +68,18 @@ Um achado só passa a `revalidado` com evidência de reteste em [`correction-val
 
 ## Evidência desta revisão
 
-Comandos oficiais de `DEC-009`, executados na raiz do projeto:
+Comandos oficiais de `DEC-009`, executados na raiz do projeto após as rodadas de correção autorizadas por `DEC-013` a `DEC-019`:
 
 ```text
 npm ci                → added 73 packages, found 0 vulnerabilities
-npm test              → 68 tests, 68 pass, 0 fail
+npm test              → 71 tests, 71 pass, 0 fail
 npm run lint          → Lint OK: 6 arquivos JavaScript verificados
 npm run build         → Build OK: baseline MVC, assets e referências completos
-npm start (PORT=3999) → / 200 · /models/domain.js 200 · /models/store.js 200
+npm start (PORT=4020) → / 200 · /models/domain.js 200 · /models/store.js 200
                         /controllers/app-controller.js 200 · /public/styles.css 200
                         /rota-inexistente 404 · x-powered-by ausente
 ```
 
-Observações de comportamento que não são cobertas por comando foram obtidas por execução direta do domínio e estão citadas no achado correspondente com arquivo e função.
+A primeira revisão registrou 68 testes; os 3 cenários adicionais vieram de `DEC-013` a `DEC-016`. Os números originais estão preservados em [`implementation-readiness.md`](implementation-readiness.md) como registro do estado em que o gate foi avaliado.
+
+Observações de comportamento que não são cobertas por comando foram obtidas por execução direta do domínio e, no caso de `QA-020` a `QA-022`, por operação da aplicação no navegador. Estão citadas no achado correspondente com arquivo e função.

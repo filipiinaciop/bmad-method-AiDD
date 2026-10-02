@@ -13,6 +13,8 @@ Gate de prontidão da entrega do Germinare Tech. Avalia se o MVP está pronto pa
 
 ## Veredito
 
+> **Este veredito foi superado.** Ele descreve o estado de 2026-10-01 antes da rodada de correções e está preservado como evidência do que o gate encontrou. O veredito vigente está em [Reavaliação — reabertura do gate](#reavaliação--reabertura-do-gate).
+
 **GO CONDICIONAL** para a entrega do software.
 **NO-GO** para promover [`architecture.md`](../01-inputs/architecture.md) de `proposed` a `approved`.
 
@@ -152,6 +154,39 @@ Itens 1 a 4 são edição de documento. Item 5 exige decisão de produto. Item 6
 
 ## Reavaliação
 
-Este veredito vale para o estado verificado nesta data. Cada correção deve ser revalidada pelo protocolo de [`correction-validation.md`](correction-validation.md) antes de o gate ser reaberto.
+O veredito acima vale para o estado verificado na data em que foi emitido. Cada correção deve ser revalidada pelo protocolo de [`correction-validation.md`](correction-validation.md) antes de o gate ser reaberto.
+
+## Reavaliação — reabertura do gate
+
+**Data:** 2026-10-01, após as rodadas autorizadas por `DEC-013` a `DEC-019`.
+
+**Veredito vigente: GO.** As seis condições de fechamento foram cumpridas, exceto a última, que não cabe a esta camada.
+
+| # | Condição | Estado |
+|---|---|---|
+| 1 | Fechar `QA-018` — entidades e `CONFLICT-002` | cumprida — `ARCH-DATA-005` a `ARCH-DATA-007` |
+| 2 | Fechar `QA-006` — responsável e versão | cumprida — `owner: "Integrante 3 — Architect"`, `version: "1.1-approved"` |
+| 3 | Fechar `QA-001` a `QA-003` — propagar estado | cumprida — nenhum `blocked` em 32 artefatos |
+| 4 | Fechar `QA-017` — contagem de evidência | cumprida — matriz cita 71 testes |
+| 5 | Decidir os seis achados de comportamento | cumprida — `DEC-013` a `DEC-016` |
+| 6 | Executar o walkthrough manual | **pendente — não cabe a QA** |
+
+**A arquitetura está liberada para `approved`.** Os dois critérios que a bloqueavam foram atendidos, e a promoção já está registrada no arquivo canônico.
+
+### Números atualizados
+
+```text
+npm test        -> # tests 71  # pass 71  # fail 0
+npm run lint    -> Lint OK: 6 arquivos JavaScript verificados.
+npm run build   -> Build OK: baseline MVC, assets e referências da aplicação estão completos.
+```
+
+A contagem de regras de negócio verificadas passou de 12 para 19 decisões, com a inclusão de `DEC-013` a `DEC-019`. Os números de 68 testes e 12 decisões que aparecem nas seções anteriores são do estado original e foram mantidos como registro.
+
+### O que esta camada não pode declarar
+
+A condição 6 exige uma pessoa operando o navegador e julgando a experiência. Observação instrumentada não substitui isso: ela confirma que o comportamento ocorre, não que é adequado. O `next_gate` de [`sprint-status.yaml`](../../_bmad-output/sprint-status.yaml) — "final review and human walkthrough" — permanece aberto por decisão desta camada, não por omissão.
+
+Três achados desta entrega ilustram o porquê: `QA-020`, `QA-021` e `QA-022` não foram encontrados em nenhuma leitura de artefato nem por teste automatizado. Apareceram quando a aplicação foi operada. Um walkthrough conduzido por outra pessoa provavelmente encontra mais.
 
 Um achado só passa a `revalidado` com evidência de reteste. Fechar um item na lista acima sem reexecutar a suíte e sem registrar a saída real não satisfaz a [`definition-of-done.md`](../04-pm-stories/definition-of-done.md), que é explícita: *"'Funcionou', 'parece correto' ou a simples existência de um arquivo não são evidências suficientes."*

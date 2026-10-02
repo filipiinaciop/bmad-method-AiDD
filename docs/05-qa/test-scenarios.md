@@ -27,7 +27,7 @@ $ npm test
 # duration_ms 148.02625
 ```
 
-68 casos no total: 15 da suíte original `tests/domain.test.js` e 53 desta camada.
+71 casos no total: 15 da suíte original `tests/domain.test.js` e 56 desta camada.
 
 O comando passou a cobrir os dois arquivos como parte desta entrega — ver [`QA-015`](findings.md#qa-015).
 
@@ -69,6 +69,8 @@ Cada cenário exercita o domínio diretamente, sem mocks de regra de negócio. O
 | `TEST-S05-01` | Status inicial do evento depende do papel do autor | `AC-S05-01`, `DEC-005` | 177 |
 | `TEST-S05-02` | Evento inválido é recusado sem persistir registro incompleto | `AC-S05-02` | 184 |
 | `TEST-S05-03` | Capacidade vazia é tratada como ilimitada | `AC-S05-01`, `DEC-006` | 198 |
+| `TEST-S05-04` | O autor retira a própria proposta enquanto ela está `PENDENTE` | `DEC-014`, [`QA-011`](findings.md#qa-011) | 204 |
+| `TEST-S05-05` | A retirada pelo autor não vira capacidade administrativa | `DEC-011`, `DEC-014` | 216 |
 | `TEST-S06-01` | Edição válida atualiza o registro persistido | `AC-S06-01` | 205 |
 | `TEST-S06-02` | Capacidade abaixo das inscrições ativas é recusada, mas o limite exato é aceito | `AC-S06-02` | 213 |
 | `TEST-S06-03` | Evento `CANCELADO` é terminal para edição | `AC-S06-01`, `DEC-005` | 224 |
@@ -87,8 +89,9 @@ Cada cenário exercita o domínio diretamente, sem mocks de regra de negócio. O
 
 | ID | Cenário | Verifica | Linha |
 |---|---|---|---|
-| `TEST-S09-01` | Evento `PENDENTE` do aluno fica fora do filtro da lista | caracterização [`QA-009`](findings.md#qa-009) | 289 |
+| `TEST-S09-01` | A lista pública permanece restrita a `APROVADO` e `CANCELADO` | `AC-S09-01`, `DEC-015` | 315 |
 | `TEST-S09-02` | Busca filtra por título, descrição e local sem diferenciar caixa | `AC-S09-01` | 298 |
+| `TEST-S09-03` | O autor acompanha a própria proposta em "Minhas propostas" | `DEC-015`, [`QA-009`](findings.md#qa-009) | 324 |
 | `TEST-S10-01` | Evento permanece íntegro entre lista e detalhe | `AC-S10-02` | 306 |
 | `TEST-S11-01` | Vagas restantes refletem apenas inscrições ativas | `AC-S11-01` | 314 |
 | `TEST-S11-02` | Evento inexistente retorna ausência sem alterar dados | `AC-S11-02` | 322 |
@@ -139,13 +142,15 @@ Cada cenário exercita o domínio diretamente, sem mocks de regra de negócio. O
 
 ## Testes de caracterização
 
-Três cenários registram o comportamento atual sem afirmar que ele é correto:
+Três cenários nasceram como caracterização: fixavam o comportamento observado sem afirmar que ele era correto, porque a regra ainda não existia. Depois das decisões `DEC-013` a `DEC-016`, os três foram reescritos para afirmar a regra decidida.
 
-| ID | Achado | O que o teste fixa |
-|---|---|---|
-| `TEST-S06-04` | [`QA-010`](findings.md#qa-010) | Evento `NEGADO` pode ser editado |
-| `TEST-S09-01` | [`QA-009`](findings.md#qa-009) | Evento `PENDENTE` do aluno não aparece na lista |
-| `TEST-NFR-04` | [`QA-012`](findings.md#qa-012) | Evento com data passada aceita inscrição |
+| ID | Achado | O que fixava antes | O que afirma agora |
+|---|---|---|---|
+| `TEST-S06-04` | [`QA-010`](findings.md#qa-010) | Evento `NEGADO` podia ser editado | `NEGADO` é terminal para edição (`DEC-013`) |
+| `TEST-S09-01` | [`QA-009`](findings.md#qa-009) | `PENDENTE` do aluno não aparecia em lugar nenhum | lista pública restrita a `APROVADO` e `CANCELADO`, com a proposta visível em "Minhas propostas" (`DEC-015`) |
+| `TEST-NFR-04` | [`QA-012`](findings.md#qa-012) | Evento com data passada aceitava inscrição | criação recusa `dataInicio` no passado; a edição não aplica a regra (`DEC-016`) |
+
+Nenhum cenário permanece como caracterização. A inscrição em evento cuja data já passou continua possível, por `ENCERRADO` seguir deferido em `DEC-005` — isso está registrado como efeito aceito em `DEC-016`, não como teste de caracterização.
 
 A distinção importa. Um teste normal falha quando o código quebra. Estes falham quando o comportamento **muda** — inclusive quando muda para melhor. São marcadores de decisão pendente, não validação de requisito.
 
