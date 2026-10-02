@@ -185,7 +185,9 @@ A contagem de regras de negócio verificadas passou de 12 para 19 decisões, com
 
 ### O que esta camada não pode declarar
 
-A condição 6 exige uma pessoa operando o navegador e julgando a experiência. Observação instrumentada não substitui isso: ela confirma que o comportamento ocorre, não que é adequado. O `next_gate` de [`sprint-status.yaml`](../../_bmad-output/sprint-status.yaml) — "final review and human walkthrough" — permanece aberto por decisão desta camada, não por omissão.
+A condição 6 exige uma pessoa operando o navegador e julgando a experiência. Observação instrumentada não substitui isso: ela confirma que o comportamento ocorre, não que é adequado. O `next_gate` de [`sprint-status.yaml`](../../_bmad-output/sprint-status.yaml) — "final review and human walkthrough" — permanece aberto por decisão desta camada, não por omissão, e está registrado como `Q-QA-001` em [`assumptions-and-open-questions.md`](../00-governance/assumptions-and-open-questions.md#perguntas).
+
+O responsável não é definido aqui. Esta camada não escolhe quem a audita, pelo mesmo princípio que a impediu de corrigir `src/` por conta própria: [`bmad-reading-map.md`](../00-governance/bmad-reading-map.md) estabelece que QA produz validação, achados e evidências, e não altera o produto sozinho. Atribuir o walkthrough a si mesma seria validar o próprio trabalho.
 
 Três achados desta entrega ilustram o porquê: `QA-020`, `QA-021` e `QA-022` não foram encontrados em nenhuma leitura de artefato nem por teste automatizado. Apareceram quando a aplicação foi operada. Um walkthrough conduzido por outra pessoa provavelmente encontra mais.
 
